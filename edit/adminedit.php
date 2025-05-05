@@ -14,3 +14,4 @@ $row = mysqli_fetch_assoc($result);
     <input type="text" name="company_name" value="<?= $row['company_name'] ?>" required>
     <button type="submit">Update</button>
 </form>
+ 
