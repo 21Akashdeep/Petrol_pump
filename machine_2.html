@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petrol Machine Table - Machine 2</title>
+    <style>
+      body {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .petrol-machine {
+        width: 500px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 5px solid #004d80;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        padding: 15px;
+      }
+
+      .branding {
+        text-align: center;
+        font-weight: bold;
+        color: #ff6600; /* Change color */
+        font-size: 26px; /* Increase size */
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        font-family: "Arial Black", sans-serif; /* Bold font style */
+      }
+
+      .header {
+        background-color: #ff6600; /* Change background color */
+        color: white;
+        text-align: center;
+        padding: 15px;
+        font-size: 24px; /* Increase size */
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px; /* Add letter spacing */
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      th,
+      td {
+        border: 1px solid #004d80;
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      th {
+        background: linear-gradient(90deg, #ff6600, #ff9933); /* Change gradient */
+        color: white;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px;
+        font-family: "Arial Black", sans-serif;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2faff;
+      }
+
+      td input {
+        width: 100%;
+        border: 1px solid #004d80;
+        padding: 5px;
+        font-size: 14px;
+        color: #004d80;
+        text-align: center;
+        border-radius: 5px;
+      }
+
+      .submit-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+        background: linear-gradient(90deg, #ff6600, #ff9933);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+      }
+
+      .top-options{
+        display: flex;
+        padding:10px;
+        margin-top:10px;
+        height:30px;
+      }
+
+      .submit-btn:hover {
+        background: #0066a8;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="petrol-machine">
+      
+      <div class="branding">BPT</div>
+      
+    
+      <div class="header">MACHINE NO. 02</div>
+
+      <table>
+        <tr>
+        <div class="top-options">
+          <select id="employeeName">
+            <option>Select Employee</option>
+            <option>John Doe</option>
+            <option>Jane Smith</option>
+            <option>Mark Johnson</option>
+          </select>
+          <div class="date-time" id="dateTime" style="position: relative; left: 180px;">
+          </div>
+        </tr>
+          
+        </div>
+      </div>
+        <thead>
+          <tr>
+            <th>PRODUCT</th>
+            <th>XP - 95</th>
+            <th>MS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Start Reading</td>
+            <td>
+              <input type="number" id="openingMeterXP2" value="0" readonly />
+            </td>
+            <td>
+              <input type="number" id="openingMeterMS2" value="0" readonly />
+            </td>
+          </tr>
+          <tr>
+            <td>End Reading</td>
+            <td><input type="number" id="closingMeterXP2" /></td>
+            <td><input type="number" id="closingMeterMS2" /></td>
+          </tr>
+          <tr>
+            <td>Reading Difference</td>
+            <td><input type="number" id="subTotalXP2" readonly /></td>
+            <td><input type="number" id="subTotalMS2" readonly /></td>
+          </tr>
+          <tr>
+            <td>Testing Less</td>
+            <td><input type="number" id="testingLessXP2" /></td>
+            <td><input type="number" id="testingLessMS2" /></td>
+          </tr>
+          <tr>
+            <td>Net. Total sale</td>
+            <td><input type="number" id="netTotalXP2" readonly /></td>
+            <td><input type="number" id="netTotalMS2" readonly /></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="submit-btn" onclick="submitData2()">Submit</button>
+    </div>
+
+    <script>
+      function updateDateTime() {
+        const now = new Date();
+        const formattedDateTime = now.toLocaleString();
+        document.getElementById("dateTime").innerText = formattedDateTime;
+      }
+      setInterval(updateDateTime, 1000);
+      updateDateTime();
+    
+      function calculateValues() {
+        const openingXP =
+          parseFloat(document.getElementById("openingMeterXP2").value) || 0;
+        const openingMS =
+          parseFloat(document.getElementById("openingMeterMS2").value) || 0;
+        const closingXP =
+          parseFloat(document.getElementById("closingMeterXP2").value) || 0;
+        const closingMS =
+          parseFloat(document.getElementById("closingMeterMS2").value) || 0;
+        const testingLessXP =
+          parseFloat(document.getElementById("testingLessXP2").value) || 0;
+        const testingLessMS =
+          parseFloat(document.getElementById("testingLessMS2").value) || 0;
+    
+        document.getElementById("subTotalXP2").value = closingXP - openingXP;
+        document.getElementById("subTotalMS2").value = closingMS - openingMS;
+        document.getElementById("netTotalXP2").value =
+          closingXP - openingXP + testingLessXP;
+        document.getElementById("netTotalMS2").value =
+          closingMS - openingMS + testingLessMS;
+      }
+    
+      function submitData2() {
+        const employee = document.getElementById("employeeName").value;
+        const closingXP = document.getElementById("closingMeterXP2").value;
+        const closingMS = document.getElementById("closingMeterMS2").value;
+        const testingLessXP = document.getElementById("testingLessXP2").value;
+        const testingLessMS = document.getElementById("testingLessMS2").value;
+    
+        if (!employee || employee === "Select Employee") {
+          alert("Please select an employee before submitting.");
+          return;
+        }
+        if (closingXP === "" || closingMS === "") {
+          alert("Please enter the End Reading for both XP - 95 and MS.");
+          return;
+        }
+        if (testingLessXP === "" || testingLessMS === "") {
+          alert("Please enter the Testing Less values for both XP - 95 and MS.");
+          return;
+        }
+    
+        alert(`Data submitted successfully!\n
+          Employee: ${employee}\n
+          End Reading XP - 95: ${closingXP}\n
+          End Reading MS: ${closingMS}\n
+          Testing Less XP - 95: ${testingLessXP}\n
+          Testing Less MS: ${testingLessMS}`);
+      }
+    
+      document
+        .getElementById("closingMeterXP2")
+        .addEventListener("input", calculateValues);
+      document
+        .getElementById("closingMeterMS2")
+        .addEventListener("input", calculateValues);
+      document
+        .getElementById("testingLessXP2")
+        .addEventListener("input", calculateValues);
+      document
+        .getElementById("testingLessMS2")
+        .addEventListener("input", calculateValues);
+    </script>
+    
+  </body>
+</html>

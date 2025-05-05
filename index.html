@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <style>
+      /* Background image for the body */
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-image: url("../images/dashboard.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Centered login form */
+      .login-container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        width: 380px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+      }
+
+      input {
+        width: 92%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: 0.3s;
+      }
+
+      input:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+      }
+
+      .btn-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .btn {
+        width: 50%;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: 0.3s;
+      }
+
+      .login-btn {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .login-btn:hover {
+        background-color: #0056b3;
+      }
+
+      .admin-btn {
+        background-color: #cc530d;
+        color: white;
+      }
+
+      .admin-btn:hover {
+        background-color: #d39e00;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login</h2>
+      <form onsubmit="event.preventDefault(); login();">
+        <input
+          type="text"
+          id="loginMobile"
+          placeholder="Enter Mobile Number"
+          required
+        />
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Enter Password"
+          required
+        />
+        <p id="error" class="error-message"></p>
+        <div class="btn-container">
+          <button type="submit" class="btn login-btn">Employee</button>
+          <button type="button" class="btn admin-btn" onclick="adminLogin()">
+            Admin
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function login() {
+        let mobile = document.getElementById("loginMobile").value;
+        let password = document.getElementById("loginPassword").value;
+        let employees = JSON.parse(localStorage.getItem("employees")) || [];
+
+        let user = employees.find(
+          (employee) =>
+            employee.mobile === mobile && employee.password === password
+        );
+
+        if (user) {
+          alert("Login successful!");
+          window.location.href = "shift_management.html"; // Redirect to employee dashboard
+        } else {
+          document.getElementById("error").innerText = "Invalid credentials!";
+        }
+      }
+
+      function adminLogin() {
+        let mobile = document.getElementById("loginMobile").value;
+        let password = document.getElementById("loginPassword").value;
+        let admins = JSON.parse(localStorage.getItem("admins")) || [];
+
+        let admin = admins.find(
+          (admin) => admin.mobile === mobile && admin.password === password
+        );
+
+        if (admin) {
+          alert("Admin login successful!");
+          window.location.href = "home.html"; // Redirect to admin panel
+        } else {
+          document.getElementById("error").innerText =
+            "Invalid admin credentials!";
+        }
+      }
+    </script>
+  </body>
+</html>

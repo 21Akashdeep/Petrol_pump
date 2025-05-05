@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petrol Pump Dealership Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .form-container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        width: 100%;
+        border: 1px solid #e0e0e0;
+      }
+
+      .form-container h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+      }
+
+      .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        flex: 1 1 100%;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .form-group input,
+      .form-group select {
+        flex: 1 1 calc(50% - 10px);
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+      }
+
+      .form-group input:last-child,
+      .form-group select:last-child {
+        margin-right: 0;
+      }
+
+      .form-group input:required::placeholder {
+        color: red;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #007bff;
+        background-color: #fff;
+      }
+
+      .form-group .full-width {
+        flex: 1 1 100%;
+      }
+
+      .form-submit {
+        text-align: center;
+      }
+
+      .form-submit button {
+        background-color: #ffa500;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .form-submit button:hover {
+        background-color: #e69500;
+      }
+
+      /* Styling for the password input and eye icon */
+      .password-group {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 100%;
+      }
+
+      .password-group input {
+        flex: 1;
+        padding-right: 40px; /* Space for the eye icon */
+      }
+
+      .eye-icon {
+        position: absolute;
+        right: 20px;
+        bottom: 15px;
+        cursor: pointer;
+        font-size: 20px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Registration page</h1>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="full-name">Full Name *</label>
+          <input type="text" id="full-name" name="full-name" required />
+
+          <label for="phone-number">Phone Number *</label>
+          <input type="text" id="phone-number" name="phone-number" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" />
+
+          <label for="state">State *</label>
+          <input type="text" id="state" name="State" required />
+        </div>
+
+        <div class="form-group">
+          <label for="city">City *</label>
+          <input type="text" id="city" name="city" required />
+
+          <label for="pin-code">Pin Code *</label>
+          <input type="text" id="pin-code" name="pin-code" required />
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company Name</label>
+          <input type="text" id="company" name="Company Name" required />
+        </div>
+
+        <!-- Password field with eye icon -->
+        <div class="form-group password-group">
+          <label for="password">Password *</label>
+          <input type="password" id="password" name="password" required />
+          <span class="eye-icon" onclick="togglePassword()">&#128065;</span>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // JavaScript to toggle password visibility
+      function togglePassword() {
+        const passwordInput = document.getElementById("password");
+        const eyeIcon = document.querySelector(".eye-icon");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          eyeIcon.innerHTML = "&#128068;"; // Change eye icon to open
+        } else {
+          passwordInput.type = "password";
+          eyeIcon.innerHTML = "&#128065;"; // Change eye icon to closed
+        }
+      }
+    </script>
+  </body>
+</html>

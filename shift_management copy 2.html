@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Navbar</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* General body styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        overflow: hidden;
+        background: url("images/machine1.jpg");
+      }
+
+      /* Navbar styling */
+      .navbar {
+        background-color: #343a40; /* Dark background */
+        padding: 10px 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar a {
+        color: #ffffff;
+        text-decoration: none;
+        padding: 8px 15px;
+        display: block;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .navbar a:hover {
+        background-color: #495057;
+        border-radius: 4px;
+      }
+
+      .navbar .nav-item {
+        position: relative;
+      }
+
+      /* Dropdown menu */
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #343a40;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: none;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        z-index: 50;
+        border-radius: 4px;
+        
+      }
+
+      .dropdown-menu li {
+        border-bottom: 1px solid #495057;
+      }
+
+      .dropdown-menu li:last-child {
+        border-bottom: none;
+      }
+
+      .dropdown-menu a {
+        padding: 8px 20px;
+        color: #ffffff;
+      }
+
+      .dropdown-menu a:hover {
+        background-color: #0dcaf0;
+        color: #000000;
+      }
+
+      /* Show dropdown on hover */
+      .nav-item:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Navbar layout */
+      .navbar-nav {
+        display: flex;
+        gap: 15px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      
+
+      .card {
+        position: relative;
+        background-color: #eff1ef;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px; /* Keeps the card image with rounded corners */
+      }
+
+      .card .circle-img {
+        position: absolute;
+        top: 50px; /* Adjust as needed */
+        right: 10px; /* Adjust as needed */
+        width: 70px; /* Circle diameter */
+        height: 70px; /* Circle diameter */
+        border-radius: 50%; /* Makes it a circle */
+        overflow: hidden; /* Ensures the image stays within the circle */
+        border: 2px solid #fff; /* Optional: Adds a border around the circle */
+      }
+
+      .card .circle-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Keeps the image contained within the circle */
+      }
+
+      .card h3 {
+        margin: 15px 0 10px;
+        color: #e2e6e9;
+        font-size: 1.25rem;
+        padding-top: 70px;
+      }
+
+      .card p {
+        color: #f5f6f8;
+        font-size: 0.9rem;
+        margin: 0 10px 15px;
+      }
+
+      .a {
+        width: 47.5%; /* Width of the div */
+        height: 390px; /* Height of the div */
+        border: 2px solid black; /* Adds a black border */
+        margin: 20px auto; /* Centers the div horizontally */
+        position: relative;
+        right: 24.5%;
+        bottom: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .b {
+        width: 47.5%; /* Width of the div */
+        height: 390px; /* Height of the div */
+        border: 2px solid black; /* Adds a black border */
+        margin: 20px auto; /* Centers the div horizontally */
+        position: relative;
+        left: 24.5%;
+        bottom: 444px;
+        display: flex; /* Flexbox for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+      }
+
+      .c {
+        width: 47.5%; /* Width of the div */
+        height: 80px; /* Height of the div */
+        border: 2px solid black; /* Adds a black border */
+        margin: 20px auto; /* Centers the div horizontally */
+        position: relative;
+        right: 24.5%;
+        bottom: 445px;
+      }
+
+      .d {
+        width: 47.5%; /* Width of the div */
+        height: 80px; /* Height of the div */
+        border: 2px solid black; /* Adds a black border */
+        margin: 20px auto; /* Centers the div horizontally */
+        position: relative;
+        left: 24.5%;
+        bottom: 548px;
+      }
+
+      .btn {
+        padding: 5px 15px;
+        border: none;
+        background-color: #0dcaf0;
+        color: #000;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #0a9fcc;
+      }
+
+      @media (max-width: 480px) {
+        .navbar-nav {
+          flex-direction: column; /* Stack items vertically */
+          gap: 10px;
+        }
+
+        .dropdown-menu {
+          position: static;
+          box-shadow: none;
+        }
+
+        .dropdown-menu li {
+          border-bottom: none;
+        }
+
+        .cards-container {
+          grid-template-columns: 1fr; /* Single column on smaller screens */
+        }
+
+        .card .circle-img {
+          width: 50px; /* Smaller circle on small screens */
+          height: 50px;
+        }
+
+        .card h3 {
+          font-size: 1rem; /* Smaller font for smaller screens */
+        }
+
+        .a,
+        .b,
+        .c,
+        .d {
+          width: 100%; /* Full width for smaller screens */
+          margin: 10px auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="">shift A</a>
+          <ul class="dropdown-menu">
+            <li><a href="templete/machine_A1.html">Machine 1</a></li>
+            <li><a href="templete/machine_A2.html">Machine 2</a></li>
+            <li><a href="templete/machine_A3.html">Machine 3</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Shift B</a>
+          <ul class="dropdown-menu">
+            <li><a href="templete/machine_B1.html">Machine 1</a></li>
+            <li><a href="templete/machine_B2.html">Machine 2</a></li>
+            <li><a href="templete/machine_B3.html">Machine 3</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Shift c</a>
+          <ul class="dropdown-menu">
+            <li><a href="templete/machine_C1.html">Machine 1</a></li>
+            <li><a href="templete/machine_C2.html">Machine 2</a></li>
+            <li><a href="templete/machine_C3.html">Machine 3</a></li>
+          </ul>
+    </nav>
+    <div id="form-container" class="container mt-4"></div>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".dropdown-menu a").forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          event.preventDefault(); // Redirect hone se roke
+  
+          let pageUrl = this.getAttribute("href"); // Link ka href lein
+  
+          // AJAX request
+          fetch(pageUrl)
+            .then(response => response.text()) // Page content ko text format me lein
+            .then(data => {
+              document.getElementById("form-container").innerHTML = data; // Form-container me inject karein
+            })
+            .catch(error => console.error("Error loading page:", error));
+        });
+      });
+    });
+  </script>
+  
+</html>

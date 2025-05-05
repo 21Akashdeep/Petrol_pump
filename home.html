@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Navbar</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* General body styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        overflow: hidden;
+      }
+
+      /* Navbar styling */
+      .navbar {
+        background-color: #343a40; /* Dark background */
+        padding: 10px 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar a {
+        color: #ffffff;
+        text-decoration: none;
+        padding: 8px 15px;
+        display: block;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .navbar a:hover {
+        background-color: #495057;
+        border-radius: 4px;
+      }
+
+      .navbar .nav-item {
+        position: relative;
+      }
+
+      /* Dropdown menu */
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #343a40;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: none;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        z-index: 50;
+        border-radius: 4px;
+      }
+
+      .dropdown-menu li {
+        border-bottom: 1px solid #495057;
+      }
+
+      .dropdown-menu li:last-child {
+        border-bottom: none;
+      }
+
+      .dropdown-menu a {
+        padding: 8px 20px;
+        color: #ffffff;
+      }
+
+      .dropdown-menu a:hover {
+        background-color: #0dcaf0;
+        color: #000000;
+      }
+
+      /* Show dropdown on hover */
+      .nav-item:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Navbar layout */
+      .navbar-nav {
+        display: flex;
+        gap: 15px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 30px;
+        margin-top: 20px;
+        height: 180px;
+      }
+
+      .card {
+        position: relative;
+        background-color: #eff1ef;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px; /* Keeps the card image with rounded corners */
+      }
+
+      .card .circle-img {
+        position: absolute;
+        top: 50px; /* Adjust as needed */
+        right: 10px; /* Adjust as needed */
+        width: 70px; /* Circle diameter */
+        height: 70px; /* Circle diameter */
+        border-radius: 50%; /* Makes it a circle */
+        overflow: hidden; /* Ensures the image stays within the circle */
+        border: 2px solid #fff; /* Optional: Adds a border around the circle */
+      }
+
+      .card .circle-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Keeps the image contained within the circle */
+      }
+
+      .card h3 {
+        margin: 15px 0 10px;
+        color: #e2e6e9;
+        font-size: 1.25rem;
+        padding-top: 70px;
+      }
+
+      .card p {
+        color: #f5f6f8;
+        font-size: 0.9rem;
+        margin: 0 10px 15px;
+      }
+
+      .a {
+        width: 47.5%; /* Width of the div */
+        height: 390px; /* Height of the div */
+        border: 2px solid black; /* Adds a black border */
+        margin: 20px auto; /* Centers the div horizontally */
+        position: relative;
+        right: 24.5%;
+        bottom: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .b {
+        width: 47.5%; /* Width of the div */
+        height: 390px; /* Height of the div */
+        border: 2px solid black; /* Adds a black border */
+        margin: 20px auto; /* Centers the div horizontally */
+        position: relative;
+        left: 24.5%;
+        bottom: 444px;
+        display: flex; /* Flexbox for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+      }
+
+      .c {
+        width: 47.5%; /* Width of the div */
+        height: 80px; /* Height of the div */
+        border: 2px solid black; /* Adds a black border */
+        margin: 20px auto; /* Centers the div horizontally */
+        position: relative;
+        right: 24.5%;
+        bottom: 445px;
+      }
+
+      .d {
+        width: 47.5%; /* Width of the div */
+        height: 80px; /* Height of the div */
+        border: 2px solid black; /* Adds a black border */
+        margin: 20px auto; /* Centers the div horizontally */
+        position: relative;
+        left: 24.5%;
+        bottom: 548px;
+      }
+
+      .btn {
+        padding: 5px 15px;
+        border: none;
+        background-color: #0dcaf0;
+        color: #000;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #0a9fcc;
+      }
+
+      @media (max-width: 480px) {
+        .navbar-nav {
+          flex-direction: column; /* Stack items vertically */
+          gap: 10px;
+        }
+
+        .dropdown-menu {
+          position: static;
+          box-shadow: none;
+        }
+
+        .dropdown-menu li {
+          border-bottom: none;
+        }
+
+        .cards-container {
+          grid-template-columns: 1fr; /* Single column on smaller screens */
+        }
+
+        .card .circle-img {
+          width: 50px; /* Smaller circle on small screens */
+          height: 50px;
+        }
+
+        .card h3 {
+          font-size: 1rem; /* Smaller font for smaller screens */
+        }
+
+        .a,
+        .b,
+        .c,
+        .d {
+          width: 100%; /* Full width for smaller screens */
+          margin: 10px auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="navbar-nav">
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="login.html">Home</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="">Users</a>
+          <ul class="dropdown-menu">
+            <li><a href="list/employeelist.php">Employee</a></li>
+            <li><a href="list/Adminlist.php">Admin</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Master</a>
+          <ul class="dropdown-menu">
+            <li><a href="list/vendorlist.php">vendor</a></li>
+            <li><a href="list/customerlist.php">Customer</a></li>
+            <li><a href="list/itemlist.php">Add Item</a></li>
+            <li><a href="list/locationlist.php">Add Location</a></li>
+            <li><a href="list/UOMlist.php">Add UOM</a></li>
+
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Purchase</a>
+          <ul class="dropdown-menu">
+            <li><a href="list/purchaselist.php">Item Master</a></li>
+          </ul>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Accounts</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Account A</a></li>
+            <li><a href="#">Account B</a></li>
+            <li><a href="#">Account C</a></li>
+          </ul>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="shift_management.html">Shift Management</a>
+        </li>
+
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link" href="#">Transaction</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Stock In</a></li>
+            <li><a href="#">Challan/Slip Entry</a></li>
+            <li><a href="#">Dip Reading</a></li>
+            <li><a href="#">Oil Stock</a></li>
+            <li><a href="#">Gen Credit Sale</a></li>
+            <li><a href="#">Cash Memo</a></li>
+          </ul>
+        </li> -->
+
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link" href="#">Admin (Money Control)</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Amounts Payable</a></li>
+            <li><a href="#">Voucher Payment</a></li>
+            <li><a href="#">Voucher Received</a></li>
+            <li><a href="#">Bank Withdraw</a></li>
+            <li><a href="#">Card Payment</a></li>
+            <li><a href="#">Bank Deposit</a></li>
+            <li><a href="#">UPI Payment</a></li>
+            <li><a href="#">Debit Note</a></li>
+            <li><a href="#">Credit Note</a></li>
+          </ul>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#">Accounting Report</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Challan Report</a></li>
+            <li><a href="#">Bill Report</a></li>
+            <!-- <li><a href="#">Pending Amounts(Bil)</a></li>
+            <li><a href="#">Pending Amounts(CH)</a></li>
+            <li><a href="#">Sundry Creditors</a></li>
+            <li><a href="#">Cash Collections</a></li>
+            <li><a href="#">Final Account</a></li>
+            <li><a href="#">CA Report</a></li>
+            <li><a href="#">GST Report</a></li>
+            <li><a href="#">Rate Variation</a></li>
+            <li><a href="#">Received Report</a></li>
+            <li><a href="#">Payment Report</a></li>
+            <li><a href="#">Debit Notes</a></li>
+            <li><a href="#">Credit Notes</a></li>
+            <li><a href="#">Customer Ledger</a></li>
+            <li><a href="#">Account Reports</a></li>
+            <li><a href="#">Account Statement</a></li>
+            <li><a href="#">Supplier Ledger</a></li>
+            <li><a href="#">Rate Variation(Stock)</a></li>
+            <li><a href="#">PayRoll statement</a></li>
+            <li><a href="#">Avg. Profit Report</a></li>
+            <li><a href="#">Customer Wise Profit</a></li> -->
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#">Inventory Report</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Daily Summary Report</a></li>
+            <!-- <li><a href="#">Employee wise Sale</a></li>
+            <li><a href="#">Exception Report</a></li>
+            <li><a href="#">Inspection Report</a></li>
+            <li><a href="#">Stock Report</a></li>
+            <li><a href="#">DSR Report</a></li>
+            <li><a href="#">Meter Reading Details</a></li>
+            <li><a href="#">Dip Reading Details</a></li>
+            <li><a href="#">Dip Reading Report</a></li>
+            <li><a href="#">Density</a></li>
+            <li><a href="#">Purchase Report</a></li>
+            <li><a href="#">Summary Sales</a></li>
+            <li><a href="#">Bank Deposits</a></li>
+            <li><a href="#">Bank Withdrawls</a></li>
+            <li><a href="#">SMS Details</a></li>
+            <li><a href="#">Customer Master</a></li>
+            <li><a href="#">Shift Card Report</a></li>
+            <li><a href="#">Pump Master</a></li>
+            <li><a href="#">Item Master</a></li>
+            <li><a href="#">Supplier Master</a></li>
+            <li><a href="#">Firm Reports</a></li>
+            <li><a href="#">Monthly Summary Report</a></li> -->
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="cards-container">
+      <div
+        class="card"
+        style="background: linear-gradient(135deg, #df190a, #a3ad11)"
+        onclick="window.location.href='cash.html';"
+      >
+        <div class="circle-img">
+          <img src="../images/Cash.jpg" alt="Profile Picture" />
+        </div>
+        <h3>Cash</h3>
+        <p>Cash-In-Hand</p>
+      </div>
+      <div
+        class="card"
+        style="background: linear-gradient(135deg, #71808f, #371daa)"
+        onclick="window.location.href='outstanding.html';"
+      >
+        <div class="circle-img" style="background-color: white">
+          <img src="../images/Outstanding.png" alt="Outstanding Balance" />
+        </div>
+        <h3>Outstanding Balance</h3>
+        <p>Pending Amounts</p>
+      </div>
+      <div
+        class="card"
+        style="background: linear-gradient(135deg, #70646f, #581010)"
+        onclick="window.location.href='sale.html';"
+      >
+        <div class="circle-img" style="background-color: white">
+          <img src="../images/sale.png" alt="Sale" />
+        </div>
+        <h3>Sale</h3>
+        <p>Yesterdays Sale Amounts</p>
+      </div>
+      <div
+        class="card"
+        style="background: linear-gradient(135deg, #0f68c0, #b62727)"
+        onclick="window.location.href='expense.html';"
+      >
+        <div class="circle-img">
+          <img src="../images/expense.png" alt="Expenses" />
+        </div>
+        <h3>Expenses</h3>
+        <p>Yesterdays Expenses</p>
+      </div>
+    </div>
+
+    <div class="a">
+      <canvas id="dailyChart" width="400" height="200"></canvas>
+      <script>
+        // Sample daily data
+        const dailyData = {
+          labels: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ], // Days of the week
+          datasets: [
+            {
+              label: "Petrol (Rs)",
+              data: [120, 150, 180, 200, 250, 300, 350], // Example data
+              backgroundColor: "red",
+              borderColor: "red",
+              borderWidth: 2,
+            },
+            {
+              label: "Diesel (Rs)",
+              data: [150, 120, 100, 160, 145, 136, 189], // Example data
+              backgroundColor: "blue",
+              borderColor: "blue",
+              borderWidth: 2,
+            },
+            {
+              label: "Lubricants (Rs)",
+              data: [70, 130, 140, 150, 200, 220, 250], // Example data
+              backgroundColor: "brown",
+              borderColor: "brown",
+              borderWidth: 2,
+            },
+          ],
+        };
+
+        const config = {
+          type: "line", // Chart type
+          data: dailyData,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: true,
+                position: "top",
+              },
+              tooltip: {
+                enabled: true,
+              },
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: "Day of the Week",
+                },
+              },
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: "Amount in Rs",
+                },
+              },
+            },
+          },
+        };
+
+        // Render the chart in the canvas
+        const ctx = document.getElementById("dailyChart").getContext("2d");
+        const dailyChart = new Chart(ctx, config);
+
+        // Function to update data (could be used for daily updates)
+        function updateChart(newData) {
+          dailyChart.data.datasets[0].data = newData;
+          dailyChart.update();
+        }
+
+        // Example of updating chart data (simulate daily update)
+        setTimeout(() => {
+          const newData = [130, 160, 200, 220, 270, 310, 370]; // New data
+          updateChart(newData);
+        }, 5000); // Update after 5 seconds (example)
+      </script>
+    </div>
+    <div class="b">
+      <canvas id="pieChart" width="400" height="200"></canvas>
+      <script>
+        // Data for pie chart
+        const pieData = {
+          labels: ["Petrol", "Diesel", "Lubricants"],
+          datasets: [
+            {
+              data: [1500, 2000, 500], // Example data for total sales in Rs
+              backgroundColor: ["red", "blue", "brown"], // Colors for each segment
+              hoverOffset: 4, // Hover offset for better interactivity
+            },
+          ],
+        };
+
+        const pieConfig = {
+          type: "pie",
+          data: pieData,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: true,
+                position: "top",
+              },
+              tooltip: {
+                enabled: true,
+              },
+            },
+          },
+        };
+
+        // Render the pie chart in the canvas inside div.b
+        const pieCtx = document.getElementById("pieChart").getContext("2d");
+        const pieChart = new Chart(pieCtx, pieConfig);
+      </script>
+    </div>
+    <div class="c"></div>
+    <div class="d"></div>
+  </body>
+</html>

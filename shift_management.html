@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Navbar</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url("images/machine1.jpg");
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            padding-top: 60px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Machine Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Shift A -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="shiftADropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Shift A
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="shiftADropdown">
+                            <li><a class="dropdown-item" href="templete/machine_A1.php">Machine 1</a></li>
+                            <li><a class="dropdown-item" href="templete/machine_A2.html">Machine 2</a></li>
+                            <li><a class="dropdown-item" href="templete/machine_A3.html">Machine 3</a></li>
+                        </ul>
+                    </li>
+                    <!-- Shift B -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="shiftBDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Shift B
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="shiftBDropdown">
+                            <li><a class="dropdown-item" href="templete/machine_B1.html">Machine 1</a></li>
+                            <li><a class="dropdown-item" href="templete/machine_B2.html">Machine 2</a></li>
+                            <li><a class="dropdown-item" href="templete/machine_B3.html">Machine 3</a></li>
+                        </ul>
+                    </li>
+                    <!-- Shift C -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="shiftCDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Shift C
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="shiftCDropdown">
+                            <li><a class="dropdown-item" href="templete/machine_C1.html">Machine 1</a></li>
+                            <li><a class="dropdown-item" href="templete/machine_C2.html">Machine 2</a></li>
+                            <li><a class="dropdown-item" href="templete/machine_C3.html">Machine 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- <div id="form-container" class="container mt-4"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".dropdown-menu a").forEach(function (link) {
+          link.addEventListener("click", function (event) {
+            event.preventDefault(); // Redirect hone se roke
+    
+            let pageUrl = this.getAttribute("href"); // Link ka href lein
+    
+            // AJAX request
+            fetch(pageUrl)
+              .then(response => response.text()) // Page content ko text format me lein
+              .then(data => {
+                document.getElementById("form-container").innerHTML = data; // Form-container me inject karein
+              })
+              .catch(error => console.error("Error loading page:", error));
+          });
+        });
+      });
+    </script> -->
+    <!-- Bootstrap JS Bundle (Includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
