@@ -1,240 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+        margin: 0;
+      }
+      .container {
+        width: 90%;
+        max-width: 700px;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        margin-top: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: center;
+      }
+      th {
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+      }
+      .btn {
+        padding: 8px 14px;
+        font-size: 14px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.3s;
+        margin-top: 15px;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .edit-btn {
+        background-color: #ffc107;
+        color: black;
+      }
+      .edit-btn:hover {
+        background-color: #e0a800;
+      }
+      .eye-icon {
+        cursor: pointer;
+        font-size: 16px;
+        margin-left: 8px;
+        color: #007bff;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 350px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+      .close {
+        color: red;
+        font-size: 22px;
+        float: right;
+        cursor: pointer;
+      }
+      input {
+        width: 85%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+      .modal-content input,
+      .input-wrapper {
+        width: 100%; /* Ensure all fields take full width */
+        box-sizing: border-box; /* Prevent extra width from padding */
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Management</title>
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      background-color: #f0f2f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      flex-direction: column;
-      margin: 0;
-    }
+      .input-wrapper {
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
 
+      .input-wrapper input {
+        width: 100%;
+        padding-right: 40px; /* Space for eye icon */
+        box-sizing: border-box; /* Ensure consistent width */
+      }
 
-
-
-    .container {
-      width: 90%;
-      max-width: 700px;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
-
-    th,
-    td {
-      border: 1px solid #ddd;
-      padding: 12px;
-      text-align: center;
-    }
-
-    th {
-      background-color: #28a745;
-      color: white;
-      font-size: 16px;
-    }
-
-    .btn {
-      padding: 8px 14px;
-      font-size: 14px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: 0.3s;
-      margin-top: 15px;
-    }
-
-    .btn:hover {
-      background-color: #0056b3;
-    }
-
-    .edit-btn {
-      background-color: #ffc107;
-      color: black;
-    }
-
-    .edit-btn:hover {
-      background-color: #e0a800;
-    }
-
-    .eye-icon {
-      cursor: pointer;
-      font-size: 16px;
-      margin-left: 8px;
-      color: #007bff;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 350px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .close {
-      color: red;
-      font-size: 22px;
-      float: right;
-      cursor: pointer;
-    }
-
-    input {
-      width: 85%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-
-    .modal-content input,
-    .input-wrapper {
-      width: 100%;
-      /* Ensure all fields take full width */
-      box-sizing: border-box;
-      /* Prevent extra width from padding */
-    }
-
-    .input-wrapper {
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-
-    .input-wrapper input {
-      width: 100%;
-      padding-right: 40px;
-      /* Space for eye icon */
-      box-sizing: border-box;
-      /* Ensure consistent width */
-    }
-
-    .input-wrapper i {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #007bff;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .input-wrapper .eye-icon {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #007bff;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    #submitBtn.update-btn {
-      background-color: #ff9800;
-      color: white;
-    }
-  </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
-    crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <div class="container">
-    <h2>Admin Users</h2>
-    <table id="adminTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Mobile Number</th>
-          <th>Password</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <button class="btn" onclick="openModal('admin')">Add Admin</button>
-  </div>
-
-  <div class="container">
-    <h2>Employee Users</h2>
-    <table id="employeeTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Mobile Number</th>
-          <th>Password</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <button class="btn" onclick="openModal('employee')">Add Employee</button>
-  </div>
-
-  <!-- Modal for Adding/Editing Users -->
-  <div class="modal" id="userModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h3 id="modalTitle">Add New User</h3>
-      <input type="text" id="name" placeholder="Enter Name" />
-      <input type="text" id="mobile" placeholder="Enter Mobile Number" />
-      <div class="input-wrapper">
-        <input type="password" id="password" placeholder="Enter Password" />
-        <i class="fa fa-eye eye-icon" id="toggle-modal-password" onclick="toggleModalPassword()"></i>
-      </div>
-
-      <button id="submitBtn">Submit</button>
+      .input-wrapper i {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #007bff;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      .input-wrapper .eye-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #007bff;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      #submitBtn.update-btn {
+        background-color: #ff9800;
+        color: white;
+      }
+    </style>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Admin Users</h2>
+      <table id="adminTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Password</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button class="btn" onclick="openModal('admin')">Add Admin</button>
     </div>
-  </div>
 
-  <script>
-    let admins = JSON.parse(localStorage.getItem("admins")) || [];
-    let employees = JSON.parse(localStorage.getItem("employees")) || [];
-    let editingIndex = null;
-    let editingType = null;
+    <div class="container">
+      <h2>Employee Users</h2>
+      <table id="employeeTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Password</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button class="btn" onclick="openModal('employee')">Add Employee</button>
+    </div>
 
-    function renderTables() {
-      renderTable("adminTable", admins, "admin");
-      renderTable("employeeTable", employees, "employee");
-    }
+    <!-- Modal for Adding/Editing Users -->
+    <div class="modal" id="userModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="modalTitle">Add New User</h3>
+        <input type="text" id="name" placeholder="Enter Name" />
+        <input type="text" id="mobile" placeholder="Enter Mobile Number" />
+        <div class="input-wrapper">
+          <input type="password" id="password" placeholder="Enter Password" />
+          <i
+            class="fa fa-eye eye-icon"
+            id="toggle-modal-password"
+            onclick="toggleModalPassword()"
+          ></i>
+        </div>
 
-    function renderTable(tableId, users, type) {
-      let tbody = document.querySelector(`#${tableId} tbody`);
-      tbody.innerHTML = "";
-      users.forEach((user, index) => {
-        let row = `<tr>
+        <button id="submitBtn">Submit</button>
+      </div>
+    </div>
+
+    <script>
+      let admins = JSON.parse(localStorage.getItem("admins")) || [];
+      let employees = JSON.parse(localStorage.getItem("employees")) || [];
+      let editingIndex = null;
+      let editingType = null;
+
+      function renderTables() {
+        renderTable("adminTable", admins, "admin");
+        renderTable("employeeTable", employees, "employee");
+      }
+
+      function renderTable(tableId, users, type) {
+        let tbody = document.querySelector(`#${tableId} tbody`);
+        tbody.innerHTML = "";
+        users.forEach((user, index) => {
+          let row = `<tr>
             <td>${user.name}</td>
             <td>${user.mobile}</td>
             <td>
@@ -245,83 +226,82 @@
               <button class='btn edit-btn' onclick='openModal("${type}", ${index})'>Edit</button>
             </td>
           </tr>`;
-        tbody.innerHTML += row;
-      });
-    }
-
-    function togglePassword(type, index) {
-      let passwordSpan = document.getElementById(`${type}-password-${index}`);
-      let user = type === "admin" ? admins[index] : employees[index];
-      passwordSpan.innerText =
-        passwordSpan.innerText === "******" ? user.password : "******";
-    }
-
-    function toggleModalPassword() {
-      let passwordInput = document.getElementById("password");
-      let toggleIcon = document.getElementById("toggle-modal-password");
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleIcon.classList.replace("fa-eye", "fa-eye-slash");
-      } else {
-        passwordInput.type = "password";
-        toggleIcon.classList.replace("fa-eye-slash", "fa-eye");
+          tbody.innerHTML += row;
+        });
       }
-    }
 
-    function openModal(type, index = null) {
-      document.getElementById("userModal").style.display = "flex";
-      document.getElementById("modalTitle").innerText =
-        index !== null ? "Edit User" : "Add New User";
-
-      let nameInput = document.getElementById("name");
-      let mobileInput = document.getElementById("mobile");
-      let passwordInput = document.getElementById("password");
-
-      if (index !== null) {
+      function togglePassword(type, index) {
+        let passwordSpan = document.getElementById(`${type}-password-${index}`);
         let user = type === "admin" ? admins[index] : employees[index];
-        nameInput.value = user.name;
-        mobileInput.value = user.mobile;
-        passwordInput.value = user.password;
-      } else {
-        nameInput.value = "";
-        mobileInput.value = "";
-        passwordInput.value = "";
+        passwordSpan.innerText =
+          passwordSpan.innerText === "******" ? user.password : "******";
       }
 
-      let submitBtn = document.getElementById("submitBtn");
-      submitBtn.innerText = index !== null ? "Update" : "Submit";
-      submitBtn.className = index !== null ? "btn update-btn" : "btn";
-      submitBtn.onclick = function () {
-        saveUser(type, index);
-      };
-    }
-
-    function saveUser(type, index) {
-      let user = {
-        name: document.getElementById("name").value,
-        mobile: document.getElementById("mobile").value,
-        password: document.getElementById("password").value,
-      };
-      if (index !== null) {
-        if (type === "admin") admins[index] = user;
-        else employees[index] = user;
-      } else {
-        type === "admin" ? admins.push(user) : employees.push(user);
+      function toggleModalPassword() {
+        let passwordInput = document.getElementById("password");
+        let toggleIcon = document.getElementById("toggle-modal-password");
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleIcon.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+          passwordInput.type = "password";
+          toggleIcon.classList.replace("fa-eye-slash", "fa-eye");
+        }
       }
-      localStorage.setItem(
-        type === "admin" ? "admins" : "employees",
-        JSON.stringify(type === "admin" ? admins : employees)
-      );
-      renderTables();
-      closeModal();
-    }
 
-    function closeModal() {
-      document.getElementById("userModal").style.display = "none";
-    }
+      function openModal(type, index = null) {
+        document.getElementById("userModal").style.display = "flex";
+        document.getElementById("modalTitle").innerText =
+          index !== null ? "Edit User" : "Add New User";
 
-    window.onload = renderTables;
-  </script>
-</body>
+        let nameInput = document.getElementById("name");
+        let mobileInput = document.getElementById("mobile");
+        let passwordInput = document.getElementById("password");
 
+        if (index !== null) {
+          let user = type === "admin" ? admins[index] : employees[index];
+          nameInput.value = user.name;
+          mobileInput.value = user.mobile;
+          passwordInput.value = user.password;
+        } else {
+          nameInput.value = "";
+          mobileInput.value = "";
+          passwordInput.value = "";
+        }
+
+        let submitBtn = document.getElementById("submitBtn");
+        submitBtn.innerText = index !== null ? "Update" : "Submit";
+        submitBtn.className = index !== null ? "btn update-btn" : "btn";
+        submitBtn.onclick = function () {
+          saveUser(type, index);
+        };
+      }
+
+      function saveUser(type, index) {
+        let user = {
+          name: document.getElementById("name").value,
+          mobile: document.getElementById("mobile").value,
+          password: document.getElementById("password").value,
+        };
+        if (index !== null) {
+          if (type === "admin") admins[index] = user;
+          else employees[index] = user;
+        } else {
+          type === "admin" ? admins.push(user) : employees.push(user);
+        }
+        localStorage.setItem(
+          type === "admin" ? "admins" : "employees",
+          JSON.stringify(type === "admin" ? admins : employees)
+        );
+        renderTables();
+        closeModal();
+      }
+
+      function closeModal() {
+        document.getElementById("userModal").style.display = "none";
+      }
+
+      window.onload = renderTables;
+    </script>
+  </body>
 </html>
