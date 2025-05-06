@@ -211,18 +211,18 @@ $dataadvancea = $resultadvancea->fetch_assoc();
         }
 
         table {
-            width: 95%;
-            border-collapse: collapse;
+            width: 100%;
             border: 2px solid black;
-            margin-top: 20PX;
+            margin-top: 10PX;
             /* margin-bottom: 20px; */
         }
 
         th,
         td {
             border: 1px solid black;
-            padding: 5px;
+            padding: 4px;
             text-align: center;
+
         }
 
         .header {
@@ -343,16 +343,16 @@ $dataadvancea = $resultadvancea->fetch_assoc();
             <td colspan="4"><b>MACHINE NO. 04<br>PSN : M2311295</b></td>
         </tr>
         <tr>
-            <td>NOZZLE - 01</td>
-            <td>NOZZLE - 02</td>
-            <td>NOZZLE - 01</td>
-            <td>NOZZLE - 02</td>
-            <td>NOZZLE - 01</td>
-            <td>NOZZLE - 02</td>
-            <td>FIP NO - 01</td>
-            <td>FIP NO - 02</td>
-            <td>FIP NO - 03</td>
-            <td>FIP NO - 04</td>
+            <td>NOZZLE 01</td>
+            <td>NOZZLE 02</td>
+            <td>NOZZLE 01</td>
+            <td>NOZZLE 02</td>
+            <td>NOZZLE 01</td>
+            <td>NOZZLE 02</td>
+            <td>FIP NO 01</td>
+            <td>FIP NO 02</td>
+            <td>FIP NO 03</td>
+            <td>FIP NO 04</td>
         </tr>
         <tr class="blue-row">
             <td>PRODUCT</td>
