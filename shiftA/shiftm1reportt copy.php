@@ -211,7 +211,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
         }
 
         table {
-            width: 100%;
+            width: 96%;
             border: 2px solid black;
             margin-top: 10PX;
             /* margin-bottom: 20px; */
@@ -220,7 +220,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
         th,
         td {
             border: 1px solid black;
-            padding: 4px;
+            padding: 2px;
             text-align: center;
 
         }
@@ -261,6 +261,12 @@ $dataadvancea = $resultadvancea->fetch_assoc();
         .total-row {
             font-weight: bold;
             background-color: #f2f2f2;
+        }
+
+        @media print {
+            @page {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
@@ -326,7 +332,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
     ?>
 
 
-    <table style="margin-left: 2%;">
+    <table style="margin-left: 13%; width: 75.7%;">
         <tr>
             <td colspan="10" class="header">BHARAT PETROLEUM TRADERS - DHATKIDIH</td>
         </tr>
