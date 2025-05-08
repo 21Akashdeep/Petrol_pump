@@ -175,7 +175,7 @@ $sqlcollection = "SELECT * FROM attendance";
 $resultattendance = $conn->query($sqlcollection);
 
 date_default_timezone_set('Asia/Kolkata'); // Ensure correct timezone
-$today = date('Y-m-d'); 
+$today = date('Y-m-d');
 $sqlexp = "
     SELECT expense_name, SUM(amount) AS total_amount FROM expense WHERE DATE(created_at) = '$today' GROUP BY expense_name
     UNION ALL
@@ -204,130 +204,144 @@ $dataadvancea = $resultadvancea->fetch_assoc();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-left: 20px;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        border: 2px solid black;
-        /* margin-bottom: 20px; */
-    }
+        table {
+            width: 98%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 100px;
+        }
 
-    th,
-    td {
-        border: 1px solid black;
-        padding: 5px;
-        text-align: center;
-    }
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
 
-    .header {
-        font-size: 20px;
-        font-weight: bold;
-        letter-spacing: 3px;
-    }
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
 
-    .sub-header {
-        font-size: 18px;
-        font-weight: bold;
-    }
+        .sub-header {
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-    .blue-row {
-        background-color: #009FE3;
-        color: white;
-        font-weight: bold;
-    }
+        .blue-row {
+            background-color: #009FE3;
+            color: white;
+            font-weight: bold;
+        }
 
-    .bpt {
-        font-weight: bold;
-        font-size: 18px;
-    }
+        .bpt {
+            font-weight: bold;
+            font-size: 18px;
+        }
 
-    .expense-section {
-        /* margin-top: 10px; */
-    }
+        .expense-section {
+            /* margin-top: 10px; */
+        }
 
-    .expense-header {
-        font-size: 20px;
-        font-weight: bold;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
-    }
+        .expense-header {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
 
-    .total-row {
-        font-weight: bold;
-        background-color: #f2f2f2;
-    }
+        .total-row {
+            font-weight: bold;
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 
 <body>
-    <?php 
-session_start();
-$totalb = isset($_SESSION['totalb']) ? $_SESSION['totalb'] : 0;
-$totalc = isset($_SESSION['totalc']) ? $_SESSION['totalc'] : 0;
-// $closingc = isset($_SESSION['closingc']) ? $_SESSION['closingc'] : 0;
-
+    <?php
+    session_start();
+    $totalb = isset($_SESSION['totalb']) ? $_SESSION['totalb'] : 0;
+    $totalc = isset($_SESSION['totalc']) ? $_SESSION['totalc'] : 0;
+    // $closingc = isset($_SESSION['closingc']) ? $_SESSION['closingc'] : 0;
+    
     // Pehle sabhi values assign karni hongi taki undefined variable error na aaye
-$bank500 = (isset($databank['pieces']) ? $databank['pieces'] : 0) +
-(isset($databanka1['pieces']) ? $databanka1['pieces'] : 0) +
-(isset($databanka2['pieces']) ? $databanka2['pieces'] : 0) +
-(isset($databanka3['pieces']) ? $databanka3['pieces'] : 0);
+    $bank500 = (isset($databank['pieces']) ? $databank['pieces'] : 0) +
+        (isset($databanka1['pieces']) ? $databanka1['pieces'] : 0) +
+        (isset($databanka2['pieces']) ? $databanka2['pieces'] : 0) +
+        (isset($databanka3['pieces']) ? $databanka3['pieces'] : 0);
 
-$bank200 = (isset($databanka2['pieces']) ? $databanka2['pieces'] : 0) +
-(isset($databanka3['pieces']) ? $databanka3['pieces'] : 0) +
-(isset($databanka4['pieces']) ? $databanka4['pieces'] : 0);
+    $bank200 = (isset($databanka2['pieces']) ? $databanka2['pieces'] : 0) +
+        (isset($databanka3['pieces']) ? $databanka3['pieces'] : 0) +
+        (isset($databanka4['pieces']) ? $databanka4['pieces'] : 0);
 
-$bank100 = (isset($databanka3['pieces']) ? $databanka3['pieces'] : 0) +
-(isset($databanka4['pieces']) ? $databanka4['pieces'] : 0) +
-(isset($databanka5['pieces']) ? $databanka5['pieces'] : 0);
+    $bank100 = (isset($databanka3['pieces']) ? $databanka3['pieces'] : 0) +
+        (isset($databanka4['pieces']) ? $databanka4['pieces'] : 0) +
+        (isset($databanka5['pieces']) ? $databanka5['pieces'] : 0);
 
-$bank50 = (isset($databanka4['pieces']) ? $databanka4['pieces'] : 0) +
-(isset($databanka5['pieces']) ? $databanka5['pieces'] : 0) +
-(isset($databanka6['pieces']) ? $databanka6['pieces'] : 0);
+    $bank50 = (isset($databanka4['pieces']) ? $databanka4['pieces'] : 0) +
+        (isset($databanka5['pieces']) ? $databanka5['pieces'] : 0) +
+        (isset($databanka6['pieces']) ? $databanka6['pieces'] : 0);
 
-$bank20 = (isset($databanka5['pieces']) ? $databanka5['pieces'] : 0) +
-(isset($databanka6['pieces']) ? $databanka6['pieces'] : 0);
+    $bank20 = (isset($databanka5['pieces']) ? $databanka5['pieces'] : 0) +
+        (isset($databanka6['pieces']) ? $databanka6['pieces'] : 0);
 
-$bank10 = (isset($databanka6['pieces']) ? $databanka6['pieces'] : 0) +
-(isset($databanka7['pieces']) ? $databanka7['pieces'] : 0);
+    $bank10 = (isset($databanka6['pieces']) ? $databanka6['pieces'] : 0) +
+        (isset($databanka7['pieces']) ? $databanka7['pieces'] : 0);
 
-// Coins amount
-$coins = isset($databanka7['amount']) ? $databanka7['amount'] : 0;
+    // Coins amount
+    $coins = isset($databanka7['amount']) ? $databanka7['amount'] : 0;
 
-// Calculate total amount for each note
-$bank500result = $bank500 * 500;
-$bank200result = $bank200 * 200;
-$bank100result = $bank100 * 100;
-$bank50result  = $bank50 * 50;
-$bank20result  = $bank20 * 20;
-$bank10result  = $bank10 * 10;
+    // Calculate total amount for each note
+    $bank500result = $bank500 * 500;
+    $bank200result = $bank200 * 200;
+    $bank100result = $bank100 * 100;
+
+    $bank50result = $bank50 * 50;
+    $bank20result = $bank20 * 20;
+    $bank10result = $bank10 * 10;
 
     // Total Calculation Pehle Karein
     $totala = $bank200result + $bank100result + $bank50result + $bank20result + $bank10result + $coins;
     // $_SESSION = $totala;
+    
+    // Initialize Total Collection Variables
+    if (!isset($_SESSION['total_collection'])) {
+        $_SESSION['total_collection'] = [];
+    }
+    $grand_total = isset($_SESSION['grand_total']) ? $_SESSION['grand_total'] : 0;
+    $total_pic = isset($_SESSION['total_pic']) ? $_SESSION['total_pic'] : 0;
 
-// Initialize Total Collection Variables
-if (!isset($_SESSION['total_collection'])) {
+    // Reset session values before calculation
     $_SESSION['total_collection'] = [];
-}
-$grand_total = isset($_SESSION['grand_total']) ? $_SESSION['grand_total'] : 0;
-$total_pic = isset($_SESSION['total_pic']) ? $_SESSION['total_pic'] : 0;
+    $_SESSION['grand_total'] = 0;
+    $_SESSION['total_pic'] = 0;
 
-// Reset session values before calculation
-$_SESSION['total_collection'] = [];
-$_SESSION['grand_total'] = 0;
-$_SESSION['total_pic'] = 0;
-
-?>
+    ?>
 
 
-    <table>
+    <table style="margin-top: 50px;">
         <tr>
             <td colspan="10" class="header">BHARAT PETROLEUM TRADERS - DHATKIDIH</td>
+            <td rowspan="2" class="sub-header"> <button class="fa fa-print"
+                    style="width: 50%; height: 50%; border-width:0;" onclick="downloadFullPagePDF()"><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                        <path
+                            d="M128 0C92.7 0 64 28.7 64 64l0 96 64 0 0-96 226.7 0L384 93.3l0 66.7 64 0 0-66.7c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0L128 0zM384 352l0 32 0 64-256 0 0-64 0-16 0-16 256 0zm64 32l32 0c17.7 0 32-14.3 32-32l0-96c0-35.3-28.7-64-64-64L64 192c-35.3 0-64 28.7-64 64l0 96c0 17.7 14.3 32 32 32l32 0 0 64c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-64zM432 248a24 24 0 1 1 0 48 24 24 0 1 1 0-48z" />
+                    </svg></button></td>
+
         </tr>
         <tr>
             <td colspan="5" class="sub-header">SHIFT : A</td>
@@ -434,16 +448,16 @@ $_SESSION['total_pic'] = 0;
         <tr>
             <td><strong>Cash For B/D in A-shift</strong></td>
             <td></td>
-            <td><?=$bank500result?></td>
+            <td><?= $bank500result ?></td>
 
         </tr>
         <?php
-$_SESSION['closing_balance_a'] = $totala;
-?>
+        $_SESSION['closing_balance_a'] = $totala;
+        ?>
         <tr>
             <td><strong>Closing Balance in A-shift</strong></td>
             <td></td>
-            <td><?= $totala?></td>
+            <td><?= $totala ?></td>
 
         </tr>
     </table>
@@ -474,7 +488,7 @@ $_SESSION['closing_balance_a'] = $totala;
                 ?>
                 <tr class="total-row">
                     <td>Total Expense + Creditors</td>
-                    <td><?= $total_expense?></td>
+                    <td><?= $total_expense ?></td>
                 </tr>
             </table>
         </div>
@@ -491,15 +505,15 @@ $_SESSION['closing_balance_a'] = $totala;
                 <tr>
                     <td>Ms</td>
                     <td>
-                        <?php 
+                        <?php
                         $ms_total = $data['ms_net_sale'] + $data2['ms_net_sale'] + $data3['ms_net_sale'] + $data4['ms1_net_sale'] + $data4['ms2_net_sale'];
                         echo $ms_total;
                         ?>
                     </td>
                     <td><?= $datarate['ms_rate'] ?></td>
-                    <td><?php $ms=$ms_total * $datarate['ms_rate'];
+                    <td><?php $ms = $ms_total * $datarate['ms_rate'];
                     echo $ms;
-                     ?></td>
+                    ?></td>
 
                 </tr>
                 <tr>
@@ -508,29 +522,32 @@ $_SESSION['closing_balance_a'] = $totala;
                     echo $xp_total;
                     ?></td>
                     <td><?= $datarate['xp95_rate'] ?></td>
-                    <td><?php $xp= $xp_total * $datarate['xp95_rate'];
-                    echo $xp; 
+                    <td><?php $xp = $xp_total * $datarate['xp95_rate'];
+                    echo $xp;
                     ?></td>
                 </tr>
                 <tr>
                     <td>HSD</td>
-                    <td><?php $hsd_total= $data3['xp_net_sale'] + $data3['xp_net_sale'];
+                    <td><?php $hsd_total = $data3['xp_net_sale'] + $data3['xp_net_sale'];
                     echo $hsd_total;
                     ?></td>
                     <td><?= $datarate['hsd_rate'] ?></td>
-                    <td><?php $hsd=$hsd_total*$datarate['hsd_rate'];echo $hsd; ?></td>
+                    <td><?php $hsd = $hsd_total * $datarate['hsd_rate'];
+                    echo $hsd; ?></td>
                 </tr>
                 <tr>
                     <td>XG</td>
-                    <td><?php $hd_total= $data4['xg1_net_sale'] + $data4['xg2_net_sale'];
+                    <td><?php $hd_total = $data4['xg1_net_sale'] + $data4['xg2_net_sale'];
                     echo $hd_total;
                     ?></td>
                     <td><?= $datarate['hd_rate'] ?></td>
-                    <td><?php $hd=$hd_total*$datarate['hd_rate'];echo $hd; ?></td>
+                    <td><?php $hd = $hd_total * $datarate['hd_rate'];
+                    echo $hd; ?></td>
                 </tr>
                 <tr>
                     <td><strong>Total Sale</strong></td>
-                    <td><strong><?php $total_sale=$ms_total+$xp_total+$hsd_total+$hd_total;echo $total_sale; ?></strong>
+                    <td><strong><?php $total_sale = $ms_total + $xp_total + $hsd_total + $hd_total;
+                    echo $total_sale; ?></strong>
                     </td>
                     <td></td>
                     <td></td>
@@ -538,69 +555,74 @@ $_SESSION['closing_balance_a'] = $totala;
                 <tr>
                     <td><strong>Mobile-2T</strong></td>
                     <td>
-                        <?php $M2t_total= $dataliquid['xg1_net_sale']+ $dataliquida2['xg1_net_sale']+ $dataliquida3['xg1_net_sale']+ $dataliquida4['xg1_net_sale'];
-                    echo $M2t_total;
-                    ?></td>
+                        <?php $M2t_total = $dataliquid['xg1_net_sale'] + $dataliquida2['xg1_net_sale'] + $dataliquida3['xg1_net_sale'] + $dataliquida4['xg1_net_sale'];
+                        echo $M2t_total;
+                        ?>
+                    </td>
                     <td><?= $dataliquida2['xg1_rate'] ?></td>
-                    <td><?php $m2=$M2t_total*$dataliquida2['xg1_rate'];echo $m2; ?></td>
+                    <td><?php $m2 = $M2t_total * $dataliquida2['xg1_rate'];
+                    echo $m2; ?></td>
                 </tr>
                 <tr>
                     <td><strong>Mobile-1 Ltr.</strong></td>
-                    <td><?php $M1t_total= $dataliquid['xg2_net_sale']+ $dataliquida2['xg2_net_sale']+ $dataliquida3['xg2_net_sale']+ $dataliquida4['xg2_net_sale'];
+                    <td><?php $M1t_total = $dataliquid['xg2_net_sale'] + $dataliquida2['xg2_net_sale'] + $dataliquida3['xg2_net_sale'] + $dataliquida4['xg2_net_sale'];
                     echo $M1t_total;
                     ?></td>
                     <td><?= $dataliquida2['xg2_rate'] ?></td>
-                    <td><?php $m1=$M1t_total* $dataliquida2['xg2_rate'];echo $m1; ?></td>
+                    <td><?php $m1 = $M1t_total * $dataliquida2['xg2_rate'];
+                    echo $m1; ?></td>
                 </tr>
                 <tr>
                     <td><strong>D Water 1 Ltr.</strong></td>
-                    <td><?php $D1t_total= $dataliquid['ms1_net_sale']+ $dataliquida2['ms1_net_sale']+ $dataliquida3['ms1_net_sale']+ $dataliquida4['ms1_net_sale'];
+                    <td><?php $D1t_total = $dataliquid['ms1_net_sale'] + $dataliquida2['ms1_net_sale'] + $dataliquida3['ms1_net_sale'] + $dataliquida4['ms1_net_sale'];
                     echo $D1t_total;
                     ?></td>
-                    <td><?=$dataliquida2['ms1_rate'] ?></td>
-                    <td><?php $d1=$D1t_total* $dataliquida2['ms1_rate'];echo $d1; ?></td>
+                    <td><?= $dataliquida2['ms1_rate'] ?></td>
+                    <td><?php $d1 = $D1t_total * $dataliquida2['ms1_rate'];
+                    echo $d1; ?></td>
                 </tr>
                 <tr>
                     <td><strong>D Water 5 Ltr.</strong></td>
-                    <td><?php $D5t_total= $dataliquid['ms2_net_sale']+ $dataliquida2['ms2_net_sale']+ $dataliquida3['ms2_net_sale']+ $dataliquida4['ms2_net_sale'];
+                    <td><?php $D5t_total = $dataliquid['ms2_net_sale'] + $dataliquida2['ms2_net_sale'] + $dataliquida3['ms2_net_sale'] + $dataliquida4['ms2_net_sale'];
                     echo $D5t_total;
                     ?></td>
-                    <td><?=$dataliquida2['ms2_rate'] ?></td>
-                    <td><?php $d5=$D5t_total* $dataliquida2['ms2_rate'];echo  $d5; ?></td>
+                    <td><?= $dataliquida2['ms2_rate'] ?></td>
+                    <td><?php $d5 = $D5t_total * $dataliquida2['ms2_rate'];
+                    echo $d5; ?></td>
                 </tr>
                 <?php
-                    // ✅ Ensure `$grand_total` is initialized before usage
-                    // $grand_total = 0;
+                // ✅ Ensure `$grand_total` is initialized before usage
+                // $grand_total = 0;
                 ?>
                 <tr class="total-row">
                     <td>Total Collections</td>
                     <td></td>
                     <td></td>
-                    <td><?= $grand_total+$totalb?></td>
+                    <td><?= $grand_total + $totalb ?></td>
                 </tr>
                 <tr class="total-row">
                     <td>Opening cash+coins</td>
                     <td></td>
                     <td></td>
-                    <td><?= $totalb?></td>
+                    <td><?= $totalb ?></td>
                 </tr>
                 <tr class="total-row">
                     <?php
-                    $exp=$ms+$xp+$hsd+$hd+$m2+$m1+$d1+$d5+$grand_total+$totalb;
-                    $totalli=$exp-$total_expense
-                    ?>
+                    $exp = $ms + $xp + $hsd + $hd + $m2 + $m1 + $d1 + $d5 + $grand_total + $totalb;
+                    $totalli = $exp - $total_expense
+                        ?>
                     <td>Total</td>
                     <td></td>
                     <td></td>
                     <td><strong>
-                            <?= $totalli?>
+                            <?= $totalli ?>
                         </strong></td>
                 </tr>
                 <tr class="total-row">
                     <td><strong>Difference Amount</strong></td>
                     <td></td>
                     <td></td>
-                    <td><strong><?= $total_pic-$totalli ?></strong></td>
+                    <td><strong><?= $total_pic - $totalli ?></strong></td>
                 </tr>
             </table>
         </div>
@@ -616,15 +638,15 @@ $_SESSION['closing_balance_a'] = $totala;
                     <td>(ICICI+BOB)BANK</td>
                     <td></td>
                     <td>
-                        <?php 
-                            $icici_bob_total = 
-                                $data['xp_card_amount'] + $data['ms_card_amount'] +
-                                $data2['xp_card_amount'] + $data2['ms_card_amount'] +
-                                $data3['xp_card_amount'] + $data3['ms_card_amount'] +
-                                $data4['xg1_card_amount'] + $data4['xg2_card_amount'] +
-                                $data4['ms1_card_amount'] + $data4['ms2_card_amount'];
+                        <?php
+                        $icici_bob_total =
+                            $data['xp_card_amount'] + $data['ms_card_amount'] +
+                            $data2['xp_card_amount'] + $data2['ms_card_amount'] +
+                            $data3['xp_card_amount'] + $data3['ms_card_amount'] +
+                            $data4['xg1_card_amount'] + $data4['xg2_card_amount'] +
+                            $data4['ms1_card_amount'] + $data4['ms2_card_amount'];
 
-                            echo $icici_bob_total;
+                        echo $icici_bob_total;
                         ?>
                     </td>
                 </tr>
@@ -632,8 +654,8 @@ $_SESSION['closing_balance_a'] = $totala;
                     <td>PAYTM</td>
                     <td></td>
                     <td>
-                        <?php 
-                        $paytm_total = 
+                        <?php
+                        $paytm_total =
                             $data['xp_paytm_amount'] + $data['ms_paytm_amount'] +
                             $data2['xp_paytm_amount'] + $data2['ms_paytm_amount'] +
                             $data3['xp_paytm_amount'] + $data3['ms_paytm_amount'] +
@@ -641,16 +663,16 @@ $_SESSION['closing_balance_a'] = $totala;
                             $data4['ms1_paytm_amount'] + $data4['ms2_paytm_amount'];
 
                         echo $paytm_total;
-                    ?>
+                        ?>
                     </td>
                 </tr>
                 <tr>
                     <td>SUB.TOTAL</td>
                     <td></td>
                     <td>
-                        <?php 
-                            $subtotal = $icici_bob_total + $paytm_total;
-                            echo $subtotal;
+                        <?php
+                        $subtotal = $icici_bob_total + $paytm_total;
+                        echo $subtotal;
                         ?>
                     </td>
                 </tr>
@@ -662,82 +684,83 @@ $_SESSION['closing_balance_a'] = $totala;
                 <tr>
                     <td>RS.500</td>
                     <td>
-                    <?php echo $bank500; ?>
+                        <?php echo $bank500; ?>
                     </td>
                     <td><?php echo $bank500result; ?></td>
                 </tr>
                 <tr>
                     <td>RS.200</td>
                     <td>
-                    <?php echo $bank200; ?>
+                        <?php echo $bank200; ?>
                     </td>
                     <td>
-                    <?php echo $bank200result; ?>
+                        <?php echo $bank200result; ?>
                     </td>
                 </tr>
                 <tr>
                     <td>RS.100</td>
                     <td>
-                    <?php echo $bank100; ?>
+                        <?php echo $bank100; ?>
                     </td>
                     <td>
-                    <?php echo $bank100result; ?>
+                        <?php echo $bank100result; ?>
                     </td>
                 </tr>
                 <tr>
                     <td>RS.50</td>
                     <td>
-                    <?php echo $bank50; ?>
+                        <?php echo $bank50; ?>
                     </td>
                     <td>
-                    <?php echo $bank50result; ?>
+                        <?php echo $bank50result; ?>
                     </td>
                 </tr>
                 <tr>
                     <td>RS.20</td>
                     <td>
-                    <?php echo $bank20; ?>
+                        <?php echo $bank20; ?>
                     </td>
                     <td>
-                    <?php echo $bank20result; ?>
+                        <?php echo $bank20result; ?>
                     </td>
                 </tr>
                 <tr>
                     <td>RS.10</td>
                     <td>
-                    <?php echo $bank10; ?>
+                        <?php echo $bank10; ?>
                     </td>
                     <td>
-                    <?php echo $bank10result; ?>
+                        <?php echo $bank10result; ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Coins</td>
                     <td>
-                    <?php echo $coins; ?>
+                        <?php echo $coins; ?>
                     </td>
                     <td>
-                    <?php echo $coins; ?>
+                        <?php echo $coins; ?>
                     </td>
                 </tr>
-<?php
-$advance = $dataadvancea['advancea'];
-$_SESSION['cashruning_sift_a'] = $advance; // Store value in session
-?>
+                <?php
+                $advance = $dataadvancea['advancea'];
+                $_SESSION['cashruning_sift_a'] = $advance; // Store value in session
+                ?>
                 <tr class="total-row">
                     <td>Cash for Runing-shift</td>
                     <td></td>
-                
+
                     <td><?php echo $advance; ?></td>
                 </tr>
                 <tr class="total-row">
                     <td>Total</td>
                     <td></td>
-                    <td><strong><?php $total_pic=$subtotal+$totala+$advance+$bank500result;echo $total_pic;?></strong>
+                    <td><strong><?php $total_pic = $subtotal + $totala + $advance + $bank500result;
+                    echo $total_pic; ?></strong>
                     </td>
                 </tr>
-                <?php 
-        $_SESSION['total_pic'] = $total_pic;
+                <?php
+                $_SESSION['total_pic'] = $total_pic;
 
                 ?>
             </table>
@@ -745,156 +768,156 @@ $_SESSION['cashruning_sift_a'] = $advance; // Store value in session
         <div class="row">
             <div class="col-4">
                 <?php
-$current_date = date("Y-m-d");
+                $current_date = date("Y-m-d");
 
-// List of all collection tables
-$tables = ["collection", "collectiona2", "collectiona3", "collectiona4", "collectionb1", "collectionb2", "collectionb3", "collectionb4", "collectionc1", "collectionc2", "collectionc3", "collectionc4"];
+                // List of all collection tables
+                $tables = ["collection", "collectiona2", "collectiona3", "collectiona4", "collectionb1", "collectionb2", "collectionb3", "collectionb4", "collectionc1", "collectionc2", "collectionc3", "collectionc4"];
 
-$total_collection = [];
-$grand_total = 0;
+                $total_collection = [];
+                $grand_total = 0;
 
-echo '<table border="1"> 
+                echo '<table border="1"> 
         <tr class="blue-row">
             <td> COLLECTION NAME</td>
             <td>AMOUNT</td>
         </tr>';
 
-foreach ($tables as $table) {
-    $sql = "SELECT * FROM $table WHERE DATE(Date_And_Time) = '$current_date'";
-    $result = $conn->query($sql);
+                foreach ($tables as $table) {
+                    $sql = "SELECT * FROM $table WHERE DATE(Date_And_Time) = '$current_date'";
+                    $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        while ($datacollection = $result->fetch_assoc()) {
-            $employees = [
-                $datacollection['Employee_Name1'] => $datacollection['Amount1'],
-                $datacollection['Employee_Name2'] => $datacollection['Amount2']
-            ];
+                    if ($result->num_rows > 0) {
+                        while ($datacollection = $result->fetch_assoc()) {
+                            $employees = [
+                                $datacollection['Employee_Name1'] => $datacollection['Amount1'],
+                                $datacollection['Employee_Name2'] => $datacollection['Amount2']
+                            ];
 
-            foreach ($employees as $name => $amount) {
-                if (!isset($total_collection[$name])) {
-                    $total_collection[$name] = 0;
-                }
-                $total_collection[$name] += $amount;
-                $grand_total += $amount;
+                            foreach ($employees as $name => $amount) {
+                                if (!isset($total_collection[$name])) {
+                                    $total_collection[$name] = 0;
+                                }
+                                $total_collection[$name] += $amount;
+                                $grand_total += $amount;
 
-                echo "<tr>
+                                echo "<tr>
                         <td>" . htmlspecialchars($name) . "</td>
                         <td>" . number_format($amount) . "</td>
                       </tr>";
-            }
-        }
-    }
-}
+                            }
+                        }
+                    }
+                }
 
-// Total per employee
-foreach ($total_collection as $name => $total) {
-    echo "<tr class='total-row'>
+                // Total per employee
+                foreach ($total_collection as $name => $total) {
+                    echo "<tr class='total-row'>
             <td><strong>TOTAL (" . htmlspecialchars($name) . ")</strong></td>
             <td><strong>" . number_format($total) . "</strong></td>
           </tr>";
-}
+                }
 
-// Extra Hours
-$closingc = isset($_SESSION['closingc']) ? $_SESSION['closingc'] : 0;
-$grand_total += $closingc;
+                // Extra Hours
+                $closingc = isset($_SESSION['closingc']) ? $_SESSION['closingc'] : 0;
+                $grand_total += $closingc;
 
-echo "<tr>
+                echo "<tr>
         <td><strong>Extra Hours</strong></td>
         <td><strong>" . number_format($totalb) . "</strong></td>
       </tr>";
 
-echo "<tr class='grand-total-row'>
+                echo "<tr class='grand-total-row'>
         <td><strong>GRAND TOTAL</strong></td>
-        <td><strong>" . number_format($grand_total+$totalb) . "</strong></td>
+        <td><strong>" . number_format($grand_total + $totalb) . "</strong></td>
       </tr>";
 
-$_SESSION['grand_total'] = $grand_total;
+                $_SESSION['grand_total'] = $grand_total;
 
-echo '</table>';
-?>
+                echo '</table>';
+                ?>
 
 
             </div>
             <div class="col-4">
                 <?php
-            $today = date('Y-m-d'); 
-            $tables = ["shift", "shifta2", "shifta3", "shifta4"];
-            $sqlQueries = [];
-            
-            foreach ($tables as $table) {
-                if ($table == "shifta4") {
-                    $sqlQueries[] = "SELECT employee1 AS emp, xg1_sortage AS shortage, xg1_surplus AS surplus, datetime FROM $table WHERE DATE(datetime) = '$today'
+                $today = date('Y-m-d');
+                $tables = ["shift", "shifta2", "shifta3", "shifta4"];
+                $sqlQueries = [];
+
+                foreach ($tables as $table) {
+                    if ($table == "shifta4") {
+                        $sqlQueries[] = "SELECT employee1 AS emp, xg1_sortage AS shortage, xg1_surplus AS surplus, datetime FROM $table WHERE DATE(datetime) = '$today'
                                      UNION ALL
                                      SELECT employee2, ms1_sortage, ms1_surplus, datetime FROM $table WHERE DATE(datetime) = '$today'
                                      UNION ALL
                                      SELECT employee3, ms2_sortage, ms2_surplus, datetime FROM $table WHERE DATE(datetime) = '$today'
                                      UNION ALL
                                      SELECT employee4, xg2_sortage, xg2_surplus, datetime FROM $table WHERE DATE(datetime) = '$today'";
-                } else {
-                    $sqlQueries[] = "SELECT shifta1_emp1 AS emp, xp_sortage AS shortage, xp_surplus AS surplus, shifta1_datetime FROM $table WHERE DATE(shifta1_datetime) = '$today'
+                    } else {
+                        $sqlQueries[] = "SELECT shifta1_emp1 AS emp, xp_sortage AS shortage, xp_surplus AS surplus, shifta1_datetime FROM $table WHERE DATE(shifta1_datetime) = '$today'
                                      UNION ALL
                                      SELECT shifta1_emp2, ms_sortage, ms_surplus, shifta1_datetime FROM $table WHERE DATE(shifta1_datetime) = '$today'";
-                }
-            }
-            
-            $sqlsort = implode(" UNION ALL ", $sqlQueries);
-            $resultsort = $conn->query($sqlsort);
-            ?>
-            
-            <table border="1">
-                <tr class="blue-row">
-                    <td>NAME</td>
-                    <td>SHORTAGE</td>
-                    <td>SURPLUS</td>
-                </tr>
-            
-                <?php
-                // Total Shortage and Surplus Variables
-                $total_shortage = [];
-                $total_surplus = [];
-            
-                // Check if Data Exists
-                if ($resultsort->num_rows > 0) {
-                    while ($datacollection = $resultsort->fetch_assoc()) {
-                        $name = $datacollection['emp'];
-                        $shortage = $datacollection['shortage'];
-                        $surplus = $datacollection['surplus'];
-            
-                        if (!isset($total_shortage[$name])) {
-                            $total_shortage[$name] = 0;
-                        }
-                        if (!isset($total_surplus[$name])) {
-                            $total_surplus[$name] = 0;
-                        }
-            
-                        $total_shortage[$name] += $shortage;
-                        $total_surplus[$name]  += $surplus;
-                        ?>
-                        <tr>
-                            <td><?= htmlspecialchars($name); ?></td>
-                            <td><?= number_format($shortage); ?></td>
-                            <td><?= number_format($surplus); ?></td>
-                        </tr>
-                        <?php
                     }
-            
-                    // Total Row for Each Employee
-                    foreach ($total_shortage as $name => $shortage_total) {
-                        $surplus_total = $total_surplus[$name] ?? 0;
-                        ?>
-                        <tr class="total-row">
-                            <td><strong>TOTAL (<?= htmlspecialchars($name); ?>)</strong></td>
-                            <td><strong><?= number_format($shortage_total); ?></strong></td>
-                            <td><strong><?= number_format($surplus_total); ?></strong></td>
-                        </tr>
-                        <?php
-                    }
-                } else {
-                    echo "<tr><td colspan='3'>No data found</td></tr>";
                 }
+
+                $sqlsort = implode(" UNION ALL ", $sqlQueries);
+                $resultsort = $conn->query($sqlsort);
                 ?>
-            </table>
-            
+
+                <table border="1">
+                    <tr class="blue-row">
+                        <td>NAME</td>
+                        <td>SHORTAGE</td>
+                        <td>SURPLUS</td>
+                    </tr>
+
+                    <?php
+                    // Total Shortage and Surplus Variables
+                    $total_shortage = [];
+                    $total_surplus = [];
+
+                    // Check if Data Exists
+                    if ($resultsort->num_rows > 0) {
+                        while ($datacollection = $resultsort->fetch_assoc()) {
+                            $name = $datacollection['emp'];
+                            $shortage = $datacollection['shortage'];
+                            $surplus = $datacollection['surplus'];
+
+                            if (!isset($total_shortage[$name])) {
+                                $total_shortage[$name] = 0;
+                            }
+                            if (!isset($total_surplus[$name])) {
+                                $total_surplus[$name] = 0;
+                            }
+
+                            $total_shortage[$name] += $shortage;
+                            $total_surplus[$name] += $surplus;
+                            ?>
+                            <tr>
+                                <td><?= htmlspecialchars($name); ?></td>
+                                <td><?= number_format($shortage); ?></td>
+                                <td><?= number_format($surplus); ?></td>
+                            </tr>
+                            <?php
+                        }
+
+                        // Total Row for Each Employee
+                        foreach ($total_shortage as $name => $shortage_total) {
+                            $surplus_total = $total_surplus[$name] ?? 0;
+                            ?>
+                            <tr class="total-row">
+                                <td><strong>TOTAL (<?= htmlspecialchars($name); ?>)</strong></td>
+                                <td><strong><?= number_format($shortage_total); ?></strong></td>
+                                <td><strong><?= number_format($surplus_total); ?></strong></td>
+                            </tr>
+                            <?php
+                        }
+                    } else {
+                        echo "<tr><td colspan='3'>No data found</td></tr>";
+                    }
+                    ?>
+                </table>
+
 
             </div>
             <div class="col-4">
@@ -906,20 +929,20 @@ echo '</table>';
                     </tr>
 
                     <?php
-    if ($resultattendance->num_rows > 0) {
-        while ($datacollection = $resultattendance->fetch_assoc()) {
-            ?>
-                    <tr>
-                        <td><?= htmlspecialchars($datacollection['employee_name']); ?></td>
-                        <td><?= htmlspecialchars($datacollection['in_time']); ?></td>
-                        <td><?= htmlspecialchars($datacollection['out_time']); ?></td>
-                    </tr>
-                    <?php
-        }
-    } else {
-        echo "<tr><td colspan='3'>No data found</td></tr>";
-    }
-    ?>
+                    if ($resultattendance->num_rows > 0) {
+                        while ($datacollection = $resultattendance->fetch_assoc()) {
+                            ?>
+                            <tr>
+                                <td><?= htmlspecialchars($datacollection['employee_name']); ?></td>
+                                <td><?= htmlspecialchars($datacollection['in_time']); ?></td>
+                                <td><?= htmlspecialchars($datacollection['out_time']); ?></td>
+                            </tr>
+                            <?php
+                        }
+                    } else {
+                        echo "<tr><td colspan='3'>No data found</td></tr>";
+                    }
+                    ?>
 
                 </table>
             </div>
@@ -930,6 +953,42 @@ echo '</table>';
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+            </script>
+
+
+
+
+        <script>
+            async function downloadFullPagePDF() {
+                const { jsPDF } = window.jspdf;
+
+                // Ensure page is scrolled to top
+                window.scrollTo(0, 0);
+
+                const canvas = await html2canvas(document.body, {
+                    scrollY: 0,
+                    windowHeight: document.body.scrollHeight
+                });
+
+                const imgData = canvas.toDataURL("image/png");
+                const pdf = new jsPDF('p', 'pt', 'a4');
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                const pageHeight = pdf.internal.pageSize.getHeight();
+
+                const imgWidth = pageWidth;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+
+                let position = 0;
+
+                // For multi-page PDF if needed
+                while (position < imgHeight) {
+                    pdf.addImage(imgData, 'PNG', 0, -position, imgWidth, imgHeight);
+                    position += pageHeight;
+                    if (position < imgHeight) pdf.addPage();
+                }
+
+                pdf.save("Shift_A_Report.pdf");
+            }
         </script>
 
 </body>
