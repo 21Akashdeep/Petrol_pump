@@ -204,63 +204,67 @@ $advance = $dataadvancea['advancec'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-left: 10px;
+            margin-top: 10%;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        border: 2px solid black;
-        /* margin-bottom: 20px; */
-    }
+        table {
+            width: 98%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin-bottom: 100px;
+        }
 
-    th,
-    td {
-        border: 1px solid black;
-        padding: 5px;
-        text-align: center;
-    }
+        th,
+        td {
+            border: 1px solid black;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
 
-    .header {
-        font-size: 20px;
-        font-weight: bold;
-        letter-spacing: 3px;
-    }
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
 
-    .sub-header {
-        font-size: 18px;
-        font-weight: bold;
-    }
+        .sub-header {
+            font-size: 18px;
+            font-weight: 700;
+        }
 
-    .blue-row {
-        background-color: #009FE3;
-        color: white;
-        font-weight: bold;
-    }
+        .blue-row {
+            background-color: rgb(208, 208, 208);
+            color: black;
+            font-weight: 700;
+            border-radius: 50;
+        }
 
-    .bpt {
-        font-weight: bold;
-        font-size: 18px;
-    }
+        .bpt {
+            font-weight: 600;
+            font-size: 18px;
+        }
 
-    .expense-section {
-        /* margin-top: 10px; */
-    }
+        .expense-section {
+            /* margin-top: 10px; */
+        }
 
-    .expense-header {
-        font-size: 20px;
-        font-weight: bold;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
-    }
+        .expense-header {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
 
-    .total-row {
-        font-weight: bold;
-        background-color: #f2f2f2;
-    }
+        .total-row {
+            font-weight: bold;
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 
@@ -334,7 +338,7 @@ $_SESSION['total_pic'] = 0;
             <td colspan="10" class="header">BHARAT PETROLEUM TRADERS - DHATKIDIH</td>
         </tr>
         <tr>
-            <td colspan="5" class="sub-header">SHIFT : c</td>
+            <td colspan="5" class="sub-header">SHIFT : C</td>
             <td colspan="5" class="sub-header">DATE : <?php echo date('d.m.Y'); ?></td>
 
         </tr>

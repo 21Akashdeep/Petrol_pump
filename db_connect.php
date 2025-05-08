@@ -10,7 +10,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-function db_connect() {
+function db_connect()
+{
     $host = "localhost"; // Change if different
     $user = "root"; // Database username
     $password = "Rajukumar@21"; // Database password
