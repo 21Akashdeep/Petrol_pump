@@ -72,17 +72,25 @@ $total_pages = ceil($total_rows / $limit);
             padding: 10px 20px;
             font-size: 16px;
         }
+
         .navbar-nav {
-            gap: 30px; /* Space between menu items */
+            gap: 30px;
+            /* Space between menu items */
         }
+
         .dropdown-menu {
-            background-color: #212529 !important; /* Black dropdown background */
+            background-color: #212529 !important;
+            /* Black dropdown background */
         }
+
         .dropdown-menu a {
-            color: white !important; /* White text in dropdown */
+            color: white !important;
+            /* White text in dropdown */
         }
+
         .dropdown-menu a:hover {
-            background-color: #333 !important; /* Dark gray on hover */
+            background-color: #333 !important;
+            /* Dark gray on hover */
         }
     </style>
 </head>
@@ -137,8 +145,8 @@ $total_pages = ceil($total_rows / $limit);
                                     
                                     
                                     <td>
-                                <a href='../edit/UOMedit.php?id=".$row['id']."' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=".$row['id']."' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
                             </td>
                                   </tr>";
                             $sno++;
@@ -151,17 +159,17 @@ $total_pages = ceil($total_rows / $limit);
             </table>
             <nav>
                 <ul class="pagination">
-                    <?php if ($page > 1) : ?>
+                    <?php if ($page > 1): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
                     <?php endif; ?>
 
-                    <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
                         <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
                             <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                         </li>
                     <?php endfor; ?>
 
-                    <?php if ($page < $total_pages) : ?>
+                    <?php if ($page < $total_pages): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
                     <?php endif; ?>
                 </ul>
@@ -169,7 +177,7 @@ $total_pages = ceil($total_rows / $limit);
         </div>
 
         <div class="bg-white p-4 shadow-sm rounded">
-        <h5>Nozzle 2 Data</h5>
+            <h5>Nozzle 2 Data</h5>
 
             <table class="table table-bordered table-hover">
                 <thead class="table-dark">
@@ -209,8 +217,8 @@ $total_pages = ceil($total_rows / $limit);
                                     
                                     
                                     <td>
-                                <a href='../edit/UOMedit.php?id=".$row['id']."' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=".$row['id']."' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
                             </td>
                                   </tr>";
                             $sno++;
@@ -223,17 +231,17 @@ $total_pages = ceil($total_rows / $limit);
             </table>
             <nav>
                 <ul class="pagination">
-                    <?php if ($page > 1) : ?>
+                    <?php if ($page > 1): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
                     <?php endif; ?>
 
-                    <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
                         <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
                             <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                         </li>
                     <?php endfor; ?>
 
-                    <?php if ($page < $total_pages) : ?>
+                    <?php if ($page < $total_pages): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
                     <?php endif; ?>
                 </ul>

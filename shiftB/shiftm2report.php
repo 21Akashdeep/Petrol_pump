@@ -44,9 +44,10 @@ $total_pages = ceil($total_rows / $limit);
     <title>Company Details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
+        <style>
         body {
             background-color: #f8f9fa;
+
         }
 
         .navbar {
@@ -61,6 +62,16 @@ $total_pages = ceil($total_rows / $limit);
         .table td {
             text-align: center;
             vertical-align: middle;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 1px;
+            padding-right: 1px;
+        }
+
+        .table {
+            border: 2px solid #212529;
+            width: 98%;
+            margin: 10px;
         }
 
         .btn-custom {
@@ -72,17 +83,25 @@ $total_pages = ceil($total_rows / $limit);
             padding: 10px 20px;
             font-size: 16px;
         }
+
         .navbar-nav {
-            gap: 30px; /* Space between menu items */
+            gap: 30px;
+            /* Space between menu items */
         }
+
         .dropdown-menu {
-            background-color: #212529 !important; /* Black dropdown background */
+            background-color: #212529 !important;
+            /* Black dropdown background */
         }
+
         .dropdown-menu a {
-            color: white !important; /* White text in dropdown */
+            color: white !important;
+            /* White text in dropdown */
         }
+
         .dropdown-menu a:hover {
-            background-color: #333 !important; /* Dark gray on hover */
+            background-color: #333 !important;
+            /* Dark gray on hover */
         }
     </style>
 </head>
@@ -92,7 +111,7 @@ $total_pages = ceil($total_rows / $limit);
     <!-- Navbar -->
     <?php include '../navbar.php'; ?>
     <!-- Main Content -->
-    <div class="container container-content">
+    <div class="container container-content" style="margin-left: 0;>
 
         <!-- Table Section -->
         <div class="bg-white p-4 shadow-sm rounded">
