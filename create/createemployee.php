@@ -20,16 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO employee (company_name,pan_no, contact_no) 
             VALUES ('$company_name', '$pan_no', '$contact_no')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "<script>
-            alert('Vendor added successfully!');
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>
+            alert('Employee added successfully!');
             window.location.href='../list/employeelist.php'; // Redirect to dashboard or another page
           </script>";
-} else {
-    echo "<script>
+    } else {
+        echo "<script>
             alert('Error: " . $conn->error . "');
           </script>";
-}
+    }
 }
 
 $conn->close();
@@ -42,12 +42,13 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Vendor</title>
+    <title>Create Employee</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
         }
+
         .container {
             margin-top: 3%;
             max-width: 600px;
@@ -66,7 +67,7 @@ $conn->close();
         <form method="POST">
             <div class="mb-3">
                 <label class="form-label">Employee Name</label>
-                <input type="text" class="form-control" placeholder="Enter company name"name="company_name">
+                <input type="text" class="form-control" placeholder="Enter Employee name" name="company_name">
             </div>
             <!-- <div class="mb-3">
                 <label class="form-label">GST No.</label>
@@ -74,11 +75,11 @@ $conn->close();
             </div> -->
             <div class="mb-3">
                 <label class="form-label">Pan No.</label>
-                <input type="number" class="form-control" placeholder="Enter PAN number"name="pan_no">
+                <input type="text" class="form-control" placeholder="Enter PAN number" name="pan_no">
             </div>
             <div class="mb-3">
                 <label class="form-label">Contact No.</label>
-                <input type="number" class="form-control" placeholder="Enter contact number"name="contact_no">
+                <input type="tel" class="form-control" placeholder="Enter Contact number" name="contact_no">
             </div>
             <!-- <div class="mb-3">
                 <label class="form-label">Contact Person No.</label>
@@ -86,9 +87,6 @@ $conn->close();
             </div> -->
             <button type="submit" class="btn btn-primary w-100">Submit</button>
         </form>
-        <div class="text-center mt-3">
-            <a href="index.html" class="btn btn-outline-secondary">Back to Dashboard</a>
-        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
