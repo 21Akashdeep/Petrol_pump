@@ -49,7 +49,7 @@ $query = "INSERT INTO adminsignup (username, phone, email, aadhaar, password) VA
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Phone number</label>
-                    <input type="number" class="form-control" name="phone">
+                    <input type="tel" class="form-control" name="phone">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
@@ -70,6 +70,7 @@ $query = "INSERT INTO adminsignup (username, phone, email, aadhaar, password) VA
 
                 
                 <button type="submit" class="btn btn-primary">Submit</button>
+                
                 <a href="Adminlogin.php">
                 <button type="button" class="btn btn-primary">Back</button>
                 </a>

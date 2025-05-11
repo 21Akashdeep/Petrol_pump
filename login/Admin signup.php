@@ -48,7 +48,7 @@ else{
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Phone number</label>
-                    <input type="number" class="form-control" name="phone">
+                    <input type="tel" class="form-control" name="phone">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
