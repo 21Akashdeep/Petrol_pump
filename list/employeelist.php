@@ -124,7 +124,7 @@ $total_pages = ceil($total_rows / $limit);
                                     
                                     <td>
                                 <a href='../edit/employeeedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/admindelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                <a href='../delete/employeedelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
                             </td>
                                   </tr>";
                             $sno++;
