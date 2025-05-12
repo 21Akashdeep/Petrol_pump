@@ -10,17 +10,17 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Validate and get customer ID
+// Validate and get item ID
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    die('Invalid customer ID.');
+    die('Invalid item ID.');
 }
 $id = intval($_GET['id']);
 
-// Fetch customer data
-$sql = "SELECT * FROM customer WHERE id=$id";
+// Fetch item data
+$sql = "SELECT * FROM item WHERE id=$id";
 $result = $conn->query($sql);
 if (!$result || $result->num_rows === 0) {
-    die('Customer not found.');
+    die('Item not found.');
 }
 $row = $result->fetch_assoc();
 $conn->close();
@@ -32,7 +32,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Customer</title>
+    <title>Edit Item</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -53,31 +53,13 @@ $conn->close();
 <body>
 
     <div class="container">
-        <h3 class="text-center mb-4">Edit Customer</h3>
-        <form method="post" action="../update/customerupdate.php">
+        <h3 class="text-center mb-4">Edit Item</h3>
+        <form method="POST" action="../update/itemupdate.php">
             <input type="hidden" name="id" value="<?= $row['id'] ?>">
             <div class="mb-3">
-                <label class="form-label">Company Name</label>
-                <input type="text" class="form-control" name="company_name"
-                    value="<?= htmlspecialchars($row['company_name']) ?>" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">GST No.</label>
-                <input type="number" class="form-control" name="gst_no" value="<?= htmlspecialchars($row['gst_no']) ?>">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Pan No.</label>
-                <input type="text" class="form-control" name="pan_no" value="<?= htmlspecialchars($row['pan_no']) ?>">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Contact No.</label>
-                <input type="tel" class="form-control" name="contact_no"
-                    value="<?= htmlspecialchars($row['contact_no']) ?>">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Contact Person No.</label>
-                <input type="tel" class="form-control" name="contact_person_no"
-                    value="<?= htmlspecialchars($row['contact_person_no']) ?>">
+                <label class="form-label">Item Name</label>
+                <input type="text" class="form-control" name="item_name"
+                    value="<?= htmlspecialchars($row['item_name']) ?>" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">Update</button>
         </form>
