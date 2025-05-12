@@ -63,19 +63,26 @@ $total_pages = ceil($total_rows / $limit);
             padding: 10px 20px;
             font-size: 16px;
         }
+
         .navbar-nav {
-            gap: 30px; /* Space between menu items */
+            gap: 30px;
+            /* Space between menu items */
         }
+
         .dropdown-menu {
-            background-color: #212529 !important; /* Black dropdown background */
+            background-color: #212529 !important;
+            /* Black dropdown background */
         }
+
         .dropdown-menu a {
-            color: white !important; /* White text in dropdown */
+            color: white !important;
+            /* White text in dropdown */
         }
+
         .dropdown-menu a:hover {
-            background-color: #333 !important; /* Dark gray on hover */
+            background-color: #333 !important;
+            /* Dark gray on hover */
         }
-        
     </style>
 </head>
 
@@ -116,8 +123,8 @@ $total_pages = ceil($total_rows / $limit);
                                     <td>{$row['contact_no']}</td>
                                     
                                     <td>
-                                <a href='../edit/adminedit.php?id=".$row['id']."' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/admindelete.php?id=".$row['id']."' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                <a href='../edit/employeeedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                                <a href='../delete/admindelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
                             </td>
                                   </tr>";
                             $sno++;
@@ -130,20 +137,20 @@ $total_pages = ceil($total_rows / $limit);
             </table>
             <nav>
                 <ul class="pagination">
-                    <?php if ($page > 1) : ?>
-                    <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
+                    <?php if ($page > 1): ?>
+                        <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
                     <?php endif; ?>
 
-                    <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-                    <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
-                        <a class="page-link" href="?page=<?php echo $i; ?>">
-                            <?php echo $i; ?>
-                        </a>
-                    </li>
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                        <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
+                            <a class="page-link" href="?page=<?php echo $i; ?>">
+                                <?php echo $i; ?>
+                            </a>
+                        </li>
                     <?php endfor; ?>
 
-                    <?php if ($page < $total_pages) : ?>
-                    <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
+                    <?php if ($page < $total_pages): ?>
+                        <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>
@@ -154,4 +161,5 @@ $total_pages = ceil($total_rows / $limit);
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
