@@ -20,16 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO customer (company_name, gst_no, pan_no, contact_no, contact_person_no) 
             VALUES ('$company_name', '$gst_no', '$pan_no', '$contact_no', '$contact_person_no')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "<script>
-            alert('Vendor added successfully!');
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>
+            alert('Customer added successfully!');
             window.location.href='../list/customerlist.php'; // Redirect to dashboard or another page
           </script>";
-} else {
-    echo "<script>
+    } else {
+        echo "<script>
             alert('Error: " . $conn->error . "');
           </script>";
-}
+    }
 }
 
 $conn->close();
@@ -41,12 +41,13 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Vendor</title>
+    <title>Create Customer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
         }
+
         .container {
             margin-top: 3%;
             max-width: 600px;
@@ -64,24 +65,25 @@ $conn->close();
         <h3 class="text-center mb-4">Create Customer</h3>
         <form method="post">
             <div class="mb-3">
-                <label class="form-label">Company Name</label>
-                <input type="text" class="form-control" placeholder="Enter company name"name="company_name">
+                <label class="form-label">Customer Name</label>
+                <input type="text" class="form-control" placeholder="Enter company name" name="company_name">
             </div>
             <div class="mb-3">
                 <label class="form-label">GST No.</label>
-                <input type="number" class="form-control" placeholder="Enter GST number"name="gst_no">
+                <input type="number" class="form-control" placeholder="Enter GST number" name="gst_no">
             </div>
             <div class="mb-3">
                 <label class="form-label">Pan No.</label>
-                <input type="number" class="form-control" placeholder="Enter PAN number"name="pan_no">
+                <input type="number" class="form-control" placeholder="Enter PAN number" name="pan_no">
             </div>
             <div class="mb-3">
                 <label class="form-label">Contact No.</label>
-                <input type="number" class="form-control" placeholder="Enter contact number"name="contact_no">
+                <input type="number" class="form-control" placeholder="Enter contact number" name="contact_no">
             </div>
             <div class="mb-3">
                 <label class="form-label">Contact Person No.</label>
-                <input type="number" class="form-control" placeholder="Enter contact person's number"name="contact_person_no">
+                <input type="number" class="form-control" placeholder="Enter contact person's number"
+                    name="contact_person_no">
             </div>
             <button type="submit" class="btn btn-primary w-100">Submit</button>
         </form>
