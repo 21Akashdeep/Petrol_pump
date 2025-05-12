@@ -26,8 +26,12 @@
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button" data-bs-toggle="dropdown">
+                <li class="nav-item">
+                    <a class="nav-link" href="../home.php">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button"
+                        data-bs-toggle="dropdown">
                         Users
                     </a>
                     <ul class="dropdown-menu">
@@ -36,7 +40,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="masterDropdown" role="button" data-bs-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="masterDropdown" role="button"
+                        data-bs-toggle="dropdown">
                         Master
                     </a>
                     <ul class="dropdown-menu">
@@ -48,7 +53,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="purchaseDropdown" role="button" data-bs-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="purchaseDropdown" role="button"
+                        data-bs-toggle="dropdown">
                         Purchase
                     </a>
                     <ul class="dropdown-menu">

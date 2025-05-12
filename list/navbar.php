@@ -27,6 +27,9 @@
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../petrol_pump/home.php">Home</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button"
                         data-bs-toggle="dropdown">
@@ -99,7 +102,8 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Shift wise Report</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Shift wise
+                        Report</a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu">
                             <a class="dropdown-item" href="shiftA/shiftm1reportt copy.php">Shift A Report</a>

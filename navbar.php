@@ -26,8 +26,12 @@
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../home.php">Home</a>
+                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button" data-bs-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button"
+                        data-bs-toggle="dropdown">
                         Users
                     </a>
                     <ul class="dropdown-menu">
@@ -36,7 +40,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="masterDropdown" role="button" data-bs-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="masterDropdown" role="button"
+                        data-bs-toggle="dropdown">
                         Master
                     </a>
                     <ul class="dropdown-menu">
@@ -51,12 +56,14 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="purchaseDropdown" role="button" data-bs-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="purchaseDropdown" role="button"
+                        data-bs-toggle="dropdown">
                         Purchase
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../create/createpurchase.php">Purchase Bill</a></li>
-                        <li><a class="dropdown-item" href="../list/purchaselist.php">Purchase Invoice Registered</a></li>
+                        <li><a class="dropdown-item" href="../list/purchaselist.php">Purchase Invoice Registered</a>
+                        </li>
                         <li><a class="dropdown-item" href="../challan/challan.php">Generate Challan</a></li>
                     </ul>
                 </li>
@@ -95,36 +102,52 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Shift wise Report</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Shift wise
+                        Report</a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu">
                             <a class="dropdown-item" href="../shiftA/shiftm1reportt copy.php">Shift A Report</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../shiftA/shiftm1report.php">Machine 1 Report</a></li>
-                                <li><a class="dropdown-item" href="../shiftA/shiftm2report.php">Machine 2 Report</a></li>
-                                <li><a class="dropdown-item" href="../shiftA/shiftm3report.php">Machine 3 Report</a></li>
-                                <li><a class="dropdown-item" href="../shiftA/shiftm4report.php">Machine 4 Report</a></li>
+                                <li><a class="dropdown-item" href="../shiftA/shiftm1report.php">Machine 1 Report</a>
+                                </li>
+                                <li><a class="dropdown-item" href="../shiftA/shiftm2report.php">Machine 2 Report</a>
+                                </li>
+                                <li><a class="dropdown-item" href="../shiftA/shiftm3report.php">Machine 3 Report</a>
+                                </li>
+                                <li><a class="dropdown-item" href="../shiftA/shiftm4report.php">Machine 4 Report</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item" href="../shiftB/shiftBreport.php">Shift B Report</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../shiftB/shiftm1report.php">Machine 1 Report</a></li>
-                                <li><a class="dropdown-item" href="../shiftB/shiftm2report.php">Machine 2 Report</a></li>
-                                <li><a class="dropdown-item" href="../shiftB/shiftm3report.php">Machine 3 Report</a></li>
-                                <li><a class="dropdown-item" href="../shiftB/shiftm4report.php">Machine 4 Report</a></li>
+                                <li><a class="dropdown-item" href="../shiftB/shiftm1report.php">Machine 1 Report</a>
+                                </li>
+                                <li><a class="dropdown-item" href="../shiftB/shiftm2report.php">Machine 2 Report</a>
+                                </li>
+                                <li><a class="dropdown-item" href="../shiftB/shiftm3report.php">Machine 3 Report</a>
+                                </li>
+                                <li><a class="dropdown-item" href="../shiftB/shiftm4report.php">Machine 4 Report</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item" href="../shiftc/shiftcreport.php">Shift C Report</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../shiftC/shiftm1report.php">Machine 1 Report</a></li>
-                                <li><a class="dropdown-item" href="../shiftC/shiftm2report.php">Machine 2 Report</a></li>
-                                <li><a class="dropdown-item" href="../shiftC/shiftm3report.php">Machine 3 Report</a></li>
-                                <li><a class="dropdown-item" href="../shiftC/shiftm4report.php">Machine 4 Report</a></li>
+                                <li><a class="dropdown-item" href="../shiftC/shiftm1report.php">Machine 1 Report</a>
+                                </li>
+                                <li><a class="dropdown-item" href="../shiftC/shiftm2report.php">Machine 2 Report</a>
+                                </li>
+                                <li><a class="dropdown-item" href="../shiftC/shiftm3report.php">Machine 3 Report</a>
+                                </li>
+                                <li><a class="dropdown-item" href="../shiftC/shiftm4report.php">Machine 4 Report</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <a class="nav-link" href="../list/settingreading.php">Setting</a>
                 </li>
                 <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="accountingDropdown" role="button" data-bs-toggle="dropdown">
