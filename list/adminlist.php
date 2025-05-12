@@ -99,7 +99,7 @@ $total_pages = ceil($total_rows / $limit);
             <div class="btn-custom">
                 <!-- <button type="button" class="btn btn-success mb-3 mx-2"onclick="window.location.href='../users/Adminlogin.php'">Admin login</button> -->
                 <button type="button" class="btn btn-success mb-3 mx-3"
-                    onclick="window.location.href='../users/Admin signup.php'">Create New Admin</button>
+                    onclick="window.location.href='../create/createadmin.php'">Create New Admin</button>
             </div>
             <table class="table table-bordered table-hover">
                 <thead class="table-dark">
