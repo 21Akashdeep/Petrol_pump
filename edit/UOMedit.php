@@ -10,28 +10,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $UOM = $_POST['UOM'];
-
-
-    $sql = "INSERT INTO UOM (UOM) 
-            VALUES ('$UOM')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>
-            alert('UOM added successfully!');
-            window.location.href='../list/UOMlist.php'; // Redirect to dashboard or another page
-          </script>";
-    } else {
-        echo "<script>
-            alert('Error: " . $conn->error . "');
-          </script>";
-    }
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    die('Invalid UOM ID.');
 }
+$id = intval($_GET['id']);
 
+$sql = "SELECT * FROM UOM WHERE id=$id";
+$result = $conn->query($sql);
+if (!$result || $result->num_rows === 0) {
+    die('UOM not found.');
+}
+$row = $result->fetch_assoc();
 $conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +30,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create UOM</title>
+    <title>Edit UOM</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -60,16 +51,18 @@ $conn->close();
 <body>
 
     <div class="container">
-        <h3 class="text-center mb-4"> Create UOM</h3>
-        <form method="POST">
+        <h3 class="text-center mb-4">Edit UOM</h3>
+        <form method="POST" action="../update/UOMupdate.php">
+            <input type="hidden" name="id" value="<?= $row['id'] ?>">
             <div class="mb-3">
                 <label class="form-label">UOM Name</label>
-                <input type="text" class="form-control" placeholder="Enter company name" name="UOM">
+                <input type="text" class="form-control" name="UOM" value="<?= htmlspecialchars($row['UOM']) ?>"
+                    required>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Submit</button>
+            <button type="submit" class="btn btn-primary w-100">Update</button>
         </form>
         <div class="text-center mt-3">
-            <a href="index.html" class="btn btn-outline-secondary">Back to Dashboard</a>
+            <a href="../list/UOMlist.php" class="btn btn-outline-secondary">Back to Dashboard</a>
         </div>
     </div>
 
