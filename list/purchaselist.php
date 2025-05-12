@@ -105,16 +105,20 @@ $total_pages = ceil($total_rows / $limit);
             background-color: #333 !important;
             /* Dark gray on hover */
         }
+
         .btn-export {
             background-color: #28a745;
             color: white;
         }
+
         .btn-export:hover {
             background-color: #218838;
         }
+
         .text-danger {
             font-weight: bold;
         }
+
         .text-danger {
             font-weight: bold;
         }
@@ -128,29 +132,29 @@ $total_pages = ceil($total_rows / $limit);
     <!-- Main Content -->
     <div class="container container-content">
         <div class="bg-white p-4 shadow-sm rounded">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <!-- <button class="btn btn-dark">View/Close Job</button> -->
-            <h4>Purchase List</h4>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <!-- <button class="btn btn-dark">View/Close Job</button> -->
+                <h4>Purchase List</h4>
 
-            <div class="d-flex gap-2">
-                <label class="form-label fw-bold">Search</label>
-                <input type="text" id="searchInput" class="form-control" placeholder="Type to search">
+                <div class="d-flex gap-2">
+                    <label class="form-label fw-bold">Search</label>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Type to search">
+                </div>
+                <div class="d-flex gap-2">
+                    <label class="form-label fw-bold">start</label>
+                    <input type="date" id="startDate" class="form-control">
+                </div>
+                <div class="d-flex gap-2">
+                    <label class="form-label fw-bold">End</label>
+                    <input type="date" id="endDate" class="form-control">
+                </div>
+                <div>
+                    <button class="btn btn-export" onclick="generatePDF()">Generate PDF</button>
+                    <button class="btn btn-export" onclick="exportToExcel()">Excel Export</button>
+                </div>
             </div>
-            <div class="d-flex gap-2">
-                <label class="form-label fw-bold">start</label>
-                <input type="date" id="startDate" class="form-control">
-            </div>
-            <div class="d-flex gap-2">
-                <label class="form-label fw-bold">End</label>
-                <input type="date" id="endDate" class="form-control">
-            </div>
-            <div>
-                <button class="btn btn-export" onclick="generatePDF()">Generate PDF</button>
-                <button class="btn btn-export" onclick="exportToExcel()">Excel Export</button>
-            </div>
-        </div>
 
-            <table id="purchaseTable"class="table table-bordered table-hover">
+            <table id="purchaseTable" class="table table-bordered table-hover">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>
@@ -174,19 +178,19 @@ $total_pages = ceil($total_rows / $limit);
                     $result = $conn->query($sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>
-                            <th>".$sno."</th>
-                            <td>".$row['company_name']."</td>
-                            <td>".$row['invoice_no']."</td>
-                            <td>".$row['veh_no']."</td>
-                            <td>".$row['challan_no']."</td>
-                            <td>".$row['invoice_date']."</td>
-                            <td>".$row['delivery_date']."</td>
-                            <td>".$row['challan_date']."</td>
-                            <td>".$row['gst_no']."</td>
-                            <td>".$row['remark']."</td>
+                            <th>" . $sno . "</th>
+                            <td>" . $row['company_name'] . "</td>
+                            <td>" . $row['invoice_no'] . "</td>
+                            <td>" . $row['veh_no'] . "</td>
+                            <td>" . $row['challan_no'] . "</td>
+                            <td>" . $row['invoice_date'] . "</td>
+                            <td>" . $row['delivery_date'] . "</td>
+                            <td>" . $row['challan_date'] . "</td>
+                            <td>" . $row['gst_no'] . "</td>
+                            <td>" . $row['remark'] . "</td>
                             <td>
-                                <a href='../edit/edit.php?id=".$row['id']."' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/delete.php?id=".$row['id']."' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                <a href='../edit/purchaseedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                                <a href='../delete/purchasedelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
                             </td>
                         </tr>";
                         $sno++;
@@ -196,25 +200,25 @@ $total_pages = ceil($total_rows / $limit);
             </table>
             <nav>
                 <ul class="pagination">
-                    <?php if ($page > 1) : ?>
-                    <li class="page-item"><a class="page-link"
-                            href="?page=<?php echo ($page - 1); ?>&start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>&search=<?php echo $search; ?>">Previous</a>
-                    </li>
+                    <?php if ($page > 1): ?>
+                        <li class="page-item"><a class="page-link"
+                                href="?page=<?php echo ($page - 1); ?>&start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>&search=<?php echo $search; ?>">Previous</a>
+                        </li>
                     <?php endif; ?>
 
-                    <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-                    <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
-                        <a class="page-link"
-                            href="?page=<?php echo $i; ?>&start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>&search=<?php echo $search; ?>">
-                            <?php echo $i; ?>
-                        </a>
-                    </li>
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                        <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
+                            <a class="page-link"
+                                href="?page=<?php echo $i; ?>&start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>&search=<?php echo $search; ?>">
+                                <?php echo $i; ?>
+                            </a>
+                        </li>
                     <?php endfor; ?>
 
-                    <?php if ($page < $total_pages) : ?>
-                    <li class="page-item"><a class="page-link"
-                            href="?page=<?php echo ($page + 1); ?>&start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>&search=<?php echo $search; ?>">Next</a>
-                    </li>
+                    <?php if ($page < $total_pages): ?>
+                        <li class="page-item"><a class="page-link"
+                                href="?page=<?php echo ($page + 1); ?>&start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>&search=<?php echo $search; ?>">Next</a>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </nav>

@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             $stmt_item = $conn->prepare($sql_item);
-            $stmt_item->bind_param("isidiiids", $entry_id, $item_name, $qty, $rate,$UOM,$HSN_Code,$Code_No, $total, $tank);
+            $stmt_item->bind_param("isidiiids", $entry_id, $item_name, $qty, $rate, $UOM, $HSN_Code, $Code_No, $total, $tank);
             $stmt_item->execute();
         }
         // echo "Data saved successfully!";
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $conn->error;
     }
 
-    
+
 }
 
 $query = "SELECT company_name FROM vendors UNION SELECT company_name FROM customer"; // Dono tables se data fetch kar raha hai
@@ -57,7 +57,7 @@ while ($row = $result->fetch_assoc()) {
     $companies[] = $row['company_name'];
 }
 
-$query = "SELECT item_name FROM item"; 
+$query = "SELECT item_name FROM item";
 $result = $conn->query($query);
 
 $items = [];
@@ -65,7 +65,7 @@ while ($row = $result->fetch_assoc()) {
     $items[] = $row['item_name'];
 }
 
-$query = "SELECT location_name FROM locations"; 
+$query = "SELECT location_name FROM locations";
 $result = $conn->query($query);
 
 $locations = [];
@@ -73,7 +73,7 @@ while ($row = $result->fetch_assoc()) {
     $locations[] = $row['location_name'];
 }
 
-$query = "SELECT UOM FROM UOM"; 
+$query = "SELECT UOM FROM UOM";
 $result = $conn->query($query);
 
 $UOMs = [];
@@ -92,22 +92,29 @@ while ($row = $result->fetch_assoc()) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .navbar-nav {
-            gap: 30px; /* Space between menu items */
+            gap: 30px;
+            /* Space between menu items */
         }
+
         .dropdown-menu {
-            background-color: #212529 !important; /* Black dropdown background */
+            background-color: #212529 !important;
+            /* Black dropdown background */
         }
+
         .dropdown-menu a {
-            color: white !important; /* White text in dropdown */
+            color: white !important;
+            /* White text in dropdown */
         }
+
         .dropdown-menu a:hover {
-            background-color: #333 !important; /* Dark gray on hover */
+            background-color: #333 !important;
+            /* Dark gray on hover */
         }
     </style>
 </head>
 
 <body class="bg-light">
-<?php include 'navbar.php'; ?>
+    <?php include 'navbar.php'; ?>
 
     <div class="container mt-5">
         <div class="card shadow p-4">
@@ -119,8 +126,10 @@ while ($row = $result->fetch_assoc()) {
                         <select class="form-select" name="company_name">
                             <option value="">Select</option>
                             <?php foreach ($companies as $company) { ?>
-            <option value="<?php echo htmlspecialchars($company); ?>"><?php echo htmlspecialchars($company); ?></option>
-        <?php } ?>
+                                <option value="<?php echo htmlspecialchars($company); ?>">
+                                    <?php echo htmlspecialchars($company); ?>
+                                </option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col-md-6">
@@ -150,9 +159,11 @@ while ($row = $result->fetch_assoc()) {
                     <div class="col-md-6">
                         <label class="form-label">Firm Name</label>
                         <select class="form-select" name="firm_name">
-                        <?php foreach ($companies as $company) { ?>
-            <option value="<?php echo htmlspecialchars($company); ?>"><?php echo htmlspecialchars($company); ?></option>
-        <?php } ?>
+                            <?php foreach ($companies as $company) { ?>
+                                <option value="<?php echo htmlspecialchars($company); ?>">
+                                    <?php echo htmlspecialchars($company); ?>
+                                </option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col-md-6">
@@ -181,20 +192,24 @@ while ($row = $result->fetch_assoc()) {
                     <tbody>
                         <tr>
                             <td><select class="form-select" name="item_name[]">
-                            <option value="">Select Item</option>
-                            <?php foreach ($items as $item) { ?>
-                                <option value="<?php echo htmlspecialchars($item); ?>"><?php echo htmlspecialchars($item); ?></option>
-                            <?php } ?>
+                                    <option value="">Select Item</option>
+                                    <?php foreach ($items as $item) { ?>
+                                        <option value="<?php echo htmlspecialchars($item); ?>">
+                                            <?php echo htmlspecialchars($item); ?>
+                                        </option>
+                                    <?php } ?>
                                 </select></td>
                             <td><input type="number" class="form-control" name="qty[]" oninput="calculateTotal(this)">
                             </td>
                             <td><input type="number" class="form-control" name="rate[]" oninput="calculateTotal(this)">
                             </td>
                             <td><select class="form-select" name="UOM[]">
-                            <option value="">Select Item</option>
-                            <?php foreach ($UOMs as $UOM) { ?>
-                                <option value="<?php echo htmlspecialchars($UOM); ?>"><?php echo htmlspecialchars($UOM); ?></option>
-                            <?php } ?>
+                                    <option value="">Select Item</option>
+                                    <?php foreach ($UOMs as $UOM) { ?>
+                                        <option value="<?php echo htmlspecialchars($UOM); ?>">
+                                            <?php echo htmlspecialchars($UOM); ?>
+                                        </option>
+                                    <?php } ?>
                                 </select>
                             </td>
                             <td><input type="number" class="form-control" name="HSN_Code[]">
@@ -203,9 +218,11 @@ while ($row = $result->fetch_assoc()) {
                             </td>
                             <td><input type="text" class="form-control" name="total[]" readonly></td>
                             <td><select class="form-select" name="tank[]">
-                            <?php foreach ($locations as $location) { ?>
-                            <option value="<?php echo htmlspecialchars($location); ?>"><?php echo htmlspecialchars($location); ?></option>
-                            <?php } ?>
+                                    <?php foreach ($locations as $location) { ?>
+                                        <option value="<?php echo htmlspecialchars($location); ?>">
+                                            <?php echo htmlspecialchars($location); ?>
+                                        </option>
+                                    <?php } ?>
                                 </select></td>
                             <td><button type="button" class="btn btn-danger btn-sm"
                                     onclick="removeRow(this)">Remove</button></td>
@@ -248,11 +265,7 @@ while ($row = $result->fetch_assoc()) {
                             <td><input type="number" class="form-control" name="Code_No[]">
                             </td>
         <td><input type="text" class="form-control" name="total[]" readonly></td>
-        <td><select class="form-select" name="tank[]">
-            <option value="Tank1">Tank 1</option>
-            <option value="Tank2">Tank 2</option>
-            <option value="Tank3">Tank 3</option>
-        </select></td>
+        <td><select class="form-select" name="tank[]">` + locationOptions + `</select></td>
         <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">Remove</button></td>
     `;
         }
@@ -270,6 +283,15 @@ while ($row = $result->fetch_assoc()) {
             totalField.value = total; // Set the calculated total
         }
 
+    </script>
+
+    <script>
+        // Dynamically generate location options from PHP
+        var locationOptions = `
+        <?php foreach ($locations as $location) { ?>
+            <option value="<?php echo htmlspecialchars($location); ?>"><?php echo htmlspecialchars($location); ?></option>
+        <?php } ?>
+    `;
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

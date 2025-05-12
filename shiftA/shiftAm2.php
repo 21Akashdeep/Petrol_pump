@@ -63,7 +63,7 @@ date_default_timezone_set('Asia/Kolkata');
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-4"><strong>Select product</strong></div>
+            <div class="col-4"><strong>Product</strong></div>
             <div class="col-4">
                 <select class="form-select" name="shifta1_product1" disabled>
                     <option value="XP-95"
@@ -162,11 +162,44 @@ date_default_timezone_set('Asia/Kolkata');
                     value="<?php echo $shiftC_close_ms_reading; ?>" readonly>
             </div>
         </div>
+        <div class="row mb-2">
+            <div class="col-4"><strong>Close Reading</strong></div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="xpm2_close_reading" id="xpm2_close_reading" value="">
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="msm2_close_reading" id="msm2_close_reading" value="">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4"><strong>Reading Difference</strong></div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="xpm2_reading_difference" id="xpm2_reading_difference" readonly>
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="msm2_reading_difference" id="msm2_reading_difference" readonly>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4"><strong>Testing Less</strong></div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="xpm2_testing_less" id="xpm2_testing_less" value="0">
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="msm2_testing_less" id="msm2_testing_less" value="0">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4"><strong>Net Sale</strong></div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="xpm2_net_sale" id="xpm2_net_sale" readonly>
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="msm2_net_sale" id="msm2_net_sale" readonly>
+            </div>
+        </div>
 
         <?php
-// Database connection required
-// include '../db_connect.php'; 
-
 // Rate table se data fetch karna
 $xp95_rate = "";
 $ms_rate = "";
@@ -183,7 +216,7 @@ if ($result) {
     die("Query Failed: " . mysqli_error($conn)); // Debugging ke liye
 }
 
-$fields = ["Close Reading", "Reading Difference", "Testing Less", "Net Sale", "Rate", "Cash", "Paytm machine No.", "Paytm Amount", "Card Machine No.", "Card Amount", "Sortage", "Surplus", "Total Amount"];
+$fields = ["Rate", "Cash", "Paytm machine No.", "Paytm Amount", "Card Machine No.", "Card Amount", "Sortage", "Surplus", "Total Amount"];
 $paytm_numbers = ["1", "2", "3", "4", "5"]; // Predefined Paytm numbers
 $cash_denominations = ["1", "2", "3", "4", "5"]; // Predefined Card machine numbers
 
@@ -324,10 +357,17 @@ foreach ($fields as $field) {
                 let testLess = parseFloat(testingLess.value) || 0;
                 netSale.value = (readingDiff - testLess).toFixed(2);
             }
+
+            // Trigger initial calculation on page load
+            if (startReading && closeReading) {
+                let event = new Event('input');
+                startReading.dispatchEvent(event);
+                closeReading.dispatchEvent(event);
+            }
         }
 
-        calculateDifference("xpm2"); // For XP fields
-        calculateDifference("msm2"); // For MS fields
+        calculateDifference("xpm2"); // For XP fields in SHIFTM2
+        calculateDifference("msm2"); // For MS fields in SHIFTM2
 
         function calculateTotalAmount(prefix) {
             let netSale = parseFloat(document.getElementById(prefix + "_net_sale").value) || 0;

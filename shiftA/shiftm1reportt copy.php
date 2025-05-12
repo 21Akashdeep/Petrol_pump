@@ -11,7 +11,7 @@ $sql = "SELECT * FROM shift WHERE xp_close_reading ORDER BY shifta1_datetime DES
 $result = $conn->query($sql);
 $data = $result->fetch_assoc();
 
-$sql2 = "SELECT * FROM shifta2 WHERE xp_close_reading ORDER BY shifta1_datetime DESC LIMIT 1";
+$sql2 = "SELECT * FROM shifta2 WHERE xp_close_reading IS NOT NULL ORDER BY shifta1_datetime DESC LIMIT 1";
 $result2 = $conn->query($sql2);
 $data2 = $result2->fetch_assoc();
 
