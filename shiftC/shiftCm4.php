@@ -148,17 +148,16 @@ date_default_timezone_set('Asia/Kolkata');
         </div>
         <script>
         function resetForm() {
-            // Select all input and select fields except the opening readings
+            // Exclude open readings, date, and all rate fields from reset
             document.querySelectorAll(
-                    'input:not([name="xg1_start_reading"]):not([name="xg2_start_reading"]):not([name="ms1_start_reading"]):not([name="ms2_start_reading"]), select'
-                    )
-                .forEach(field => {
-                    if (field.tagName === 'INPUT') {
-                        field.value = ''; // Clear input fields
-                    } else if (field.tagName === 'SELECT') {
-                        field.selectedIndex = 0; // Reset select dropdowns
-                    }
-                });
+                'input:not([name="xg1_start_reading"]):not([name="xg2_start_reading"]):not([name="ms1_start_reading"]):not([name="ms2_start_reading"]):not([name="datetime"]):not([name$="_rate"]), select'
+            ).forEach(field => {
+                if (field.tagName === 'INPUT') {
+                    field.value = ''; // Clear input fields
+                } else if (field.tagName === 'SELECT') {
+                    field.selectedIndex = 0; // Reset select dropdowns
+                }
+            });
         }
         </script>
         <div class="contai-box">

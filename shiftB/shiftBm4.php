@@ -66,100 +66,99 @@ date_default_timezone_set('Asia/Kolkata');
     <title>Machine Data Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-    body {
-        background-color: #f8f9fa;
-    }
+        body {
+            background-color: #f8f9fa;
+        }
 
-    .container-box {
-        background: white;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        width: 35%;
-        margin: 10px;
-    }
+        .container-box {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            width: 35%;
+            margin: 10px;
+        }
 
-    .contai-box {
-        background: white;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        width: 80%;
-        margin: 10px;
-        margin-left: 10%;
-    }
+        .contai-box {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            margin: 10px;
+            margin-left: 10%;
+        }
 
-    .header {
-        text-align: center;
-        font-weight: bold;
-        color: #ff6200;
-    }
+        .header {
+            text-align: center;
+            font-weight: bold;
+            color: #ff6200;
+        }
 
-    .machine-info {
-        background: #ff6200;
-        color: white;
-        padding: 10px;
-        text-align: center;
-        font-weight: bold;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
+        .machine-info {
+            background: #ff6200;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
 
-    .psn {
-        color: red;
-        font-size: 18px;
-        text-align: center;
-        font-weight: bold;
-    }
+        .psn {
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            font-weight: bold;
+        }
 
-    .btn-submit {
-        background: #ff6200;
-        color: white;
-        font-weight: bold;
-        width: 100%;
-    }
+        .btn-submit {
+            background: #ff6200;
+            color: white;
+            font-weight: bold;
+            width: 100%;
+        }
 
-    .containe {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+        .containe {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    .header,
-    .machine-info,
-    .psn {
-        margin: 0 10px;
-    }
+        .header,
+        .machine-info,
+        .psn {
+            margin: 0 10px;
+        }
 
-    .color {
-        background-color: red;
-    }
+        .color {
+            background-color: red;
+        }
     </style>
 </head>
 
 <body>
     <?php include '../navbar.php'; ?>
 
-    <div class="contai d-flex flex-container">
+    <div class="contai d-flex flex-container" style="margin: 20px;">
         <div class="row mt-3">
             <div class="col-12 text-center">
                 <button type="button" class="btn btn-danger" onclick="resetForm()">Reset</button>
             </div>
         </div>
         <script>
-        function resetForm() {
-            // Select all input and select fields except the opening readings
-            document.querySelectorAll(
-                    'input:not([name="xg1_start_reading"]):not([name="xg2_start_reading"]):not([name="ms1_start_reading"]):not([name="ms2_start_reading"]), select'
-                )
-                .forEach(field => {
+            function resetForm() {
+                // Exclude open readings, date, and all rate fields from reset
+                document.querySelectorAll(
+                    'input:not([name="xg1_start_reading"]):not([name="xg2_start_reading"]):not([name="ms1_start_reading"]):not([name="ms2_start_reading"]):not([name="datetime"]):not([name$="_rate"]), select'
+                ).forEach(field => {
                     if (field.tagName === 'INPUT') {
                         field.value = ''; // Clear input fields
                     } else if (field.tagName === 'SELECT') {
                         field.selectedIndex = 0; // Reset select dropdowns
                     }
                 });
-        }
+            }
         </script>
         <div class="contai-box">
             <div class="containe">
@@ -184,20 +183,16 @@ date_default_timezone_set('Asia/Kolkata');
                     <div class="col-2"><strong>product</strong></div>
                     <div class="col-3">
                         <select class="form-select" name="product1" disabled>
-                            <option value="XG-1"
-                                <?php echo (isset($latestData['product1']) && $latestData['product1'] == "XG-1") ? "selected" : ""; ?>>
+                            <option value="XG-1" <?php echo (isset($latestData['product1']) && $latestData['product1'] == "XG-1") ? "selected" : ""; ?>>
                                 XG-1
                             </option>
-                            <option value="XG-2"
-                                <?php echo (isset($latestData['product1']) && $latestData['product1'] == "XG-2") ? "selected" : ""; ?>>
+                            <option value="XG-2" <?php echo (isset($latestData['product1']) && $latestData['product1'] == "XG-2") ? "selected" : ""; ?>>
                                 XG-2
                             </option>
-                            <option value="MS-1"
-                                <?php echo (isset($latestData['product1']) && $latestData['product1'] == "MS-1") ? "selected" : ""; ?>>
+                            <option value="MS-1" <?php echo (isset($latestData['product1']) && $latestData['product1'] == "MS-1") ? "selected" : ""; ?>>
                                 MS-1
                             </option>
-                            <option value="MS-2"
-                                <?php echo (isset($latestData['product1']) && $latestData['product1'] == "MS-2") ? "selected" : ""; ?>>
+                            <option value="MS-2" <?php echo (isset($latestData['product1']) && $latestData['product1'] == "MS-2") ? "selected" : ""; ?>>
                                 MS-2
                             </option>
                         </select>
@@ -206,21 +201,17 @@ date_default_timezone_set('Asia/Kolkata');
                     </div>
                     <div class="col-2">
                         <select class="form-select" name="product2" disabled>
-                            <option value="XG-2"
-                                <?php echo (isset($latestData['product2']) && $latestData['product2'] == "XG-2") ? "selected" : ""; ?>>
+                            <option value="XG-2" <?php echo (isset($latestData['product2']) && $latestData['product2'] == "XG-2") ? "selected" : ""; ?>>
                                 XG-2
                             </option>
-                            <option value="XG-1"
-                                <?php echo (isset($latestData['product2']) && $latestData['product2'] == "XG-1") ? "selected" : ""; ?>>
+                            <option value="XG-1" <?php echo (isset($latestData['product2']) && $latestData['product2'] == "XG-1") ? "selected" : ""; ?>>
                                 XG-1
                             </option>
 
-                            <option value="MS-1"
-                                <?php echo (isset($latestData['product2']) && $latestData['product2'] == "MS-1") ? "selected" : ""; ?>>
+                            <option value="MS-1" <?php echo (isset($latestData['product2']) && $latestData['product2'] == "MS-1") ? "selected" : ""; ?>>
                                 MS-1
                             </option>
-                            <option value="MS-2"
-                                <?php echo (isset($latestData['product2']) && $latestData['product2'] == "MS-2") ? "selected" : ""; ?>>
+                            <option value="MS-2" <?php echo (isset($latestData['product2']) && $latestData['product2'] == "MS-2") ? "selected" : ""; ?>>
                                 MS-2
                             </option>
                         </select>
@@ -231,8 +222,7 @@ date_default_timezone_set('Asia/Kolkata');
                     </div>
                     <div class="col-2">
                         <select class="form-select" name="product3" disabled>
-                            <option value="MS-1"
-                                <?php echo (isset($latestData['product3']) && $latestData['product3'] == "MS-1") ? "selected" : ""; ?>>
+                            <option value="MS-1" <?php echo (isset($latestData['product3']) && $latestData['product3'] == "MS-1") ? "selected" : ""; ?>>
                                 MS-1
                             </option>
                             <option value="XG-1"
@@ -288,10 +278,10 @@ date_default_timezone_set('Asia/Kolkata');
                         <select class="form-select" name="employee1">
                             <option value="">Select Employee</option>
                             <?php foreach ($employees as $employee) { ?>
-                            <option value="<?php echo $employee['company_name']; ?>"
-                                <?php echo (isset($latestData['employee1']) && $latestData['employee1'] == $employee['company_name']) ? "selected" : ""; ?>>
-                                <?php echo $employee['company_name']; ?>
-                            </option>
+                                <option value="<?php echo $employee['company_name']; ?>"
+                                    <?php echo (isset($latestData['employee1']) && $latestData['employee1'] == $employee['company_name']) ? "selected" : ""; ?>>
+                                    <?php echo $employee['company_name']; ?>
+                                </option>
                             <?php } ?>
                         </select>
 
@@ -300,10 +290,10 @@ date_default_timezone_set('Asia/Kolkata');
                         <select class="form-select" name="employee2">
                             <option value="">Select Employee</option>
                             <?php foreach ($employees as $employee) { ?>
-                            <option value="<?php echo $employee['company_name']; ?>"
-                                <?php echo (isset($latestData['employee2']) && $latestData['employee2'] == $employee['company_name']) ? "selected" : ""; ?>>
-                                <?php echo $employee['company_name']; ?>
-                            </option>
+                                <option value="<?php echo $employee['company_name']; ?>"
+                                    <?php echo (isset($latestData['employee2']) && $latestData['employee2'] == $employee['company_name']) ? "selected" : ""; ?>>
+                                    <?php echo $employee['company_name']; ?>
+                                </option>
                             <?php } ?>
                         </select>
 
@@ -312,10 +302,10 @@ date_default_timezone_set('Asia/Kolkata');
                         <select class="form-select" name="employee3">
                             <option value="">Select Employee</option>
                             <?php foreach ($employees as $employee) { ?>
-                            <option value="<?php echo $employee['company_name']; ?>"
-                                <?php echo (isset($latestData['employee3']) && $latestData['employee3'] == $employee['company_name']) ? "selected" : ""; ?>>
-                                <?php echo $employee['company_name']; ?>
-                            </option>
+                                <option value="<?php echo $employee['company_name']; ?>"
+                                    <?php echo (isset($latestData['employee3']) && $latestData['employee3'] == $employee['company_name']) ? "selected" : ""; ?>>
+                                    <?php echo $employee['company_name']; ?>
+                                </option>
                             <?php } ?>
                         </select>
 
@@ -324,10 +314,10 @@ date_default_timezone_set('Asia/Kolkata');
                         <select class="form-select" name="employee4">
                             <option value="">Select Employee</option>
                             <?php foreach ($employees as $employee) { ?>
-                            <option value="<?php echo $employee['company_name']; ?>"
-                                <?php echo (isset($latestData['employee4']) && $latestData['employee4'] == $employee['company_name']) ? "selected" : ""; ?>>
-                                <?php echo $employee['company_name']; ?>
-                            </option>
+                                <option value="<?php echo $employee['company_name']; ?>"
+                                    <?php echo (isset($latestData['employee4']) && $latestData['employee4'] == $employee['company_name']) ? "selected" : ""; ?>>
+                                    <?php echo $employee['company_name']; ?>
+                                </option>
                             <?php } ?>
                         </select>
 
@@ -431,38 +421,38 @@ date_default_timezone_set('Asia/Kolkata');
                     </div>
                 </div>
                 <?php
-// Database connection required
-include '../db_connect.php'; 
+                // Database connection required
+                include '../db_connect.php';
 
-// Rate table se data fetch karna
-$xp95_rate = "";
-$ms_rate = "";
+                // Rate table se data fetch karna
+                $xp95_rate = "";
+                $ms_rate = "";
 
-$query = "SELECT hd_rate, ms_rate FROM rate LIMIT 1"; // Sirf ek record lena
-$result = mysqli_query($conn, $query);
+                $query = "SELECT hd_rate, ms_rate FROM rate LIMIT 1"; // Sirf ek record lena
+                $result = mysqli_query($conn, $query);
 
-if ($result) {
-    $row = mysqli_fetch_assoc($result);
-    if ($row) {
-        $xp95_rate = $row['hd_rate'];
-        $ms_rate = $row['ms_rate'];
-    }
-} else {
-    die("Query Failed: " . mysqli_error($conn)); // Debugging ke liye
-}
+                if ($result) {
+                    $row = mysqli_fetch_assoc($result);
+                    if ($row) {
+                        $xp95_rate = $row['hd_rate'];
+                        $ms_rate = $row['ms_rate'];
+                    }
+                } else {
+                    die("Query Failed: " . mysqli_error($conn)); // Debugging ke liye
+                }
 
-// Form fields
-$fields = ["Close Reading", "Reading Difference", "Testing Less", "Net Sale", "Rate", "Cash", "Paytm machine No", "Paytm Amount", "Card Machine No", "Card Amount", "Sortage", "Surplus", "Total Amount"];
-$paytm_numbers = ["1", "2", "3", "4", "5"];
-$cash_denominations = ["1", "2", "3", "4", "5"];
+                // Form fields
+                $fields = ["Close Reading", "Reading Difference", "Testing Less", "Net Sale", "Rate", "Cash", "Paytm machine No", "Paytm Amount", "Card Machine No", "Card Amount", "Sortage", "Surplus", "Total Amount"];
+                $paytm_numbers = ["1", "2", "3", "4", "5"];
+                $cash_denominations = ["1", "2", "3", "4", "5"];
 
-foreach ($fields as $field) {
-    echo '<div class="row mb-2">
+                foreach ($fields as $field) {
+                    echo '<div class="row mb-2">
             <div class="col-2">' . $field . '</div>';
 
-    if ($field == "Rate") {
-        // ✅ Rate field - Fetch from database
-        echo '<div class="col-3">
+                    if ($field == "Rate") {
+                        // ✅ Rate field - Fetch from database
+                        echo '<div class="col-3">
                 <input type="text" class="form-control" id="xg1_rate" name="xg1_rate" 
                 value="' . $xp95_rate . '" readonly>
               </div>
@@ -478,16 +468,16 @@ foreach ($fields as $field) {
                 <input type="text" class="form-control" id="ms2_rate" name="ms2_rate" 
                 value="' . $ms_rate . '" readonly>
               </div>';
-    } elseif ($field == "Paytm machine No" || $field == "Card Machine No") {
-        // ✅ Dropdowns for Paytm & Card Machine Numbers
-        $dropdown_values = ($field == "Paytm machine No") ? $paytm_numbers : $cash_denominations;
-        $name_prefix = ($field == "Paytm machine No") ? "paytm" : "card";
+                    } elseif ($field == "Paytm machine No" || $field == "Card Machine No") {
+                        // ✅ Dropdowns for Paytm & Card Machine Numbers
+                        $dropdown_values = ($field == "Paytm machine No") ? $paytm_numbers : $cash_denominations;
+                        $name_prefix = ($field == "Paytm machine No") ? "paytm" : "card";
 
-        for ($i = 0; $i < 4; $i++) {
-            $input_name = $name_prefix . '_' . $i;
-            $input_value = isset($latestData[$input_name]) ? $latestData[$input_name] : "";
+                        for ($i = 0; $i < 4; $i++) {
+                            $input_name = $name_prefix . '_' . $i;
+                            $input_value = isset($latestData[$input_name]) ? $latestData[$input_name] : "";
 
-            echo '<div class="col-2">
+                            echo '<div class="col-2">
                     <div class="input-group">
                         <input type="text" class="form-control" id="' . $input_name . '" 
                         name="' . $input_name . '" placeholder="Enter Amount" value="' . $input_value . '">
@@ -496,13 +486,13 @@ foreach ($fields as $field) {
                             foreach ($dropdown_values as $value) {
                                 echo '<li><a class="dropdown-item select-option" data-input="' . $input_name . '" href="#">' . $value . '</a></li>';
                             }
-            echo       '</ul>
+                            echo '</ul>
                     </div>
                 </div>';
-        }
-    } else {
-        // ✅ Normal input fields
-        echo '<div class="col-3">
+                        }
+                    } else {
+                        // ✅ Normal input fields
+                        echo '<div class="col-3">
                 <input type="text" class="form-control" id="xg1_' . strtolower(str_replace(" ", "_", $field)) . '" 
                 name="xg1_' . strtolower(str_replace(" ", "_", $field)) . '" 
                 value="' . (isset($latestData['xg1_' . strtolower(str_replace(" ", "_", $field))]) ? $latestData['xg1_' . strtolower(str_replace(" ", "_", $field))] : "") . '">
@@ -522,10 +512,10 @@ foreach ($fields as $field) {
                 name="ms2_' . strtolower(str_replace(" ", "_", $field)) . '" 
                 value="' . (isset($latestData['ms2_' . strtolower(str_replace(" ", "_", $field))]) ? $latestData['ms2_' . strtolower(str_replace(" ", "_", $field))] : "") . '">
               </div>';
-    }
-    echo '</div>'; // Close row
-}
-?>
+                    }
+                    echo '</div>'; // Close row
+                }
+                ?>
 
 
                 <button type="submit" class="btn btn-submit mt-3">SUBMIT</button>
