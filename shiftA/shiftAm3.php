@@ -72,7 +72,7 @@ date_default_timezone_set('Asia/Kolkata');
 
         </div>
         <div class="row mb-3">
-            <div class="col-4"><strong>Product</strong></div>
+            <div class="col-4"><strong>Select product</strong></div>
             <div class="col-4">
                 <select class="form-select" name="shifta1_product1" disabled>
                     <option value="XP-95"
@@ -171,44 +171,6 @@ date_default_timezone_set('Asia/Kolkata');
                     value="<?php echo $shiftC_close_ms_reading; ?>" readonly>
             </div>
         </div>
-        <div class="row mb-2">
-            <div class="col-4"><strong>Close Reading</strong></div>
-            <div class="col-4">
-                <input type="text" class="form-control" name="xpm3_close_reading" id="xpm3_close_reading" value="">
-            </div>
-            <div class="col-4">
-                <input type="text" class="form-control" name="msm3_close_reading" id="msm3_close_reading" value="">
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-4"><strong>Reading Difference</strong></div>
-            <div class="col-4">
-                <input type="text" class="form-control" name="xpm3_reading_difference" id="xpm3_reading_difference"
-                    readonly>
-            </div>
-            <div class="col-4">
-                <input type="text" class="form-control" name="msm3_reading_difference" id="msm3_reading_difference"
-                    readonly>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-4"><strong>Testing Less</strong></div>
-            <div class="col-4">
-                <input type="text" class="form-control" name="xpm3_testing_less" id="xpm3_testing_less" value="0">
-            </div>
-            <div class="col-4">
-                <input type="text" class="form-control" name="msm3_testing_less" id="msm3_testing_less" value="0">
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-4"><strong>Net Sale</strong></div>
-            <div class="col-4">
-                <input type="text" class="form-control" name="xpm3_net_sale" id="xpm3_net_sale" readonly>
-            </div>
-            <div class="col-4">
-                <input type="text" class="form-control" name="msm3_net_sale" id="msm3_net_sale" readonly>
-            </div>
-        </div>
         <?php
 // Database connection required
 // include '../db_connect.php'; 
@@ -229,7 +191,7 @@ if ($result) {
     die("Query Failed: " . mysqli_error($conn)); // Debugging ke liye
 }
 
-$fields = ["Rate", "Cash", "Paytm machine No.", "Paytm Amount", "Card Machine No.", "Card Amount", "Sortage", "Surplus", "Total Amount"];
+$fields = ["Close Reading", "Reading Difference", "Testing Less", "Net Sale", "Rate", "Cash", "Paytm machine No.", "Paytm Amount", "Card Machine No.", "Card Amount", "Sortage", "Surplus", "Total Amount"];
 $paytm_numbers = ["1", "2", "3", "4", "5"]; // Predefined Paytm numbers
 $cash_denominations = ["1", "2", "3", "4", "5"]; // Predefined Card machine numbers
 
