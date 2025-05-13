@@ -142,25 +142,23 @@ date_default_timezone_set('Asia/Kolkata');
     <?php include '../navbar.php';
      ?>
 
-    <div class="contai d-flex flex-container">
-        <div class="row mt-3">
+    <div class="contai d-flex flex-container" style="margin-left: 10px;">
+        <div class="row mt-3"  style="margin:0;">
             <div class="col-12 text-center">
                 <button type="button" class="btn btn-danger" onclick="resetForm()">Reset</button>
             </div>
         </div>
         <script>
         function resetForm() {
-            // Select all input and select fields except the opening readings
             document.querySelectorAll(
-                    'input:not([name="xg1_start_reading"]):not([name="xg2_start_reading"]):not([name="ms1_start_reading"]):not([name="ms2_start_reading"]), select'
-                )
-                .forEach(field => {
-                    if (field.tagName === 'INPUT') {
-                        field.value = ''; // Clear input fields
-                    } else if (field.tagName === 'SELECT') {
-                        field.selectedIndex = 0; // Reset select dropdowns
-                    }
-                });
+                'input:not([name="xg1_start_reading"]):not([name="xg2_start_reading"]):not([name="ms1_start_reading"]):not([name="ms2_start_reading"]):not([name="datetime"]):not([name$="_rate"]), select'
+            ).forEach(field => {
+                if (field.tagName === 'INPUT') {
+                    field.value = ''; // Clear input fields
+                } else if (field.tagName === 'SELECT') {
+                    field.selectedIndex = 0; // Reset select dropdowns
+                }
+            });
         }
         </script>
         <div class="contai-box">
@@ -564,7 +562,7 @@ foreach ($fields as $field) {
         let testingLess = parseFloat(document.getElementsByName(`${prefix}testing_less`)[rowIndex]?.value) || 0;
         let rate = parseFloat(document.getElementsByName(`${prefix}rate`)[rowIndex]?.value) || 0;
 
-        let readingDifference = startReading - closeReading;
+        let readingDifference =closeReading-startReading;
         let netSale = readingDifference - testingLess;
         let totalAmount = netSale * rate;
 
