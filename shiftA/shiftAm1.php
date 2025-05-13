@@ -142,11 +142,11 @@ date_default_timezone_set('Asia/Kolkata');
             <div class="col-4"><strong>Open Reading</strong></div>
             <div class="col-4">
                 <input type="text" class="form-control" name="xp_start_reading" id="xp_start_reading"
-                    value="<?php echo $shiftC_close_reading; ?>" readonly>
+                    value="<?php echo $shiftC_close_reading; ?>">
             </div>
             <div class="col-4">
                 <input type="text" class="form-control" name="ms_start_reading" id="ms_start_reading"
-                    value="<?php echo $shiftC_close_ms_reading; ?>" readonly>
+                    value="<?php echo $shiftC_close_ms_reading; ?>">
             </div>
         </div>
         <?php
@@ -253,6 +253,40 @@ date_default_timezone_set('Asia/Kolkata');
 
         <button type="submit" class="btn btn-submit mt-3">SUBMIT</button>
     </form>
+    <div class="row mt-2">
+        <div class="row">
+            <div class="col-3">
+                <a href="moneycash/m1moneyreport.php" class="">Add cash</a>
+            </div>
+            <div class="col-3">
+                <a href="m1liquid/liquidlist.php" class="">Add Liquid</a>
+
+            </div>
+            <div class="col-3">
+                <a href="expense/explist.php" class="">Expenses</a>
+
+            </div>
+            <div class="col-3">
+                <a href="collection/m1collectionreport.php" class="">Collection</a>
+
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-5">
+                <!-- <a href="moneycash/m1moneyreport.php" class="">Add cash</a> -->
+            </div>
+            <div class="col-4 mt-2">
+                <a href="attendance.php" class="">Attendance</a>
+
+            </div>
+            <div class="col-3">
+                <!-- <a href="expense/explist.php" class="">Expenses</a> -->
+
+            </div>
+            
+        </div>
+    </div>
 </div>
 
 <script>

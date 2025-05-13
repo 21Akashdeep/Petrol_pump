@@ -164,11 +164,11 @@ date_default_timezone_set('Asia/Kolkata');
             <div class="col-4"><strong>Open Reading</strong></div>
             <div class="col-4">
                 <input type="text" class="form-control" name="xp_start_reading" id="xpm3_start_reading"
-                    value="<?php echo $shiftC_close_reading; ?>" readonly>
+                    value="<?php echo $shiftC_close_reading; ?>">
             </div>
             <div class="col-4">
                 <input type="text" class="form-control" name="ms_start_reading" id="msm3_start_reading"
-                    value="<?php echo $shiftC_close_ms_reading; ?>" readonly>
+                    value="<?php echo $shiftC_close_ms_reading; ?>">
             </div>
         </div>
         <?php
