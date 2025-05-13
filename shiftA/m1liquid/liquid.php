@@ -281,19 +281,19 @@ if ($result->num_rows > 0) {
                     <div class="col-2"><strong>Open Reading</strong></div>
                     <div class="col-3">
                         <input type="text" class="form-control" name="xg1_start_reading" id="xg1_start_reading"
-                            value="<?php echo $shiftC_close_xg1_reading; ?>" readonly>
+                            value="<?php echo $shiftC_close_xg1_reading; ?>" >
                     </div>
                     <div class="col-2">
                         <input type="text" class="form-control" name="xg2_start_reading" id="xg2_start_reading"
-                            value="<?php echo $shiftC_close_xg2_reading; ?>" readonly>
+                            value="<?php echo $shiftC_close_xg2_reading; ?>" >
                     </div>
                     <div class="col-2">
                         <input type="text" class="form-control" name="ms1_start_reading" id="ms1_start_reading"
-                            value="<?php echo $shiftC_close_ms1_reading; ?>" readonly>
+                            value="<?php echo $shiftC_close_ms1_reading; ?>" >
                     </div>
                     <div class="col-3">
                         <input type="text" class="form-control" name="ms2_start_reading" id="ms2_start_reading"
-                            value="<?php echo $shiftC_close_ms2_reading; ?>" readonly>
+                            value="<?php echo $shiftC_close_ms2_reading; ?>" >
                     </div>
                 </div>
                 <?php
@@ -358,7 +358,7 @@ if ($result->num_rows > 0) {
         let testingLess = parseFloat(document.getElementsByName(`${prefix}testing_less`)[rowIndex]?.value) || 0;
         let rate = parseFloat(document.getElementsByName(`${prefix}rate`)[rowIndex]?.value) || 0;
 
-        let readingDifference = startReading - closeReading;
+        let readingDifference = closeReading-startReading;
         let netSale = readingDifference - testingLess;
         let totalAmount = netSale * rate;
 
