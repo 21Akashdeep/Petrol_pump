@@ -10,7 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Function to check and convert empty values to NULL
-    function sanitizeInput($value) {
+    function sanitizeInput($value)
+    {
         return ($value === "" || $value === null) ? NULL : $value;
     }
 
@@ -60,14 +61,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Bind parameters
-    $stmt->bind_param("ssssssssddddddddddddddddddddd", 
-        $datetime, $product1, $product2, $product3, $product4, 
-        $employee1, $employee2, $employee3, $employee4, 
-        $xg1_start_reading, $xg2_start_reading, $ms1_start_reading, $ms2_start_reading, 
-        $xg1_close_reading, $xg2_close_reading, $ms1_close_reading, $ms2_close_reading, 
-        $xg1_net_sale, $xg2_net_sale, $ms1_net_sale, $ms2_net_sale, 
-        $xg1_rate, $xg2_rate, $ms1_rate, $ms2_rate, 
-        $xg1_total_amount, $xg2_total_amount, $ms1_total_amount, $ms2_total_amount
+    $stmt->bind_param(
+        "ssssssssddddddddddddddddddddd",
+        $datetime,
+        $product1,
+        $product2,
+        $product3,
+        $product4,
+        $employee1,
+        $employee2,
+        $employee3,
+        $employee4,
+        $xg1_start_reading,
+        $xg2_start_reading,
+        $ms1_start_reading,
+        $ms2_start_reading,
+        $xg1_close_reading,
+        $xg2_close_reading,
+        $ms1_close_reading,
+        $ms2_close_reading,
+        $xg1_net_sale,
+        $xg2_net_sale,
+        $ms1_net_sale,
+        $ms2_net_sale,
+        $xg1_rate,
+        $xg2_rate,
+        $ms1_rate,
+        $ms2_rate,
+        $xg1_total_amount,
+        $xg2_total_amount,
+        $ms1_total_amount,
+        $ms2_total_amount
     );
 
     // Execute query
@@ -80,5 +104,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Close statement and connection
     $stmt->close();
     $conn->close();
+}
+
+if ($conn->query($sql) === TRUE) {
+    header("Location: liquidlist.php");
+    exit();
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 ?>
