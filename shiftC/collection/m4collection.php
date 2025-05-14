@@ -1,4 +1,3 @@
-
 <?php
 $servername = "localhost";
 $username = "root";
@@ -35,11 +34,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conn->close();
 }
+
+
+
+$employees = [];
+$sql = "SELECT id, company_name FROM employee";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $employees[] = $row;
+    }
+}
+date_default_timezone_set('Asia/Kolkata');
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             align-items: center;
             height: 100vh;
         }
+
         .container {
             background: white;
             padding: 20px;
@@ -60,6 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 450px;
         }
+
         .header {
             background: #ff6600;
             color: white;
@@ -70,30 +84,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 16px;
             width: fit-content;
         }
+
         label {
             font-weight: bold;
             display: block;
             margin-top: 10px;
         }
+
         .row {
             display: flex;
             justify-content: space-between;
             gap: 10px;
             margin-top: 5px;
         }
-        select, input {
+
+        select,
+        input {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .row select, .row input {
+
+        .row select,
+        .row input {
             flex: 1;
         }
+
         input::placeholder {
             color: #777;
             font-weight: normal;
         }
+
         .submit-btn {
             background: #ff6600;
             color: white;
@@ -106,11 +128,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             display: block;
             margin: 15px auto 0;
         }
+
         .submit-btn:hover {
             background: #e65c00;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <form method="POST" action="">
@@ -120,26 +144,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="datetime-local" name="Date_And_Time" required>
 
             <label>Select Employee</label>
-            <div class="row">
-                <div>
-                    <select name="Employee_Name1" required>
-                        <option value="" disabled selected>Select Employee 1</option>
-                        <option value="John Doe">John Doe</option>
-                        <option value="Jane Smith">Jane Smith</option>
-                        <option value="Michael Johnson">Michael Johnson</option>
-                        <option value="Emily Davis">Emily Davis</option>
-                    </select>
-                </div>
-                <div>
-                    <select name="Employee_Name2" required>
-                        <option value="" disabled selected>Select Employee 2</option>
-                        <option value="John Doe">John Doe</option>
-                        <option value="Jane Smith">Jane Smith</option>
-                        <option value="Michael Johnson">Michael Johnson</option>
-                        <option value="Emily Davis">Emily Davis</option>
-                    </select>
-                </div>
+             <div class="row mb-3">
+            <div class="col-4"><strong>Select Employee</strong></div>
+            <div class="col-4">
+                <select class="form-select" name="shifta1_emp1">
+                    <option value="">Select Employee</option>
+                    <?php foreach ($employees as $employee) { ?>
+                    <option value="<?php echo $employee['company_name']; ?>"
+                        <?php echo (isset($latestData['shifta1_emp1']) && $latestData['shifta1_emp1'] == $employee['company_name']) ? "selected" : ""; ?>>
+                        <?php echo $employee['company_name']; ?>
+                    </option>
+                    <?php } ?>
+                </select>
             </div>
+            <div class="col-4">
+                <select class="form-select" name="shifta1_emp2">
+                    <option value="">Select Employee</option>
+                    <?php foreach ($employees as $employee) { ?>
+                    <option value="<?php echo $employee['company_name']; ?>"
+                        <?php echo (isset($latestData['shifta1_emp2']) && $latestData['shifta1_emp2'] == $employee['company_name']) ? "selected" : ""; ?>>
+                        <?php echo $employee['company_name']; ?>
+                    </option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
 
             <label>Collection Name</label>
             <div class="row">
@@ -157,4 +186,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 </body>
+
 </html>

@@ -35,6 +35,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conn->close();
 }
+
+
+
+$employees = [];
+$sql = "SELECT id, company_name FROM employee";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $employees[] = $row;
+    }
+}
+date_default_timezone_set('Asia/Kolkata');
 ?>
 
 
@@ -120,26 +132,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="datetime-local" name="Date_And_Time" required>
 
             <label>Select Employee</label>
-            <div class="row">
-                <div>
-                    <select name="Employee_Name1" required>
-                        <option value="" disabled selected>Select Employee 1</option>
-                        <option value="John Doe">John Doe</option>
-                        <option value="Jane Smith">Jane Smith</option>
-                        <option value="Michael Johnson">Michael Johnson</option>
-                        <option value="Emily Davis">Emily Davis</option>
-                    </select>
-                </div>
-                <div>
-                    <select name="Employee_Name2" required>
-                        <option value="" disabled selected>Select Employee 2</option>
-                        <option value="John Doe">John Doe</option>
-                        <option value="Jane Smith">Jane Smith</option>
-                        <option value="Michael Johnson">Michael Johnson</option>
-                        <option value="Emily Davis">Emily Davis</option>
-                    </select>
-                </div>
+               <div class="row mb-3">
+            <div class="col-4"><strong>Select Employee</strong></div>
+            <div class="col-4">
+                <select class="form-select" name="shifta1_emp1">
+                    <option value="">Select Employee</option>
+                    <?php foreach ($employees as $employee) { ?>
+                    <option value="<?php echo $employee['company_name']; ?>"
+                        <?php echo (isset($latestData['shifta1_emp1']) && $latestData['shifta1_emp1'] == $employee['company_name']) ? "selected" : ""; ?>>
+                        <?php echo $employee['company_name']; ?>
+                    </option>
+                    <?php } ?>
+                </select>
             </div>
+            <div class="col-4">
+                <select class="form-select" name="shifta1_emp2">
+                    <option value="">Select Employee</option>
+                    <?php foreach ($employees as $employee) { ?>
+                    <option value="<?php echo $employee['company_name']; ?>"
+                        <?php echo (isset($latestData['shifta1_emp2']) && $latestData['shifta1_emp2'] == $employee['company_name']) ? "selected" : ""; ?>>
+                        <?php echo $employee['company_name']; ?>
+                    </option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
 
             <label>Collection Name</label>
             <div class="row">
