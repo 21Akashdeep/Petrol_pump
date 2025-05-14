@@ -77,6 +77,7 @@ date_default_timezone_set('Asia/Kolkata');
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             width: 35%;
             margin: 10px;
+            maqgin-top: 0%;
         }
 
         .contai-box {
@@ -85,8 +86,7 @@ date_default_timezone_set('Asia/Kolkata');
             border-radius: 10px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             width: 80%;
-            margin: 10px;
-            margin-left: 10%;
+      
         }
 
         .header {
@@ -138,10 +138,11 @@ date_default_timezone_set('Asia/Kolkata');
 </head>
 
 <body>
-    <?php include '../navbar.php'; ?>
+    <?php 
+    //include '../navbar.php'; ?>
 
     <div class="contai d-flex flex-container" style="margin: 20px;">
-        <div class="row mt-3">
+        <!-- <div class="row mt-3">
             <div class="col-12 text-center">
                 <button type="button" class="btn btn-danger" onclick="resetForm()">Reset</button>
             </div>
@@ -159,7 +160,7 @@ date_default_timezone_set('Asia/Kolkata');
                     }
                 });
             }
-        </script>
+        </script> -->
         <div class="contai-box">
             <div class="containe">
                 <p class="machine-info">BPT SHIFT B</p>
@@ -422,7 +423,7 @@ date_default_timezone_set('Asia/Kolkata');
                 </div>
                 <?php
                 // Database connection required
-                include '../db_connect.php';
+               // include '../db_connect.php';
 
                 // Rate table se data fetch karna
                 $xp95_rate = "";

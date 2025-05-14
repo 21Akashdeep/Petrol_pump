@@ -87,7 +87,7 @@ date_default_timezone_set('Asia/Kolkata');
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
         width: 1000%;
         margin: 10px;
-        margin-left: 10%;
+    
     }
 
     .header {
@@ -139,11 +139,12 @@ date_default_timezone_set('Asia/Kolkata');
 </head>
 
 <body>
-    <?php include '../navbar.php';
+    <?php 
+    //include '../navbar.php';
      ?>
 
     <div class="contai d-flex flex-container" style="margin-left: 10px;">
-        <div class="row mt-3"  style="margin:0;">
+        <!-- <div class="row mt-3"  style="margin:0;">
             <div class="col-12 text-center">
                 <button type="button" class="btn btn-danger" onclick="resetForm()">Reset</button>
             </div>
@@ -160,7 +161,7 @@ date_default_timezone_set('Asia/Kolkata');
                 }
             });
         }
-        </script>
+        </script> -->
         <div class="contai-box">
             <div class="containe">
                 <p class="machine-info">BPT SHIFT A</p>
