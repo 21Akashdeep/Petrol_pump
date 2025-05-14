@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 }
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-$sql = "SELECT * FROM liquidc2 WHERE id = $id";
+$sql = "SELECT * FROM liquidc4 WHERE id = $id";
 $result = $conn->query($sql);
 if (!$result || $result->num_rows == 0) {
     die("Record not found.");
@@ -62,7 +62,7 @@ if ($result_emp->num_rows > 0) {
 </head>
 <body>
     <div class="contai-box">
-        <div class="machine-info">BPT SHIFT A</div>
+        <div class="machine-info">BPT SHIFT C</div>
         <div class="machine-info">Edit Liquid Entry</div>
         <form action="liquidupdate.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
@@ -76,16 +76,40 @@ if ($result_emp->num_rows > 0) {
             <div class="row mb-3">
                 <div class="col-2"><strong>Product</strong></div>
                 <div class="col-3">
-                    <input type="text" class="form-control" name="product1" value="<?php echo $row['product1']; ?>" readonly>
+                    <select class="form-select" name="product1" disabled>
+                        <option value="Mobile-2T" <?php if($row['product1']=="Mobile-2T") echo "selected"; ?>>Mobile-2T</option>
+                        <option value="Mobile-1L" <?php if($row['product1']=="Mobile-1L") echo "selected"; ?>>Mobile-1L</option>
+                        <option value="D water-1 Ltr" <?php if($row['product1']=="D water-1 Ltr") echo "selected"; ?>>D water-1 Ltr</option>
+                        <option value="D water-5 Ltr" <?php if($row['product1']=="D water-5 Ltr") echo "selected"; ?>>D water-5 Ltr</option>
+                    </select>
+                    <input type="hidden" name="product1" value="<?php echo $row['product1']; ?>">
                 </div>
                 <div class="col-2">
-                    <input type="text" class="form-control" name="product2" value="<?php echo $row['product2']; ?>" readonly>
+                    <select class="form-select" name="product2" disabled>
+                        <option value="Mobile-2T" <?php if($row['product2']=="Mobile-2T") echo "selected"; ?>>Mobile-2T</option>
+                        <option value="Mobile-1L" <?php if($row['product2']=="Mobile-1L") echo "selected"; ?>>Mobile-1L</option>
+                        <option value="D water-1 Ltr" <?php if($row['product2']=="D water-1 Ltr") echo "selected"; ?>>D water-1 Ltr</option>
+                        <option value="D water-5 Ltr" <?php if($row['product2']=="D water-5 Ltr") echo "selected"; ?>>D water-5 Ltr</option>
+                    </select>
+                    <input type="hidden" name="product2" value="<?php echo $row['product2']; ?>">
                 </div>
                 <div class="col-2">
-                    <input type="text" class="form-control" name="product3" value="<?php echo $row['product3']; ?>" readonly>
+                    <select class="form-select" name="product3" disabled>
+                        <option value="Mobile-2T" <?php if($row['product3']=="Mobile-2T") echo "selected"; ?>>Mobile-2T</option>
+                        <option value="Mobile-1L" <?php if($row['product3']=="Mobile-1L") echo "selected"; ?>>Mobile-1L</option>
+                        <option value="D water-1 Ltr" <?php if($row['product3']=="D water-1 Ltr") echo "selected"; ?>>D water-1 Ltr</option>
+                        <option value="D water-5 Ltr" <?php if($row['product3']=="D water-5 Ltr") echo "selected"; ?>>D water-5 Ltr</option>
+                    </select>
+                    <input type="hidden" name="product3" value="<?php echo $row['product3']; ?>">
                 </div>
                 <div class="col-3">
-                    <input type="text" class="form-control" name="product4" value="<?php echo $row['product4']; ?>" readonly>
+                    <select class="form-select" name="product4" disabled>
+                        <option value="Mobile-2T" <?php if($row['product4']=="Mobile-2T") echo "selected"; ?>>Mobile-2T</option>
+                        <option value="Mobile-1L" <?php if($row['product4']=="Mobile-1L") echo "selected"; ?>>Mobile-1L</option>
+                        <option value="D water-1 Ltr" <?php if($row['product4']=="D water-1 Ltr") echo "selected"; ?>>D water-1 Ltr</option>
+                        <option value="D water-5 Ltr" <?php if($row['product4']=="D water-5 Ltr") echo "selected"; ?>>D water-5 Ltr</option>
+                    </select>
+                    <input type="hidden" name="product4" value="<?php echo $row['product4']; ?>">
                 </div>
             </div>
             <div class="row mb-3">
@@ -151,25 +175,24 @@ if ($result_emp->num_rows > 0) {
                 </div>
             </div>
             <?php
-            $fields = [
-                "Close Reading" => "close_reading",
-                "Testing Less" => "testing_less",
-                "Rate" => "rate",
-                "Net Sale" => "net_sale",
-                "Total Amount" => "total_amount"
-            ];
-            $prefixes = ["xg1_", "xg2_", "ms1_", "ms2_"];
-            foreach ($fields as $label => $field_key) {
+            $fields = ["Close Reading", "Net Sale", "Rate", "Total Amount"];
+            foreach ($fields as $field) {
+                $field_key = strtolower(str_replace(" ", "_", $field));
                 echo '<div class="row mb-2">
-                        <div class="col-2"><strong>' . $label . '</strong></div>';
-                foreach ($prefixes as $i => $prefix) {
-                    $col = ($i == 0) ? 'col-3' : (($i == 3) ? 'col-3' : 'col-2');
-                    $readonly = ($field_key == "net_sale" || $field_key == "total_amount") ? 'readonly' : '';
-                    echo '<div class="' . $col . '">
-                            <input type="text" class="form-control" name="' . $prefix . $field_key . '" value="' . (isset($row[$prefix . $field_key]) ? $row[$prefix . $field_key] : "") . '" ' . $readonly . '>
-                          </div>';
-                }
-                echo '</div>';
+                        <div class="col-2">' . $field . '</div>
+                        <div class="col-3">
+                            <input type="text" class="form-control" name="xg1_' . $field_key . '" value="' . (isset($row['xg1_' . $field_key]) ? $row['xg1_' . $field_key] : "") . '">
+                        </div>
+                        <div class="col-2">
+                            <input type="text" class="form-control" name="xg2_' . $field_key . '" value="' . (isset($row['xg2_' . $field_key]) ? $row['xg2_' . $field_key] : "") . '">
+                        </div>
+                        <div class="col-2">
+                            <input type="text" class="form-control" name="ms1_' . $field_key . '" value="' . (isset($row['ms1_' . $field_key]) ? $row['ms1_' . $field_key] : "") . '">
+                        </div>
+                        <div class="col-3">
+                            <input type="text" class="form-control" name="ms2_' . $field_key . '" value="' . (isset($row['ms2_' . $field_key]) ? $row['ms2_' . $field_key] : "") . '">
+                        </div>
+                    </div>';
             }
             ?>
             <button type="submit" class="btn btn-submit mt-3">Update</button>
@@ -177,41 +200,39 @@ if ($result_emp->num_rows > 0) {
         </form>
     </div>
     <script>
-    function calculateValues(prefix) {
-        let startReading = parseFloat(document.getElementsByName(prefix + "start_reading")[0]?.value) || 0;
-        let closeReading = parseFloat(document.getElementsByName(prefix + "close_reading")[0]?.value) || 0;
-        let testingLess = parseFloat(document.getElementsByName(prefix + "testing_less")[0]?.value) || 0;
-        let rate = parseFloat(document.getElementsByName(prefix + "rate")[0]?.value) || 0;
+    function calculateValues(rowIndex, prefix) {
+        let startReading = parseFloat(document.getElementsByName(`${prefix}start_reading`)[rowIndex]?.value) || 0;
+        let closeReading = parseFloat(document.getElementsByName(`${prefix}close_reading`)[rowIndex]?.value) || 0;
+        let testingLess = parseFloat(document.getElementsByName(`${prefix}testing_less`)[rowIndex]?.value) || 0;
+        let rate = parseFloat(document.getElementsByName(`${prefix}rate`)[rowIndex]?.value) || 0;
 
         let readingDifference = closeReading - startReading;
         let netSale = readingDifference - testingLess;
         let totalAmount = netSale * rate;
 
-        if (document.getElementsByName(prefix + "net_sale")[0])
-            document.getElementsByName(prefix + "net_sale")[0].value = netSale.toFixed(2);
+        if (document.getElementsByName(`${prefix}reading_difference`)[rowIndex])
+            document.getElementsByName(`${prefix}reading_difference`)[rowIndex].value = readingDifference.toFixed(2);
 
-        if (document.getElementsByName(prefix + "total_amount")[0])
-            document.getElementsByName(prefix + "total_amount")[0].value = totalAmount.toFixed(2);
+        if (document.getElementsByName(`${prefix}net_sale`)[rowIndex])
+            document.getElementsByName(`${prefix}net_sale`)[rowIndex].value = netSale.toFixed(2);
+
+        if (document.getElementsByName(`${prefix}total_amount`)[rowIndex])
+            document.getElementsByName(`${prefix}total_amount`)[rowIndex].value = totalAmount.toFixed(2);
     }
 
     document.addEventListener("input", function(event) {
         let prefixes = ["xg1_", "xg2_", "ms1_", "ms2_"];
-        let fields = ["close_reading", "testing_less", "rate"];
+        let fields = ["start_reading", "close_reading", "testing_less", "rate"];
         prefixes.forEach(prefix => {
             fields.forEach(field => {
-                let input = document.getElementsByName(prefix + field)[0];
-                if (input) {
+                document.getElementsByName(`${prefix}${field}`).forEach((input, index) => {
                     input.addEventListener("input", function() {
-                        calculateValues(prefix);
+                        calculateValues(index, prefix);
                     });
-                }
+                });
             });
         });
     });
-
-    window.onload = function() {
-        ["xg1_", "xg2_", "ms1_", "ms2_"].forEach(calculateValues);
-    };
     </script>
 </body>
 </html>

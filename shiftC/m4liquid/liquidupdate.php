@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 }
 
 $id = intval($_POST['id']);
-$datetime = $_POST['datetime'];
+$shifta1_datetime = $_POST['shifta1_datetime'];
 $product1 = $_POST['product1'];
 $product2 = $_POST['product2'];
 $product3 = $_POST['product3'];
@@ -19,10 +19,10 @@ $employee1 = $_POST['employee1'];
 $employee2 = $_POST['employee2'];
 $employee3 = $_POST['employee3'];
 $employee4 = $_POST['employee4'];
-$xg1_start_reading = ($_POST['xg1_start_reading'] === '' ? 0 : $_POST['xg1_start_reading']);
-$xg2_start_reading = ($_POST['xg2_start_reading'] === '' ? 0 : $_POST['xg2_start_reading']);
-$ms1_start_reading = ($_POST['ms1_start_reading'] === '' ? 0 : $_POST['ms1_start_reading']);
-$ms2_start_reading = ($_POST['ms2_start_reading'] === '' ? 0 : $_POST['ms2_start_reading']);
+$xg1_start_reading = $_POST['xg1_start_reading'];
+$xg2_start_reading = $_POST['xg2_start_reading'];
+$ms1_start_reading = $_POST['ms1_start_reading'];
+$ms2_start_reading = $_POST['ms2_start_reading'];
 
 // Dynamic fields
 $fields = [
@@ -36,12 +36,12 @@ $field_values = [];
 foreach ($prefixes as $prefix) {
     foreach ($fields as $field) {
         $key = $prefix . $field;
-        $field_values[$key] = (isset($_POST[$key]) && $_POST[$key] !== '') ? $_POST[$key] : 0;
+        $field_values[$key] = isset($_POST[$key]) ? $_POST[$key] : '';
     }
 }
 
 // Build SQL
-$sql = "UPDATE liquida3 SET 
+$sql = "UPDATE liquidc4 SET 
     datetime=?, product1=?, product2=?, product3=?, product4=?,
     employee1=?, employee2=?, employee3=?, employee4=?,
     xg1_start_reading=?, xg2_start_reading=?, ms1_start_reading=?, ms2_start_reading=?";
@@ -58,7 +58,7 @@ $stmt = $conn->prepare($sql);
 
 // Bind parameters
 $params = [
-    $datetime,
+    $shifta1_datetime,
     $product1,
     $product2,
     $product3,
@@ -80,7 +80,7 @@ foreach ($prefixes as $prefix) {
 $params[] = $id;
 
 // Generate types string
-$types = str_repeat('s', 9) . str_repeat('d', 4 + count($fields) * count($prefixes)) . 'i';
+$types = str_repeat('s', count($params) - 1) . 'i';
 
 // Bind dynamically
 $stmt->bind_param($types, ...$params);
