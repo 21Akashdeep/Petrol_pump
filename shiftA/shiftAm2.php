@@ -199,17 +199,17 @@ foreach ($fields as $field) {
     if ($field == "Rate") {
         // Rate field - Fetch from database
         echo '<div class="col-4">
-                <input type="text" class="form-control" name="xp_' . $field_db . '" id="xp_' . $field_db . '" 
+                <input type="text" class="form-control" name="xp_' . $field_db . '" id="xpm2_' . $field_db . '" 
                 value="' . $xp95_rate . '" readonly>
               </div>
               <div class="col-4">
-                <input type="text" class="form-control" name="ms_' . $field_db . '" id="ms_' . $field_db . '" 
+                <input type="text" class="form-control" name="ms_' . $field_db . '" id="msm2_' . $field_db . '" 
                 value="' . $ms_rate . '" readonly>
               </div>';
     } elseif ($field == "Paytm machine No.") {
         // Paytm Machine No. dropdown
         echo '<div class="col-4">
-                <select class="form-select" name="xp_' . $field_db . '" id="xp_' . $field_db . '">';
+                <select class="form-select" name="xp_' . $field_db . '" id="xpm2_' . $field_db . '">';
         foreach ($paytm_numbers as $number) {
             $selected = (isset($latestData['xp_' . $field_db]) && $latestData['xp_' . $field_db] == $number) ? "selected" : "";
             echo '<option value="' . $number . '" ' . $selected . '>' . $number . '</option>';
@@ -218,7 +218,7 @@ foreach ($fields as $field) {
             </div>';
 
         echo '<div class="col-4">
-                <select class="form-select" name="ms_' . $field_db . '" id="ms_' . $field_db . '">';
+                <select class="form-select" name="ms_' . $field_db . '" id="msm2_' . $field_db . '">';
         foreach ($paytm_numbers as $number) {
             $selected = (isset($latestData['ms_' . $field_db]) && $latestData['ms_' . $field_db] == $number) ? "selected" : "";
             echo '<option value="' . $number . '" ' . $selected . '>' . $number . '</option>';
@@ -228,7 +228,7 @@ foreach ($fields as $field) {
     } elseif ($field == "Card Machine No.") {
         // Card Machine No. dropdown
         echo '<div class="col-4">
-                <select class="form-select" name="xp_' . $field_db . '" id="xp_' . $field_db . '">';
+                <select class="form-select" name="xp_' . $field_db . '" id="xpm2_' . $field_db . '">';
         foreach ($cash_denominations as $denomination) {
             $selected = (isset($latestData['xp_' . $field_db]) && $latestData['xp_' . $field_db] == $denomination) ? "selected" : "";
             echo '<option value="' . $denomination . '" ' . $selected . '>' . $denomination . '</option>';
@@ -237,7 +237,7 @@ foreach ($fields as $field) {
             </div>';
 
         echo '<div class="col-4">
-                <select class="form-select" name="ms_' . $field_db . '" id="ms_' . $field_db . '">';
+                <select class="form-select" name="ms_' . $field_db . '" id="msm2_' . $field_db . '">';
         foreach ($cash_denominations as $denomination) {
             $selected = (isset($latestData['ms_' . $field_db]) && $latestData['ms_' . $field_db] == $denomination) ? "selected" : "";
             echo '<option value="' . $denomination . '" ' . $selected . '>' . $denomination . '</option>';
@@ -247,24 +247,24 @@ foreach ($fields as $field) {
     } elseif ($is_total_amount) {
         // Total Amount
         echo '<div class="col-4">
-                <input type="text" class="form-control" name="xp_' . $field_db . '" id="xp_' . $field_db . '" 
+                <input type="text" class="form-control" name="xp_' . $field_db . '" id="xpm2_' . $field_db . '" 
                 value="' . (isset($latestData['xp_' . $field_db]) ? $latestData['xp_' . $field_db] : "") . '">
               </div>
               <div class="col-4">
-                <input type="text" class="form-control" name="ms_' . $field_db . '" id="ms_' . $field_db . '" 
+                <input type="text" class="form-control" name="ms_' . $field_db . '" id="msm2_' . $field_db . '" 
                 value="' . (isset($latestData['ms_' . $field_db]) ? $latestData['ms_' . $field_db] : "") . '">
               </div>';
     } else {
         // Normal input fields
         echo '<div class="col-4">
                 <input type="text" class="form-control" 
-                name="xp_' . $field_db . '" id="xp_' . $field_db . '" 
+                name="xp_' . $field_db . '" id="xpm2_' . $field_db . '" 
                 value="' . (isset($latestData['xp_' . $field_db]) ? $latestData['xp_' . $field_db] : "") . '" 
                 ' . ($is_reading_difference || $is_net_sale ? 'readonly' : '') . '>
               </div>
               <div class="col-4">
                 <input type="text" class="form-control" 
-                name="ms_' . $field_db . '" id="ms_' . $field_db . '" 
+                name="ms_' . $field_db . '" id="msm2_' . $field_db . '" 
                 value="' . (isset($latestData['ms_' . $field_db]) ? $latestData['ms_' . $field_db] : "") . '" 
                 ' . ($is_reading_difference || $is_net_sale ? 'readonly' : '') . '>
               </div>';
@@ -294,86 +294,39 @@ foreach ($fields as $field) {
 
     </div>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        function calculateDifference(type) {
-            let startReading = document.getElementById(type + "_start_reading");
-            let closeReading = document.getElementById(type + "_close_reading");
-            let readingDifference = document.getElementById(type + "_reading_difference");
-            let testingLess = document.getElementById(type + "_testing_less");
-            let netSale = document.getElementById(type + "_net_sale");
+document.addEventListener("DOMContentLoaded", function() {
+    function calculateValues(prefix) {
+        let startReading = parseFloat(document.getElementById(prefix + "_start_reading")?.value) || 0;
+        let closeReading = parseFloat(document.getElementById(prefix + "_close_reading")?.value) || 0;
+        let testingLess = parseFloat(document.getElementById(prefix + "_testing_less")?.value) || 0;
+        let rate = parseFloat(document.getElementById(prefix + "_rate")?.value) || 0;
 
-            if (startReading && closeReading && readingDifference) {
-                startReading.addEventListener("input", updateValues);
-                closeReading.addEventListener("input", updateValues);
-            }
+        let readingDifference = closeReading - startReading;
+        let netSale = readingDifference - testingLess;
+        let totalAmount = netSale * rate;
 
-            if (readingDifference && testingLess && netSale) {
-                readingDifference.addEventListener("input", updateNetSale);
-                testingLess.addEventListener("input", updateNetSale);
-            }
+        if (document.getElementById(prefix + "_reading_difference"))
+            document.getElementById(prefix + "_reading_difference").value = readingDifference.toFixed(2);
 
-            function updateValues() {
-                let start = parseFloat(startReading.value) || 0;
-                let close = parseFloat(closeReading.value) || 0;
-                readingDifference.value = (close - start).toFixed(2);
-                updateNetSale();
-            }
+        if (document.getElementById(prefix + "_net_sale"))
+            document.getElementById(prefix + "_net_sale").value = netSale.toFixed(2);
 
-            function updateNetSale() {
-                let readingDiff = parseFloat(readingDifference.value) || 0;
-                let testLess = parseFloat(testingLess.value) || 0;
-                netSale.value = (readingDiff - testLess).toFixed(2);
-            }
-        }
-
-        calculateDifference("xpm2"); // For XP fields
-        calculateDifference("msm2"); // For MS fields
-
-        function calculateTotalAmount(prefix) {
-            let netSale = parseFloat(document.getElementById(prefix + "_net_sale").value) || 0;
-            let rate = parseFloat(document.getElementById(prefix + "_rate").value) || 0;
-            let totalAmount = netSale * rate;
+        if (document.getElementById(prefix + "_total_amount"))
             document.getElementById(prefix + "_total_amount").value = totalAmount.toFixed(2);
+    }
 
-            calculateShortageSurplus(prefix);
-        }
-
-        function calculateShortageSurplus(prefix) {
-            let totalAmount = parseFloat(document.getElementById(prefix + "_total_amount").value) || 0;
-            let cashAmount = parseFloat(document.getElementById(prefix + "_cash").value) || 0;
-            let paytmAmount = parseFloat(document.getElementById(prefix + "_paytm_amount").value) || 0;
-            let cardAmount = parseFloat(document.getElementById(prefix + "_card_amount").value) || 0;
-
-            let sumOfAmounts = cashAmount + paytmAmount + cardAmount;
-            let shortage = 0,
-                surplus = 0;
-
-            if (totalAmount > sumOfAmounts) {
-                shortage = totalAmount - sumOfAmounts; // When payments are less than total amount
-            } else if (sumOfAmounts > totalAmount) {
-                surplus = sumOfAmounts - totalAmount; // When payments exceed total amount
+    ["xpm2", "msm2"].forEach(function(prefix) {
+        ["start_reading", "close_reading", "testing_less", "rate"].forEach(function(field) {
+            let input = document.getElementById(prefix + "_" + field);
+            if (input) {
+                input.addEventListener("input", function() {
+                    calculateValues(prefix);
+                });
             }
-
-            document.getElementById(prefix + "_shortage").value = shortage.toFixed(2);
-            document.getElementById(prefix + "_surplus").value = surplus.toFixed(2);
-        }
-
-        ["xpm2", "msm2"].forEach(prefix => {
-            document.getElementById(prefix + "_net_sale").addEventListener("input", function() {
-                calculateTotalAmount(prefix);
-            });
-
-            document.getElementById(prefix + "_rate").addEventListener("input", function() {
-                calculateTotalAmount(prefix);
-            });
-
-            ["cash", "paytm_amount", "card_amount"].forEach(field => {
-                document.getElementById(prefix + "_" + field).addEventListener("input",
-                    function() {
-                        calculateShortageSurplus(prefix);
-                    });
-            });
         });
+        // Initial calculation on page load
+        calculateValues(prefix);
     });
-    </script>
+});
+</script>
 </div>

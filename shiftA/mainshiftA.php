@@ -96,7 +96,8 @@
                     </div>
                 </div>
             </div>
-            <?php include 'shiftAm1.php'; ?>
+            <?php include 'shiftAm1.php'; 
+            ?>
             <?php include 'shiftAm2.php'; ?>
             <?php include 'shiftAm3.php'; ?>
             <?php
