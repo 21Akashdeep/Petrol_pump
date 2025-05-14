@@ -1,4 +1,3 @@
-
 <?php
 $servername = "localhost";
 $username = "root";
@@ -27,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$Date_And_Time', '$Employee_Name1', '$Employee_Name2','$Collection_Name1', '$Collection_Name2', '$Amount1', '$Amount2')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Data saved successfully!'); window.location.href='../mainshiftB.php';</script>";
+        echo "<script>alert('Data saved successfully!'); window.location.href='m3collectionreport.php';</script>";
     } else {
         echo "<script>alert('Error: " . $stmt->error . "'); window.history.back();</script>";
 
