@@ -204,8 +204,8 @@ $total_pages = ceil($total_rows / $limit);
                                 <td>{$row['Collection_Name1']}</td>
                                 <td>{$row['Amount1']}</td>
                                 <td>
-                                <a href='../edit/vendoredit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/vendordelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                <a href='m1collectionedit.php?id=" . $row['id'] . "' class='edit-btn'>Edit</a>
+                                <a href='m1collectiondelete.php?id=" . $row['id'] . "' class='delete-btn' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
                             </td>
                               </tr>";
                         $sno++;
@@ -257,8 +257,8 @@ $total_pages = ceil($total_rows / $limit);
                                 <td>{$row['Collection_Name2']}</td>
                                 <td>{$row['Amount2']}</td>
                                 <td>
-                                <a href='../edit/vendoredit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/vendordelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                <a href='m1collectionedit.php?id=" . $row['id'] . "' class='edit-btn'>Edit</a>
+                                <a href='m1collectiondelete.php?id=" . $row['id'] . "' class='delete-btn' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
                             </td>
                               </tr>";
                         $sno++;
