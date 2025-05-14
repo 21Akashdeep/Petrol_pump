@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Amount2 = isset($_POST['Amount2']) ? $_POST['Amount2'] : '0';
 
     // SQL Query
-    $sql = "INSERT INTO Collectionb4 (Date_And_Time, Employee_Name1,Employee_Name2 ,Collection_Name1, Collection_Name2, Amount1, Amount2) 
+    $sql = "INSERT INTO Collectionb4 (Date_And_Time, Employee_Name1,Employee_Name2 ,Collection _Name1, Collection_Name2, Amount1, Amount2) 
             VALUES ('$Date_And_Time', '$Employee_Name1', '$Employee_Name2','$Collection_Name1', '$Collection_Name2', '$Amount1', '$Amount2')";
 
     if ($conn->query($sql) === TRUE) {
