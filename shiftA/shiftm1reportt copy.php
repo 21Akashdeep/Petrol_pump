@@ -219,14 +219,13 @@ $dataadvancea = $resultadvancea->fetch_assoc();
             font-family: Arial, sans-serif;
             text-align: center;
             margin-left: 10px;
-            margin-top: 10%;
         }
 
         table {
             width: 98%;
             border-collapse: collapse;
             border: 2px solid black;
-            margin-bottom: 100px;
+            margin-bottom: 20px;
         }
 
         th,
