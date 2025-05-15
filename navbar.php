@@ -10,12 +10,16 @@
         margin-top: -1px;
         display: none;
         position: absolute;
+
     }
 
     .dropdown-submenu:hover>.dropdown-menu {
         display: block;
     }
 </style>
+
+
+
 <!-- navbar.php -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -31,7 +35,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button"
-                        data-bs-toggle="dropdown">
+                        data-bs-toggle="dropdown" style="z-index: 1;">
                         Users
                     </a>
                     <ul class="dropdown-menu">
@@ -168,3 +172,5 @@
         </div>
     </div>
 </nav>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-..."
+    crossorigin="anonymous"></script>

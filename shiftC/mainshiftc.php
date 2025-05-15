@@ -108,7 +108,6 @@
         </div>
 
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -123,7 +122,7 @@
         function resetForm() {
             // Exclude open readings, date, and all rate fields from reset
             document.querySelectorAll(
-                'input:not([name="xp_start_reading"]):not([name="ms_start_reading"]):not([name="shiftc1_datetime"]):not([name$="_rate"]), select'
+                'input:not([name="xp_start_reading"]):not([name="ms_start_reading"]):not([name="shifta1_datetime"]):not([name="datetime"]):not([name$="_rate"]), select'
             ).forEach(field => {
                 if (field.tagName === 'INPUT') {
                     field.value = ''; // Clear input fields
@@ -133,6 +132,10 @@
             });
         }
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-..."
+        crossorigin="anonymous"></script>
+
 </body>
 
 </html>

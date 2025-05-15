@@ -126,7 +126,7 @@
         function resetForm() {
             // Exclude open readings, date, and all rate fields from reset
             document.querySelectorAll(
-                'input:not([name="xp_start_reading"]):not([name="ms_start_reading"]):not([name="shifta1_datetime"]):not([id*="_rate"]), select'
+                'input:not([name="xp_start_reading"]):not([name="ms_start_reading"]):not([name="shifta1_datetime"]):not([name="datetime"]):not([id*="_rate"]), select'
             ).forEach(field => {
                 if (field.tagName === 'INPUT') {
                     field.value = ''; // Clear input fields
