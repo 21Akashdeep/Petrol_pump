@@ -211,7 +211,7 @@ $advance = $dataadvancea['advancec'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <style>
+   <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -235,9 +235,10 @@ $advance = $dataadvancea['advancec'];
 
         .header {
             font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 3px;
+            font-weight: 900;
+            letter-spacing: 5px;
         }
+
 
         .sub-header {
             font-size: 18px;
@@ -245,7 +246,7 @@ $advance = $dataadvancea['advancec'];
         }
 
         .blue-row {
-            background-color: rgb(208, 208, 208);
+            background-color: rgb(124, 216, 255);
             color: black;
             font-weight: 700;
             border-radius: 50;
@@ -253,7 +254,7 @@ $advance = $dataadvancea['advancec'];
 
         .bpt {
             font-weight: 600;
-            font-size: 18px;
+            font-size: 28px;
         }
 
         .expense-section {
@@ -270,6 +271,7 @@ $advance = $dataadvancea['advancec'];
         .total-row {
             font-weight: bold;
             background-color: #f2f2f2;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -496,7 +498,7 @@ $advance = $dataadvancea['advancec'];
             <!-- <div>Expense & Creditors Report</div> -->
             <table>
                 <tr class="blue-row">
-                    <td>product</td>
+                    <td>Product</td>
                     <td>Total Ltr</td>
                     <td>Rate (Rs)</td>
                     <td>Amount</td>
@@ -923,6 +925,17 @@ $advance = $dataadvancea['advancec'];
                             </tr>
                             <?php
                         }
+
+                        // Grand total for all
+                        $grand_shortage = array_sum($total_shortage);
+                        $grand_surplus = array_sum($total_surplus);
+                        ?>
+                        <tr class="total-row">
+                            <td><strong>GRAND TOTAL</strong></td>
+                            <td><strong><?= number_format($grand_shortage); ?></strong></td>
+                            <td><strong><?= number_format($grand_surplus); ?></strong></td>
+                        </tr>
+                        <?php
                     } else {
                         echo "<tr><td colspan='3'>No data found</td></tr>";
                     }

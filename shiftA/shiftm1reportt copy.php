@@ -238,9 +238,10 @@ $dataadvancea = $resultadvancea->fetch_assoc();
 
         .header {
             font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 3px;
+            font-weight: 900;
+            letter-spacing: 5px;
         }
+
 
         .sub-header {
             font-size: 18px;
@@ -248,7 +249,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
         }
 
         .blue-row {
-            background-color: rgb(208, 208, 208);
+            background-color: rgb(124, 216, 255);
             color: black;
             font-weight: 700;
             border-radius: 50;
@@ -256,7 +257,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
 
         .bpt {
             font-weight: 600;
-            font-size: 18px;
+            font-size: 28px;
         }
 
         .expense-section {
@@ -273,6 +274,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
         .total-row {
             font-weight: bold;
             background-color: #f2f2f2;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -502,7 +504,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
             <!-- <div>Expense & Creditors Report</div> -->
             <table>
                 <tr class="blue-row">
-                    <td>product</td>
+                    <td>Product</td>
                     <td>Total Ltr</td>
                     <td>Rate (Rs)</td>
                     <td>Amount</td>
@@ -918,6 +920,17 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                             </tr>
                             <?php
                         }
+
+                        // Grand total for all
+                        $grand_shortage = array_sum($total_shortage);
+                        $grand_surplus = array_sum($total_surplus);
+                        ?>
+                        <tr class="total-row"">
+                            <td><strong>GRAND TOTAL</strong></td>
+                            <td><strong><?= number_format($grand_shortage); ?></strong></td>
+                            <td><strong><?= number_format($grand_surplus); ?></strong></td>
+                        </tr>
+                        <?php
                     } else {
                         echo "<tr><td colspan='3'>No data found</td></tr>";
                     }
@@ -926,31 +939,31 @@ $dataadvancea = $resultadvancea->fetch_assoc();
 
 
             </div>
-            <div class="col-4">
-                <table border="1">
-                    <tr class="blue-row">
-                        <td>EMPLOYEE NAME</td>
-                        <td>IN TIME</td>
-                        <td>OUT TIME</td>
-                    </tr>
-
-                    <?php
-                    if ($resultattendance->num_rows > 0) {
-                        while ($datacollection = $resultattendance->fetch_assoc()) {
-                            ?>
-                            <tr>
-                                <td><?= htmlspecialchars($datacollection['employee_name']); ?></td>
-                                <td><?= htmlspecialchars($datacollection['in_time']); ?></td>
-                                <td><?= htmlspecialchars($datacollection['out_time']); ?></td>
+            <div class=" col-4">
+                        <table border="1">
+                            <tr class="blue-row">
+                                <td>EMPLOYEE NAME</td>
+                                <td>IN TIME</td>
+                                <td>OUT TIME</td>
                             </tr>
-                            <?php
-                        }
-                    } else {
-                        echo "<tr><td colspan='3'>No data found</td></tr>";
-                    }
-                    ?>
 
-                </table>
+                            <?php
+                            if ($resultattendance->num_rows > 0) {
+                                while ($datacollection = $resultattendance->fetch_assoc()) {
+                                    ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($datacollection['employee_name']); ?></td>
+                                        <td><?= htmlspecialchars($datacollection['in_time']); ?></td>
+                                        <td><?= htmlspecialchars($datacollection['out_time']); ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                            } else {
+                                echo "<tr><td colspan='3'>No data found</td></tr>";
+                            }
+                            ?>
+
+                        </table>
             </div>
 
 
