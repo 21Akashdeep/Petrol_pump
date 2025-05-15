@@ -7,11 +7,11 @@ if ($conn->connect_error) {
 }
 // $totalb = isset($_SESSION['totalb']) ? $_SESSION['totalb'] : 0;
 // Fetch Data from Database
-$sql = "SELECT * FROM shiftb1 WHERE xp_close_reading ORDER BY shifta1_datetime DESC LIMIT 1";
+$sql = "SELECT * FROM shiftb1 WHERE xp_close_reading IS NOT NULL ORDER BY shifta1_datetime DESC LIMIT 1";
 $result = $conn->query($sql);
 $data = $result->fetch_assoc();
 
-$sql2 = "SELECT * FROM shiftb2 WHERE xp_close_reading ORDER BY shifta1_datetime DESC LIMIT 1";
+$sql2 = "SELECT * FROM shiftb2 WHERE xp_close_reading IS NOT NULL ORDER BY shifta1_datetime DESC LIMIT 1";
 $result2 = $conn->query($sql2);
 $data2 = $result2->fetch_assoc();
 
@@ -19,7 +19,7 @@ $sql3 = "SELECT * FROM shiftb3 WHERE xp_close_reading IS NOT NULL ORDER BY shift
 $result3 = $conn->query($sql3);
 $data3 = $result3->fetch_assoc();
 
-$sql4 = "SELECT * FROM shiftb4 WHERE xg1_close_reading ORDER BY datetime DESC LIMIT 1";
+$sql4 = "SELECT * FROM shiftb4 WHERE xg1_close_reading IS NOT NULL ORDER BY datetime DESC LIMIT 1";
 $result4 = $conn->query($sql4);
 $data4 = $result4->fetch_assoc();
 
