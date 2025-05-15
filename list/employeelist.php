@@ -88,7 +88,6 @@ $total_pages = ceil($total_rows / $limit);
 
 <body>
 
-    <!-- Navbar -->
     <?php include '../navbar.php'; ?>
     <!-- Main Content -->
     <div class="container container-content">

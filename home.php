@@ -304,16 +304,15 @@ $conn->close();
 <body>
   <?php include 'list/navbar.php'; ?>
   <div class="cards-container">
-    <div class="card" style="background: linear-gradient(135deg, #df190a, #a3ad11)"
-      onclick="window.location.href='cash.html';">
-      <div class="circle-img">
-        <img src="images/Cash.jpg" alt="Profile Picture" />
-      </div>
-      <h3>Cash</h3>
-      <!-- <p>Cash-In-Hand</p> -->
-      <p>Cash-In-Hand: <strong>₹ <?php echo number_format($total_cash); ?></strong></p>
+    <div class="card" style="background: linear-gradient(135deg, #df190a, #a3ad11)" ">
+      <div class=" circle-img">
+      <img src="images/Cash.jpg" alt="Profile Picture" />
     </div>
-    <!-- <div
+    <h3>Cash</h3>
+    <!-- <p>Cash-In-Hand</p> -->
+    <p>Cash-In-Hand: <strong>₹ <?php echo number_format($total_cash); ?></strong></p>
+  </div>
+  <!-- <div
         class="card"
         style="background: linear-gradient(135deg, #71808f, #371daa)"
         onclick="window.location.href='outstanding.html';"
@@ -324,24 +323,23 @@ $conn->close();
         <h3>Outstanding Balance</h3>
         <p>Pending Amounts</p>
       </div> -->
-    <div class="card" style="background: linear-gradient(135deg, #70646f, #581010)"
-      onclick="window.location.href='sale.html';">
-      <div class="circle-img" style="background-color: white">
-        <img src="images/sale.png" alt="Sale" />
-      </div>
-      <h3>Sale</h3>
-      <!-- <p>Yesterdays Sale Amounts</p> -->
-      <p>Total Sale Amounts: <strong>₹ <?php echo number_format($netsaletotal_cash); ?></strong></p>
+  <div class="card" style="background: linear-gradient(135deg, #70646f, #581010)">
+    <div class="circle-img" style="background-color: white">
+      <img src="images/sale.png" alt="Sale" />
+    </div>
+    <h3>Sale</h3>
+    <!-- <p>Yesterdays Sale Amounts</p> -->
+    <p>Total Sale Amounts: <strong>₹ <?php echo number_format($netsaletotal_cash); ?></strong></p>
 
+  </div>
+  <div class="card" style="background: linear-gradient(135deg, #0f68c0, #b62727)">
+    <div class="circle-img">
+      <img src="images/expense.png" alt="Expenses" />
     </div>
-    <div class="card" style="background: linear-gradient(135deg, #0f68c0, #b62727)">
-      <div class="circle-img">
-        <img src="images/expense.png" alt="Expenses" />
-      </div>
-      <h3>Expenses</h3>
-      <!-- <p>Yesterdays Expenses</p> -->
-      <p>Total Expenses: <strong>₹ <?php echo number_format($expensetotal_cash); ?></strong></p>
-    </div>
+    <h3>Expenses</h3>
+    <!-- <p>Yesterdays Expenses</p> -->
+    <p>Total Expenses: <strong>₹ <?php echo number_format($expensetotal_cash); ?></strong></p>
+  </div>
   </div>
 
   <div class="a">
