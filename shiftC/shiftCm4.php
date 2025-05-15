@@ -65,7 +65,7 @@ date_default_timezone_set('Asia/Kolkata');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Machine Data Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
+     <style>
     body {
         background-color: #f8f9fa;
     }
@@ -84,9 +84,9 @@ date_default_timezone_set('Asia/Kolkata');
         padding: 10px;
         border-radius: 10px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        width: 80%;
+        width: 1000%;
         margin: 10px;
-        margin-left: 10%;
+    
     }
 
     .header {
@@ -138,10 +138,11 @@ date_default_timezone_set('Asia/Kolkata');
 </head>
 
 <body>
-    <?php include '../navbar.php'; ?>
+    <?php 
+    //include '../navbar.php'; ?>
 
     <div class="contai d-flex flex-container">
-        <div class="row mt-3">
+        <!-- <div class="row mt-3">
             <div class="col-12 text-center">
                 <button type="button" class="btn btn-danger" onclick="resetForm()">Reset</button>
             </div>
@@ -159,7 +160,7 @@ date_default_timezone_set('Asia/Kolkata');
                 }
             });
         }
-        </script>
+        </script> -->
         <div class="contai-box">
             <div class="containe">
                 <p class="machine-info">BPT SHIFT C</p>
@@ -430,7 +431,7 @@ date_default_timezone_set('Asia/Kolkata');
                 </div>
                 <?php
 // Database connection required
-include '../db_connect.php'; 
+//include '../db_connect.php'; 
 
 // Rate table se data fetch karna
 $xp95_rate = "";

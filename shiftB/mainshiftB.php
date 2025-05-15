@@ -9,6 +9,7 @@
     <style>
         body {
             background-color: #f8f9fa;
+            width: 160%;
         }
 
         .container-box {
@@ -90,12 +91,24 @@
                 </div>
             </div>
         </div>
-        <?php include 'shiftBm1.php'; ?>
-        <?php include 'shiftBm2.php'; ?>
-        <?php include 'shiftBm3.php'; ?>
-        <?php
-        //include 'shiftAm4.php'; 
-        ?>
+
+        <div style="display: flex;">
+
+            <div style="display: flex;">
+                <?php include 'shiftBm1.php'; ?>
+                <?php include 'shiftBm2.php'; ?>
+                <?php include 'shiftBm3.php'; ?>
+            </div>
+            <div style="display: flex;">
+                <?php
+                include '../shiftB/shiftBm4.php';
+                ?>
+            </div>
+
+
+        </div>
+
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 

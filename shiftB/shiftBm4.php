@@ -65,83 +65,84 @@ date_default_timezone_set('Asia/Kolkata');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Machine Data Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
+     <style>
+    body {
+        background-color: #f8f9fa;
+    }
 
-        .container-box {
-            background: white;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            width: 35%;
-            margin: 10px;
-        }
+    .container-box {
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        width: 35%;
+        margin: 10px;
+    }
 
-        .contai-box {
-            background: white;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            width: 80%;
-            margin: 10px;
-            margin-left: 10%;
-        }
+    .contai-box {
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        width: 1000%;
+        margin: 10px;
+    
+    }
 
-        .header {
-            text-align: center;
-            font-weight: bold;
-            color: #ff6200;
-        }
+    .header {
+        text-align: center;
+        font-weight: bold;
+        color: #ff6200;
+    }
 
-        .machine-info {
-            background: #ff6200;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
+    .machine-info {
+        background: #ff6200;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
 
-        .psn {
-            color: red;
-            font-size: 18px;
-            text-align: center;
-            font-weight: bold;
-        }
+    .psn {
+        color: red;
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+    }
 
-        .btn-submit {
-            background: #ff6200;
-            color: white;
-            font-weight: bold;
-            width: 100%;
-        }
+    .btn-submit {
+        background: #ff6200;
+        color: white;
+        font-weight: bold;
+        width: 100%;
+    }
 
-        .containe {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    .containe {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-        .header,
-        .machine-info,
-        .psn {
-            margin: 0 10px;
-        }
+    .header,
+    .machine-info,
+    .psn {
+        margin: 0 10px;
+    }
 
-        .color {
-            background-color: red;
-        }
+    .color {
+        background-color: red;
+    }
     </style>
 </head>
 
 <body>
-    <?php include '../navbar.php'; ?>
+    <?php 
+    //include '../navbar.php'; ?>
 
-    <div class="contai d-flex flex-container" style="margin: 20px;">
-        <div class="row mt-3">
+    <div class="contai d-flex flex-container"">
+        <!-- <div class="row mt-3">
             <div class="col-12 text-center">
                 <button type="button" class="btn btn-danger" onclick="resetForm()">Reset</button>
             </div>
@@ -159,7 +160,7 @@ date_default_timezone_set('Asia/Kolkata');
                     }
                 });
             }
-        </script>
+        </script> -->
         <div class="contai-box">
             <div class="containe">
                 <p class="machine-info">BPT SHIFT B</p>
@@ -422,7 +423,7 @@ date_default_timezone_set('Asia/Kolkata');
                 </div>
                 <?php
                 // Database connection required
-                include '../db_connect.php';
+               // include '../db_connect.php';
 
                 // Rate table se data fetch karna
                 $xp95_rate = "";
