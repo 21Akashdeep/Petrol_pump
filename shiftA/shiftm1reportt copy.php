@@ -176,17 +176,23 @@ $resultattendance = $conn->query($sqlcollection);
 
 date_default_timezone_set('Asia/Kolkata'); // Ensure correct timezone
 $today = date('Y-m-d');
-$sqlexp = "
-    SELECT expense_name, SUM(amount) AS total_amount FROM expense WHERE DATE(created_at) = '$today' GROUP BY expense_name
-    UNION ALL
-    SELECT expense_name, SUM(amount) AS total_amount FROM expensea2 WHERE DATE(created_at) = '$today' GROUP BY expense_name
-    UNION ALL
-    SELECT expense_name, SUM(amount) AS total_amount FROM expensea3 WHERE DATE(created_at) = '$today' GROUP BY expense_name
-    UNION ALL
-    SELECT expense_name, SUM(amount) AS total_amount FROM expensea4 WHERE DATE(created_at) = '$today' GROUP BY expense_name
-";
-$resultexp = $conn->query($sqlexp);
-$dataexp = $resultexp->fetch_assoc();
+$stmt = $conn->prepare("
+    SELECT expense_name, SUM(total_amount) AS total_amount
+    FROM (
+        SELECT expense_name, SUM(amount) AS total_amount FROM expense WHERE DATE(created_at) = ? GROUP BY expense_name
+        UNION ALL
+        SELECT expense_name, SUM(amount) AS total_amount FROM expensea2 WHERE DATE(created_at) = ? GROUP BY expense_name
+        UNION ALL
+        SELECT expense_name, SUM(amount) AS total_amount FROM expensea3 WHERE DATE(created_at) = ? GROUP BY expense_name
+        UNION ALL
+        SELECT expense_name, SUM(amount) AS total_amount FROM expensea4 WHERE DATE(created_at) = ? GROUP BY expense_name
+    ) AS combined_expenses
+    GROUP BY expense_name
+");
+$stmt->bind_param("ssss", $today, $today, $today, $today);
+$stmt->execute();
+$resultexp = $stmt->get_result();
+
 
 $sqladvancea = "SELECT * FROM advancea ORDER BY id DESC LIMIT 1";
 $resultadvancea = $conn->query($sqladvancea);
@@ -472,21 +478,25 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                 <?php
                 $total_expense = 0;
                 if ($resultexp->num_rows > 0) {
-                    while ($dataexp = $resultexp->fetch_assoc()) {
-                        $total_expense += $dataexp['total_amount']; // Adding each expense to total
+                    while ($row = $resultexp->fetch_assoc()) {
+                        $expense_name = htmlspecialchars($row['expense_name'], ENT_QUOTES, 'UTF-8');
+                        $amount = number_format($row['total_amount'], 2, '.', ',');
+                        $total_expense += $row['total_amount'];
                         echo "<tr>
-                                <td>{$dataexp['expense_name']}</td>
-                                <td>{$dataexp['total_amount']}</td>
-                              </tr>";
+                <td>{$expense_name}</td>
+                <td>{$amount}</td>
+              </tr>";
                     }
                 } else {
                     echo "<tr><td colspan='2'>No expenses found for today!</td></tr>";
                 }
+                $formatted_total = number_format($total_expense, 2, '.', ',');
                 ?>
                 <tr class="total-row">
                     <td>Total Expense + Creditors</td>
-                    <td><?= $total_expense ?></td>
+                    <td><?= $formatted_total ?></td>
                 </tr>
+
             </table>
         </div>
         <div class="col-4">
