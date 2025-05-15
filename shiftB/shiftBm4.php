@@ -552,7 +552,7 @@ date_default_timezone_set('Asia/Kolkata');
         let testingLess = parseFloat(document.getElementsByName(`${prefix}testing_less`)[rowIndex]?.value) || 0;
         let rate = parseFloat(document.getElementsByName(`${prefix}rate`)[rowIndex]?.value) || 0;
 
-        let readingDifference = startReading - closeReading;
+        let readingDifference = closeReading - startReading ;
         let netSale = readingDifference - testingLess;
         let totalAmount = netSale * rate;
 
