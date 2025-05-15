@@ -348,8 +348,8 @@ if ($result->num_rows > 0) {
                 </div>
 
             </div> -->
-            <a href='liquidedit.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a>
-            <a href='liquiddelete.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick='return confirm("Are you sure you want to delete?")'>Delete</a>
+            <!-- <a href='liquidedit.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a>
+            <a href='liquiddelete.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick='return confirm("Are you sure you want to delete?")'>Delete</a> -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

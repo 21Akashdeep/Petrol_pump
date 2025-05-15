@@ -220,9 +220,9 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <td>{$row['xg2_net_sale']}</td>
                                     <td>{$row['xg2_rate']}</td>
                                     <td>{$row['xg2_total_amount']}</td>  
-                                    <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                   <td>
+                                <a href='liquidedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                                <a href='liquiddelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
                             </td>
                                   </tr>";
                             $sno++;
@@ -284,8 +284,8 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <td>{$row['ms1_rate']}</td>
                                     <td>{$row['ms1_total_amount']}</td>  
                                     <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                <a href='liquidedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                                <a href='liquiddelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
                             </td>
                                   </tr>";
                             $sno++;
@@ -350,8 +350,8 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     
                                     
                                     <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                <a href='liquidedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                                <a href='liquiddelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
                             </td>
                                   </tr>";
                             $sno++;
