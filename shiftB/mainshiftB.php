@@ -82,15 +82,6 @@
     <?php include '../navbar.php'; ?>
 
     <div class="contai d-flex flex-container">
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <button type="button" class="btn btn-danger" onclick="resetForm()">Reset</button>
-                <div>
-                    <button type="button" class="btn btn-success mt-2"
-                        onclick="window.location.href='advancemoney.php';">Advance</button>
-                </div>
-            </div>
-        </div>
 
         <div style="display: flex;">
 
@@ -110,6 +101,17 @@
 
 
     </div>
+    <div class="row mt-3">
+        <div class="col-12 text-center">
+            <button type="button" class="btn btn-danger" onclick="resetForm()"
+                style="width:100%; font-size: 22px; font-weight: 700; height: 50px;">Reset</button>
+            <div>
+                <button type="button" class="btn btn-success mt-2" onclick="window.location.href='advancemoney.php';"
+                    style="width:100%; font-size: 22px; font-weight: 700; height: 50px;">Advance</button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>

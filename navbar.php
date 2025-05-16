@@ -16,13 +16,21 @@
     .dropdown-submenu:hover>.dropdown-menu {
         display: block;
     }
+    nav {
+        font-weight: 600;
+        color: white;
+        font-size: 18px;
+    }
 </style>
 
 
 
 <!-- navbar.php -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="../home.php">
+            <img src="../images/bpt.ico" alt="Logo" style="height:50px;">
+        </a>
         <!-- <a class="navbar-brand fw-bold" href="#">Item List</a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
