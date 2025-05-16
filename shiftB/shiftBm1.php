@@ -278,25 +278,20 @@ foreach ($fields as $field) {
 ?>
         <button type="submit" class="btn btn-submit mt-3">SUBMIT</button>
     </form>
-    <div class="row mt-2">
-        <div class="row">
-            <div class="col-3">
-                <a href="moneycash/m1moneyreport.php" class="">Add cash</a>
-            </div>
-            <div class="col-3">
-                <a href="m1liquid/liquidlist.php" class="">Add Liquid</a>
-
-            </div>
-            <div class="col-3">
-                <a href="expense/explist.php" class="">Expenses</a>
-
-            </div>
-            <div class="col-3">
-                <a href="collection/m1collectionreport.php" class="">Collection</a>
-
-            </div>
-        </div>
+    <div class="row mt-3 mb-3">
+    <div class="col-3">
+        <a href="moneycash/m1moneyreport.php" class="btn btn-primary w-100">Add Cash</a>
     </div>
+    <div class="col-3">
+        <a href="m1liquid/liquidlist.php" class="btn btn-success w-100">Add Liquid</a>
+    </div>
+    <div class="col-3">
+        <a href="expense/explist.php" class="btn btn-warning w-100">Expenses</a>
+    </div>
+    <div class="col-3">
+        <a href="collection/m1collectionreport.php" class="btn btn-info w-100">Collection</a>
+    </div>
+</div>
     <script>
 document.addEventListener("DOMContentLoaded", function() {
     function calculateValues(prefix) {
