@@ -51,13 +51,13 @@ $sqlbanka1 = "SELECT * FROM bankb2 ORDER BY id DESC LIMIT 1";
 $resultbanka1 = $conn->query($sqlbanka1);
 $databanka1 = $resultbanka1->fetch_assoc();
 
-$sqlbanka2 = "SELECT * FROM bankb3 ORDER BY id DESC LIMIT 1";
-$resultbanka2 = $conn->query($sqlbanka2);
-$databanka2 = $resultbanka2->fetch_assoc();
+$sqlbanka2a = "SELECT * FROM bankb3 ORDER BY id DESC LIMIT 1";
+$resultbanka2a = $conn->query($sqlbanka2a);
+$databanka2a = $resultbanka2a->fetch_assoc();
 
-$sqlbanka3 = "SELECT * FROM bankb4 ORDER BY id DESC LIMIT 1";
-$resultbanka3 = $conn->query($sqlbanka3);
-$databanka3 = $resultbanka3->fetch_assoc();
+$sqlbank500 = "SELECT * FROM bankb4 ORDER BY id DESC LIMIT 1";
+$resultbank500 = $conn->query($sqlbank500);
+$databank500 = $resultbank500->fetch_assoc();
 
 // $sqlbanka4 = "SELECT * FROM banka4 ORDER BY id DESC LIMIT 1";
 // $resultbanka4 = $conn->query($sqlbanka4);
@@ -328,30 +328,43 @@ $dataadvancea = $resultadvancea->fetch_assoc();
     // Pehle sabhi values assign karni hongi taki undefined variable error na aaye
     $bank500 = (isset($databank['pieces']) ? $databank['pieces'] : 0) +
         (isset($databanka1['pieces']) ? $databanka1['pieces'] : 0) +
-        (isset($databanka2['pieces']) ? $databanka2['pieces'] : 0) +
-        (isset($databanka3['pieces']) ? $databanka3['pieces'] : 0);
+        (isset($databanka2a['pieces']) ? $databanka2a['pieces'] : 0) +
+        (isset($databank500['pieces']) ? $databank500['pieces'] : 0);
 
     $bank200 = (isset($databanka2['pieces']) ? $databanka2['pieces'] : 0) +
-        (isset($databanka3['pieces']) ? $databanka3['pieces'] : 0) +
-        (isset($databanka4['pieces']) ? $databanka4['pieces'] : 0);
+        (isset($databanka2a2['pieces']) ? $databanka2a2['pieces'] : 0) +
+        (isset($databanka2a3['pieces']) ? $databanka2a3['pieces'] : 0) +
+        (isset($databanka2a4['pieces']) ? $databanka2a4['pieces'] : 0);
 
     $bank100 = (isset($databanka3['pieces']) ? $databanka3['pieces'] : 0) +
-        (isset($databanka4['pieces']) ? $databanka4['pieces'] : 0) +
-        (isset($databanka5['pieces']) ? $databanka5['pieces'] : 0);
+        (isset($databanka3a2['pieces']) ? $databanka3a2['pieces'] : 0) +
+        (isset($databanka3a3['pieces']) ? $databanka3a3['pieces'] : 0) +
+        (isset($databanka3a4['pieces']) ? $databanka3a4['pieces'] : 0);
+
 
     $bank50 = (isset($databanka4['pieces']) ? $databanka4['pieces'] : 0) +
-        (isset($databanka5['pieces']) ? $databanka5['pieces'] : 0) +
-        (isset($databanka6['pieces']) ? $databanka6['pieces'] : 0);
+        (isset($databanka4a2['pieces']) ? $databanka4a2['pieces'] : 0) +
+        (isset($databanka4a3['pieces']) ? $databanka4a3['pieces'] : 0) +
+        (isset($databanka4a4['pieces']) ? $databanka4a4['pieces'] : 0);
+
 
     $bank20 = (isset($databanka5['pieces']) ? $databanka5['pieces'] : 0) +
-        (isset($databanka6['pieces']) ? $databanka6['pieces'] : 0);
+        (isset($databanka5a2['pieces']) ? $databanka5a2['pieces'] : 0) +
+        (isset($databanka5a3['pieces']) ? $databanka5a3['pieces'] : 0) +
+        (isset($databanka5a4['pieces']) ? $databanka5a4['pieces'] : 0);
+
 
     $bank10 = (isset($databanka6['pieces']) ? $databanka6['pieces'] : 0) +
-        (isset($databanka7['pieces']) ? $databanka7['pieces'] : 0);
+        (isset($databanka6a2['pieces']) ? $databanka6a2['pieces'] : 0) +
+        (isset($databanka6a3['pieces']) ? $databanka6a3['pieces'] : 0) +
+        (isset($databanka6a4['pieces']) ? $databanka6a4['pieces'] : 0);
+
 
     // Coins amount
-    $coins = isset($databanka7['amount']) ? $databanka7['amount'] : 0;
-
+    $coins = (isset($databanka7['amount']) ? $databanka7['amount'] : 0) +
+        (isset($databanka7a2['amount']) ? $databanka7a2['amount'] : 0) +
+        (isset($databanka7a3['amount']) ? $databanka7a3['amount'] : 0) +
+        (isset($databanka7a4['amount']) ? $databanka7a4['amount'] : 0);
     // Calculate total amount for each note
     $bank500result = $bank500 * 500;
     $bank200result = $bank200 * 200;

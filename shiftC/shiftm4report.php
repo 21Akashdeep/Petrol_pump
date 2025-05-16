@@ -65,8 +65,14 @@ $total_pages4 = ceil($total_rows4 / $limit);
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
-            background-color: #f8f9fa;
-            margin: 0%
+            background-image: url("../images/dashboard.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            min-height: 100vh;
+            text-align: center;
+
         }
 
         .navbar {
@@ -81,8 +87,10 @@ $total_pages4 = ceil($total_rows4 / $limit);
         .table td {
             text-align: center;
             vertical-align: middle;
-            font-size: 15px;
-            padding: 3px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 2px;
+            padding-right: 2px;
         }
 
         .btn-custom {
@@ -122,12 +130,12 @@ $total_pages4 = ceil($total_rows4 / $limit);
     <!-- Navbar -->
     <?php include '../navbar.php'; ?>
     <!-- Main Content -->
-    <div class="container container-content" style="margin-left: 0; width:95%">
+    <div class="container d-flex flex-column align-items-center" style="margin-top: 3%;">
 
-        <!-- Table Section -->
-        <div class="bg-white p-4 shadow-sm rounded">
+        <!-- Table Section 1 -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width:1100px; width:100%;">
             <h5>Nozzle 1 Data</h5>
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mx-auto" style="width:auto;">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>
@@ -135,16 +143,12 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Employee Name</th>
                         <th>product</th>
                         <th>nozzle</th>
-                        <!-- <th></th> -->
                         <th>opening_Reading</th>
                         <th>closing_Reading</th>
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>total Amount</th>
-                        <!-- <th>Total Amount</th> -->
-                        <th>Action</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -161,20 +165,14 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <td>{$row['xg1_start_reading']}</td>
                                     <td>{$row['xg1_close_reading']}</td>
                                     <td>{$row['xg1_reading_difference']}</td>
-                                    <td>{$row['xg1_testing_less']}</td>                                   
+                                    <td>{$row['xg1_testing_less']}</td>
                                     <td>{$row['xg1_net_sale']}</td>
                                     <td>{$row['xg1_total_amount']}</td>
-                                    
-                                    
-                                    <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
-                            </td>
                                   </tr>";
                             $sno++;
                         }
                     } else {
-                        echo "<tr><td colspan='6' class='text-center'>No items found</td></tr>";
+                        echo "<tr><td colspan='11' class='text-center'>No items found</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -184,13 +182,11 @@ $total_pages4 = ceil($total_rows4 / $limit);
                     <?php if ($page > 1): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
                     <?php endif; ?>
-
                     <?php for ($i = 1; $i <= $total_pages; $i++): ?>
                         <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
                             <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                         </li>
                     <?php endfor; ?>
-
                     <?php if ($page < $total_pages): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
                     <?php endif; ?>
@@ -198,10 +194,10 @@ $total_pages4 = ceil($total_rows4 / $limit);
             </nav>
         </div>
 
-        <div class="bg-white p-4 shadow-sm rounded">
+        <!-- Table Section 2 -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width:1100px; width:100%;">
             <h5>Nozzle 2 Data</h5>
-
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mx-auto" style="width:auto;">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>
@@ -215,8 +211,6 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>total Amount</th>
-                        <th>Action</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -233,20 +227,14 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <td>{$row['xg2_start_reading']}</td>
                                     <td>{$row['xg2_close_reading']}</td>
                                     <td>{$row['xg2_reading_difference']}</td>
-                                    <td>{$row['xg2_testing_less']}</td>                                   
+                                    <td>{$row['xg2_testing_less']}</td>
                                     <td>{$row['xg2_net_sale']}</td>
                                     <td>{$row['xg2_total_amount']}</td>
-                                    
-                                    
-                                    <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
-                            </td>
                                   </tr>";
                             $sno++;
                         }
                     } else {
-                        echo "<tr><td colspan='6' class='text-center'>No items found</td></tr>";
+                        echo "<tr><td colspan='11' class='text-center'>No items found</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -256,13 +244,11 @@ $total_pages4 = ceil($total_rows4 / $limit);
                     <?php if ($page > 1): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
                     <?php endif; ?>
-
                     <?php for ($i = 1; $i <= $total_pages2; $i++): ?>
                         <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
                             <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                         </li>
                     <?php endfor; ?>
-
                     <?php if ($page < $total_pages2): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
                     <?php endif; ?>
@@ -270,12 +256,10 @@ $total_pages4 = ceil($total_rows4 / $limit);
             </nav>
         </div>
 
-        <div style="height: 300px;"></div>
-
-        <div class="bg-white p-4 shadow-sm rounded">
+        <!-- Table Section 3 -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width:1100px; width:100%;">
             <h5>Nozzle 3 Data</h5>
-
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mx-auto" style="width:auto;">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>
@@ -289,8 +273,6 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>total Amount</th>
-                        <th>Action</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -307,20 +289,14 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <td>{$row['ms1_start_reading']}</td>
                                     <td>{$row['ms1_close_reading']}</td>
                                     <td>{$row['ms1_reading_difference']}</td>
-                                    <td>{$row['ms1_testing_less']}</td>                                   
+                                    <td>{$row['ms1_testing_less']}</td>
                                     <td>{$row['ms1_net_sale']}</td>
                                     <td>{$row['ms1_total_amount']}</td>
-                                    
-                                    
-                                    <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
-                            </td>
                                   </tr>";
                             $sno++;
                         }
                     } else {
-                        echo "<tr><td colspan='6' class='text-center'>No items found</td></tr>";
+                        echo "<tr><td colspan='11' class='text-center'>No items found</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -330,13 +306,11 @@ $total_pages4 = ceil($total_rows4 / $limit);
                     <?php if ($page > 1): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
                     <?php endif; ?>
-
                     <?php for ($i = 1; $i <= $total_pages3; $i++): ?>
                         <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
                             <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                         </li>
                     <?php endfor; ?>
-
                     <?php if ($page < $total_pages3): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
                     <?php endif; ?>
@@ -344,10 +318,10 @@ $total_pages4 = ceil($total_rows4 / $limit);
             </nav>
         </div>
 
-        <div class="bg-white p-4 shadow-sm rounded">
+        <!-- Table Section 4 -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width:1100px; width:100%;">
             <h5>Nozzle 4 Data</h5>
-
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mx-auto" style="width:auto;">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>
@@ -361,8 +335,6 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>total Amount</th>
-                        <th>Action</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -379,20 +351,14 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <td>{$row['ms2_start_reading']}</td>
                                     <td>{$row['ms2_close_reading']}</td>
                                     <td>{$row['ms2_reading_difference']}</td>
-                                    <td>{$row['ms2_testing_less']}</td>                                   
+                                    <td>{$row['ms2_testing_less']}</td>
                                     <td>{$row['ms2_net_sale']}</td>
                                     <td>{$row['ms2_total_amount']}</td>
-                                    
-                                    
-                                    <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
-                            </td>
                                   </tr>";
                             $sno++;
                         }
                     } else {
-                        echo "<tr><td colspan='6' class='text-center'>No items found</td></tr>";
+                        echo "<tr><td colspan='11' class='text-center'>No items found</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -402,13 +368,11 @@ $total_pages4 = ceil($total_rows4 / $limit);
                     <?php if ($page > 1): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1; ?>">Previous</a></li>
                     <?php endif; ?>
-
                     <?php for ($i = 1; $i <= $total_pages4; $i++): ?>
                         <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
                             <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                         </li>
                     <?php endfor; ?>
-
                     <?php if ($page < $total_pages4): ?>
                         <li class="page-item"><a class="page-link" href="?page=<?php echo $page + 1; ?>">Next</a></li>
                     <?php endif; ?>

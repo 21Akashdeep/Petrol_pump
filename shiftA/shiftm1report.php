@@ -46,9 +46,14 @@ $total_pages = ceil($total_rows / $limit);
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
-            background-color: #f8f9fa;
-            margin-right: 5px;
+            background-image: url("../images/dashboard.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            min-height: 100vh;
             text-align: center;
+
         }
 
         .navbar {
@@ -63,8 +68,10 @@ $total_pages = ceil($total_rows / $limit);
         .table td {
             text-align: center;
             vertical-align: middle;
-            font-size: 15px;
-            padding: 2.2px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 2px;
+            padding-right: 2px;
         }
 
         .table {
@@ -104,17 +111,17 @@ $total_pages = ceil($total_rows / $limit);
     </style>
 </head>
 
-<body style="margin-left: 0;">
+<body>
 
     <!-- Navbar -->
     <?php include '../navbar.php'; ?>
     <!-- Main Content -->
-    <div class="container-content" style="margin-left: 0; width: 700px;">
+    <div class="container d-flex flex-column align-items-center" style="margin-top: 3%;">
 
-        <!-- Table Section -->
-        <div class="bg-white p-3 shadow-sm rounded">
+        <!-- Table Section 1 -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1100px; width: 100%;">
             <h5>Nozzle 1 Data</h5>
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>
@@ -182,10 +189,10 @@ $total_pages = ceil($total_rows / $limit);
             </nav>
         </div>
 
-        <div class="bg-white p-4 shadow-sm rounded">
+        <!-- Table Section 2 -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1100px; width: 100%;">
             <h5>Nozzle 2 Data</h5>
-
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>

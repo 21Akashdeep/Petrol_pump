@@ -64,9 +64,13 @@ $total_pages4 = ceil($total_rows4 / $limit);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        body {
-            background-color: #f8f9fa;
-            margin-right: 5px;
+      body {
+            background-image: url("../images/dashboard.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            min-height: 100vh;
             text-align: center;
 
         }
@@ -85,8 +89,8 @@ $total_pages4 = ceil($total_rows4 / $limit);
             vertical-align: middle;
             padding-top: 5px;
             padding-bottom: 5px;
-            padding-left: 1px;
-            padding-right: 1px;
+            padding-left: 2px;
+            padding-right: 2px;
         }
 
         .table {
@@ -131,12 +135,12 @@ $total_pages4 = ceil($total_rows4 / $limit);
     <!-- Navbar -->
     <?php include '../navbar.php'; ?>
     <!-- Main Content -->
-    <div class="container container-content" style="margin-left:0%;">
+    <div class="container d-flex flex-column align-items-center" style="margin-top: 3%;">
 
-        <!-- Table Section -->
-        <div class="bg-white p-4 shadow-sm rounded">
+        <!-- Table Section 1 -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1100px; width: 100%;">
             <h5>Nozzle 1 Data</h5>
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>
@@ -144,15 +148,12 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Employee Name</th>
                         <th>product</th>
                         <th>nozzle</th>
-                        <!-- <th></th> -->
                         <th>opening_Reading</th>
                         <th>closing_Reading</th>
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>total Amount</th>
-                        <!-- <th>Total Amount</th> -->
-
                     </tr>
                 </thead>
                 <tbody>
@@ -172,13 +173,11 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <td>{$row['xg1_testing_less']}</td>                                   
                                     <td>{$row['xg1_net_sale']}</td>
                                     <td>{$row['xg1_total_amount']}</td>
-                                    
-                                   
                                   </tr>";
                             $sno++;
                         }
                     } else {
-                        echo "<tr><td colspan='6' class='text-center'>No items found</td></tr>";
+                        echo "<tr><td colspan='11' class='text-center'>No items found</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -202,10 +201,10 @@ $total_pages4 = ceil($total_rows4 / $limit);
             </nav>
         </div>
 
-        <div class="bg-white p-4 shadow-sm rounded">
+        <!-- Table Section 2 -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1100px; width: 100%;">
             <h5>Nozzle 2 Data</h5>
-
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>
@@ -219,7 +218,6 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>total Amount</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -239,13 +237,11 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <td>{$row['xg2_testing_less']}</td>                                   
                                     <td>{$row['xg2_net_sale']}</td>
                                     <td>{$row['xg2_total_amount']}</td>
-                                    
-                                  
                                   </tr>";
                             $sno++;
                         }
                     } else {
-                        echo "<tr><td colspan='6' class='text-center'>No items found</td></tr>";
+                        echo "<tr><td colspan='11' class='text-center'>No items found</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -269,12 +265,10 @@ $total_pages4 = ceil($total_rows4 / $limit);
             </nav>
         </div>
 
-        <div style="height: 200px;"></div>
-
-        <div class="bg-white p-4 shadow-sm rounded">
+        <!-- Table Section 3 -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1100px; width: 100%;">
             <h5>Nozzle 3 Data</h5>
-
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>
@@ -288,8 +282,6 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>total Amount</th>
-                        <th>Action</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -309,17 +301,11 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <td>{$row['ms1_testing_less']}</td>                                   
                                     <td>{$row['ms1_net_sale']}</td>
                                     <td>{$row['ms1_total_amount']}</td>
-                                    
-                                    
-                                    <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
-                            </td>
                                   </tr>";
                             $sno++;
                         }
                     } else {
-                        echo "<tr><td colspan='6' class='text-center'>No items found</td></tr>";
+                        echo "<tr><td colspan='11' class='text-center'>No items found</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -343,10 +329,10 @@ $total_pages4 = ceil($total_rows4 / $limit);
             </nav>
         </div>
 
-        <div class="bg-white p-4 shadow-sm rounded">
+        <!-- Table Section 4 -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1100px; width: 100%;">
             <h5>Nozzle 4 Data</h5>
-
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
                     <tr>
                         <th>SNo.</th>
@@ -360,8 +346,6 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>total Amount</th>
-                        <th>Action</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -381,17 +365,11 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <td>{$row['ms2_testing_less']}</td>                                   
                                     <td>{$row['ms2_net_sale']}</td>
                                     <td>{$row['ms2_total_amount']}</td>
-                                    
-                                    
-                                    <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
-                            </td>
                                   </tr>";
                             $sno++;
                         }
                     } else {
-                        echo "<tr><td colspan='6' class='text-center'>No items found</td></tr>";
+                        echo "<tr><td colspan='11' class='text-center'>No items found</td></tr>";
                     }
                     ?>
                 </tbody>
