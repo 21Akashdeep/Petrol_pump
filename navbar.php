@@ -16,13 +16,13 @@
     .dropdown-submenu:hover>.dropdown-menu {
         display: block;
     }
+
     nav {
         font-weight: 600;
         color: white;
         font-size: 18px;
     }
 </style>
-
 
 
 <!-- navbar.php -->

@@ -34,6 +34,7 @@ $total_pages = ceil($total_records / $limit); // Total Pages Calculation
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,71 +49,109 @@ $total_pages = ceil($total_records / $limit); // Total Pages Calculation
             box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
             background: #f8f9fa;
         }
+
         .pagination {
             display: flex;
             justify-content: center;
             margin-top: 10px;
         }
+
         .page-link {
             margin: 0 5px;
         }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #212529;
+            color: #6c757d;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a.brand {
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a.brand:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="table-container">
-    <div class="btn-custom">
+    <div class="container">
+        <div class="table-container">
+            <div class="btn-custom">
                 <!-- <button type="button" class="btn btn-success mb-3 mx-2"onclick="window.location.href='../users/Adminlogin.php'">Admin login</button> -->
-                <button type="button" class="btn btn-success mb-3 mx-3"onclick="window.location.href='expense-form.php'">Create Expense</button>
+                <button type="button" class="btn btn-success mb-3 mx-3"
+                    onclick="window.location.href='expense-form.php'">Create Expense</button>
             </div>
-        <h5 class="text-center">Expense Summary</h5>
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>Expense Name</th>
-                    <th>Vehicle Numbers</th>
-                    <th>Total Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>
+            <h5 class="text-center">Expense Summary</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Expense Name</th>
+                        <th>Vehicle Numbers</th>
+                        <th>Total Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>
                                 <td>{$row['expense_name']}</td>
                                 <td>{$row['vehicle_numbers']}</td>
                                 <td>₹{$row['total_amount']}</td>
                               </tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='3' class='text-center'>No Records Found</td></tr>";
                     }
-                } else {
-                    echo "<tr><td colspan='3' class='text-center'>No Records Found</td></tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
 
-        <!-- Pagination -->
-        <nav class="pagination">
-            <?php if ($page > 1) { ?>
-                <a class="btn btn-primary btn-sm page-link" href="?page=<?php echo ($page - 1); ?>">Previous</a>
-            <?php } ?>
+            <!-- Pagination -->
+            <nav class="pagination">
+                <?php if ($page > 1) { ?>
+                    <a class="btn btn-primary btn-sm page-link" href="?page=<?php echo ($page - 1); ?>">Previous</a>
+                <?php } ?>
 
-            <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-                <a class="btn btn-secondary btn-sm page-link <?php if ($i == $page) echo 'active'; ?>" href="?page=<?php echo $i; ?>">
-                    <?php echo $i; ?>
-                </a>
-            <?php } ?>
+                <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
+                    <a class="btn btn-secondary btn-sm page-link <?php if ($i == $page)
+                        echo 'active'; ?>"
+                        href="?page=<?php echo $i; ?>">
+                        <?php echo $i; ?>
+                    </a>
+                <?php } ?>
 
-            <?php if ($page < $total_pages) { ?>
-                <a class="btn btn-primary btn-sm page-link" href="?page=<?php echo ($page + 1); ?>">Next</a>
-            <?php } ?>
-        </nav>
+                <?php if ($page < $total_pages) { ?>
+                    <a class="btn btn-primary btn-sm page-link" href="?page=<?php echo ($page + 1); ?>">Next</a>
+                <?php } ?>
+            </nav>
 
+        </div>
     </div>
-</div>
-
+    <footer>
+        <p><strong>Copyright © 2025 <a href="https://pcats.co.in/" class="brand" target="_blank">P-Cats,
+                    Jamshedpur</a>.</strong> All
+            rights reserved.</p>
+    </footer>
 </body>
+
 </html>
 
 <?php

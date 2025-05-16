@@ -17,11 +17,12 @@
     }
 </style>
 
+
 <!-- navbar.php -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="../home.php">
-           <h3>BPT</h3>
+            <img src="../images/bpt.ico" alt="Logo" style="height:50px;">
         </a>
         <!-- <a class="navbar-brand fw-bold" href="#">Item List</a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

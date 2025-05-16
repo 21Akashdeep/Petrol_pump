@@ -75,6 +75,33 @@
         .color {
             background-color: red;
         }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #212529;
+            color: #6c757d;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a.brand {
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a.brand:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -106,11 +133,15 @@
                 style="width:100%; font-size: 22px; font-weight: 700; height: 50px;">Reset</button>
             <div>
                 <button type="button" class="btn btn-success mt-2" onclick="window.location.href='advancemoney.php';"
-                    style="width:100%; font-size: 22px; font-weight: 700; height: 50px;">Advance</button>
+                    style="width:100%; font-size: 22px; font-weight: 700; height: 50px; margin-bottom: 45px;">Advance</button>
             </div>
         </div>
     </div>
-
+    <footer>
+        <p><strong>Copyright © 2025 <a href="https://pcats.co.in/" class="brand" target="_blank">P-Cats,
+                    Jamshedpur</a>.</strong> All
+            rights reserved.</p>
+    </footer>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".select-option").forEach(function (item) {

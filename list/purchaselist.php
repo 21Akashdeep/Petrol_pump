@@ -122,6 +122,33 @@ $total_pages = ceil($total_rows / $limit);
         .text-danger {
             font-weight: bold;
         }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #212529;
+            color: #6c757d;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a.brand {
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a.brand:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -224,6 +251,11 @@ $total_pages = ceil($total_rows / $limit);
             </nav>
         </div>
     </div>
+    <footer>
+        <p><strong>Copyright © 2025 <a href="https://pcats.co.in/" class="brand" target="_blank">P-Cats,
+                    Jamshedpur</a>.</strong> All
+            rights reserved.</p>
+    </footer>
     <script>
         function filterTable() {
             let searchInput = document.getElementById("searchInput").value.toLowerCase();

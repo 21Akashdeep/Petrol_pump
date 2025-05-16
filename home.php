@@ -231,16 +231,37 @@ $conn->close();
 
     .c {
       width: 47.5%;
-      /* Width of the div */
       height: 80px;
-      /* Height of the div */
       border: 2px solid black;
-      /* Adds a black border */
       margin: 20px auto;
-      /* Centers the div horizontally */
       position: relative;
       right: 24.5%;
       bottom: 445px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgb(0, 190, 162);
+      padding: 0 30px;
+      font-size: 1.2rem;
+      border-radius: 5px;
+    }
+
+    .c-title {
+      font-weight: bold;
+      color: #1a237e;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .digital-watch {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.5rem;
+      color: #0d6efd;
+      background: #222;
+      padding: 8px 18px;
+      border-radius: 8px;
+      letter-spacing: 2px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     .d {
@@ -297,6 +318,22 @@ $conn->close();
         /* Full width for smaller screens */
         margin: 10px auto;
       }
+    }
+
+    .c-title {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .digital-watch {
+      float: right;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: rgb(244, 245, 247);
+      background: rgb(53, 53, 53);
     }
   </style>
 </head>
@@ -467,8 +504,25 @@ $conn->close();
       const pieChart = new Chart(pieCtx, pieConfig);
     </script>
   </div>
-  <div class="c"></div>
-  <div class="d"></div>
+  <div class="c">
+    <span class="c-title">BHARAT PETROLEUM TRADERS - DHATKIDIH</span>
+    <span id="datetime" class="digital-watch"></span>
+  </div>
+  <div class="d">
+
+  </div>
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const dayName = days[now.getDay()];
+      const date = now.toLocaleDateString('en-GB'); // DD/MM/YYYY
+      const time = now.toLocaleTimeString('en-GB'); // HH:MM:SS
+      document.getElementById('datetime').textContent = `${dayName}, ${date} ${time}`;
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000); // Update every second
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>

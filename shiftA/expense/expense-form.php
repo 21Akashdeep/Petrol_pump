@@ -42,6 +42,7 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,47 +58,77 @@ $conn->close();
             box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
             background: #f8f9fa;
         }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #212529;
+            color: #6c757d;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a.brand {
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a.brand:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="form-container">
-        <h5 class="text-center">Expense Form</h5>
-        <form action="" method="POST">
-            <input type="text" name="expense_name" class="form-control form-control-sm mb-2" placeholder="Expense Name" required>
+    <div class="container">
+        <div class="form-container">
+            <h5 class="text-center">Expense Form</h5>
+            <form action="" method="POST">
+                <input type="text" name="expense_name" class="form-control form-control-sm mb-2"
+                    placeholder="Expense Name" required>
 
-            <div id="vehicleFields">
-                <div class="vehicle-group">
-                    <input type="text" name="vehicle_number[]" class="form-control form-control-sm mb-2" placeholder="Vehicle Number">
-                    <input type="number" name="amount[]" class="form-control form-control-sm mb-2" placeholder="Amount">
+                <div id="vehicleFields">
+                    <div class="vehicle-group">
+                        <input type="text" name="vehicle_number[]" class="form-control form-control-sm mb-2"
+                            placeholder="Vehicle Number">
+                        <input type="number" name="amount[]" class="form-control form-control-sm mb-2"
+                            placeholder="Amount">
+                    </div>
                 </div>
-            </div>
-            
-            <button type="button" class="btn btn-success btn-sm mb-2" id="addVehicle">+ Add More</button>
-            <button type="submit" class="btn btn-primary btn-sm w-100">Submit</button>
-        </form>
-    </div>
-</div>
 
-<script>
-    $(document).ready(function () {
-        $("#addVehicle").click(function () {
-            if ($(".vehicle-group").length < 5) { 
-                $("#vehicleFields").append(`
+                <button type="button" class="btn btn-success btn-sm mb-2" id="addVehicle">+ Add More</button>
+                <button type="submit" class="btn btn-primary btn-sm w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#addVehicle").click(function () {
+                if ($(".vehicle-group").length < 5) {
+                    $("#vehicleFields").append(`
                     <div class="vehicle-group">
                         <input type="text" name="vehicle_number[]" class="form-control form-control-sm mb-2" placeholder="Vehicle Number" required>
                         <input type="number" name="amount[]" class="form-control form-control-sm mb-2" placeholder="Amount" required>
                     </div>
                 `);
-            } else {
-                alert("You can add only 5 vehicle numbers!");
-            }
+                } else {
+                    alert("You can add only 5 vehicle numbers!");
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
+
 </html>
-
-

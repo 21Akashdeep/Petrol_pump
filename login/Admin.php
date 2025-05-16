@@ -5,8 +5,8 @@ require_once('dp.php');
 $qurey = "SELECT id, work_order_no, Job_type, workDetails, work_Reason, User_complain, user_Reason,inpdfFile,location, 
           DATE_FORMAT(dateTimeField, '%d-%m-%Y %r') AS dateTimeField, username 
           FROM ad_m ORDER BY id ASC";
-$result = mysqli_query($conn,$qurey);
-$result = mysqli_query($conn,$qurey);
+$result = mysqli_query($conn, $qurey);
+$result = mysqli_query($conn, $qurey);
 if (!$result) {
   die("Query Failed: " . mysqli_error($conn));
 }
@@ -133,9 +133,9 @@ if (!$result) {
     </div>
   </nav>
   <?php
-      echo 'Hello ',$_SESSION['username'];
+  echo 'Hello ', $_SESSION['username'];
 
-        ?>
+  ?>
   <div class="row">
     <div class="col-6 col-md-3">
     </div>
@@ -182,70 +182,72 @@ if (!$result) {
           <tbody>
             <tr>
               <?php
-                    while($row = mysqli_fetch_array($result))
-                    {
-                     ?>
-              <td>
-                <b>
-                  <?php echo strtoupper($row['username']); ?>
-                </b>
-              </td>
-              <td>
-                <?php if (!empty($row['work_order_no'])): ?>
-                <?php echo $row['work_order_no']; ?>
+              while ($row = mysqli_fetch_array($result)) {
+                ?>
+                <td>
+                  <b>
+                    <?php echo strtoupper($row['username']); ?>
+                  </b>
+                </td>
+                <td>
+                  <?php if (!empty($row['work_order_no'])): ?>
+                    <?php echo $row['work_order_no']; ?>
 
-                <?php if (!empty($row['inpdfFile'])): ?>
-                <!-- Show PDF icon if both work_order_no and inpdfFile exist -->
-                <a href="view_pdf.php?file=<?php echo urlencode($row['inpdfFile']); ?>" target="_blank"
-                  style="margin-left: 8px;">
-                  <img src="pdf-icon.png" alt="PDF Icon" style="width: 20px; height: 20px;">
-                </a>
-                <?php endif; ?>
-                <?php endif; ?>
-              </td>
+                    <?php if (!empty($row['inpdfFile'])): ?>
+                      <!-- Show PDF icon if both work_order_no and inpdfFile exist -->
+                      <a href="view_pdf.php?file=<?php echo urlencode($row['inpdfFile']); ?>" target="_blank"
+                        style="margin-left: 8px;">
+                        <img src="pdf-icon.png" alt="PDF Icon" style="width: 20px; height: 20px;">
+                      </a>
+                    <?php endif; ?>
+                  <?php endif; ?>
+                </td>
 
-              <td>
-                <?php echo $row['Job_type']?>
-              </td>
-              <td <?php if ($row['workDetails']=='All OK' ) { echo 'style="background-color: green; color: white;"' ; }
-                else { echo 'style="background-color: red; color: white;"' ; } ?>
-                >
-                <?php 
-        if ($row['workDetails'] == 'All OK') {
-            echo 'Complete';
-        } else {
-            echo 'Not Complete';
-        }
-    ?>
-              </td>
-              <td>
-                <?php echo $row['work_Reason']?>
-              </td>
-              <td <?php if ($row['User_complain']=='Not Complain' ) {
-                echo 'style="background-color: green; color: white;"' ; } else {
-                echo 'style="background-color: red; color: white;"' ; } ?>
-                >
-                <?php 
-        if ($row['User_complain'] == 'Not Complain') {
-            echo 'Not Complain';
-        } else {
-            echo 'Complain';
-        }
-    ?>
-              </td>
+                <td>
+                  <?php echo $row['Job_type'] ?>
+                </td>
+                <td <?php if ($row['workDetails'] == 'All OK') {
+                  echo 'style="background-color: green; color: white;"';
+                } else {
+                  echo 'style="background-color: red; color: white;"';
+                } ?>>
+                  <?php
+                  if ($row['workDetails'] == 'All OK') {
+                    echo 'Complete';
+                  } else {
+                    echo 'Not Complete';
+                  }
+                  ?>
+                </td>
+                <td>
+                  <?php echo $row['work_Reason'] ?>
+                </td>
+                <td <?php if ($row['User_complain'] == 'Not Complain') {
+                  echo 'style="background-color: green; color: white;"';
+                } else {
+                  echo 'style="background-color: red; color: white;"';
+                } ?>>
+                  <?php
+                  if ($row['User_complain'] == 'Not Complain') {
+                    echo 'Not Complain';
+                  } else {
+                    echo 'Complain';
+                  }
+                  ?>
+                </td>
 
-              <td>
-                <?php echo $row['user_Reason']?>
-              </td>
-              <td>
-                <?php echo $row['dateTimeField']; ?>
-                <i class="fa fa-map-marker" style="color: red; margin-left: 5px; cursor: pointer;"
-                  onclick="showLocationPopup('<?php echo $row['location']; ?>',event)"></i>
-              </td>
-            </tr>
-            <?php
-                    } 
-                    ?>
+                <td>
+                  <?php echo $row['user_Reason'] ?>
+                </td>
+                <td>
+                  <?php echo $row['dateTimeField']; ?>
+                  <i class="fa fa-map-marker" style="color: red; margin-left: 5px; cursor: pointer;"
+                    onclick="showLocationPopup('<?php echo $row['location']; ?>',event)"></i>
+                </td>
+              </tr>
+              <?php
+              }
+              ?>
           </tbody>
         </table>
       </div>
@@ -302,8 +304,8 @@ if (!$result) {
       popup.style.display = "block";
 
       // Position the popup near the clicked icon
-    popup.style.top = event.clientY + window.scrollY + 10 + 'px';  // Adjust 10px to place the popup slightly below the icon
-    popup.style.left = event.clientX + 10 + 'px';  // Adjust 10px to place the popup slightly right of the icon
+      popup.style.top = event.clientY + window.scrollY + 10 + 'px';  // Adjust 10px to place the popup slightly below the icon
+      popup.style.left = event.clientX + 10 + 'px';  // Adjust 10px to place the popup slightly right of the icon
     }
 
     // Function to close the location popup

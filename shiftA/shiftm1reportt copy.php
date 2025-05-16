@@ -276,6 +276,33 @@ $dataadvancea = $resultadvancea->fetch_assoc();
             background-color: #f2f2f2;
             font-size: 20px;
         }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #212529;
+            color: #6c757d;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a.brand {
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a.brand:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -872,7 +899,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                 $resultsort = $conn->query($sqlsort);
                 ?>
 
-                <table border="1">
+                <table border="1" style="margin-bottom: 45px;">
                     <tr class="blue-row">
                         <td>NAME</td>
                         <td>SHORTAGE</td>
@@ -970,45 +997,15 @@ $dataadvancea = $resultadvancea->fetch_assoc();
 
 
         </div>
+        <footer>
+            <p><strong>Copyright © 2025 <a href="https://pcats.co.in/" class="brand" target="_blank">P-Cats,
+                        Jamshedpur</a>.</strong> All
+                rights reserved.</p>
+        </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
             </script>
 
-
-
-
-        <script>
-            async function downloadFullPagePDF() {
-                const { jsPDF } = window.jspdf;
-
-                // Ensure page is scrolled to top
-                window.scrollTo(0, 0);
-
-                const canvas = await html2canvas(document.body, {
-                    scrollY: 0,
-                    windowHeight: document.body.scrollHeight
-                });
-
-                const imgData = canvas.toDataURL("image/png");
-                const pdf = new jsPDF('p', 'pt', 'a4');
-                const pageWidth = pdf.internal.pageSize.getWidth();
-                const pageHeight = pdf.internal.pageSize.getHeight();
-
-                const imgWidth = pageWidth;
-                const imgHeight = canvas.height * imgWidth / canvas.width;
-
-                let position = 0;
-
-                // For multi-page PDF if needed
-                while (position < imgHeight) {
-                    pdf.addImage(imgData, 'PNG', 0, -position, imgWidth, imgHeight);
-                    position += pageHeight;
-                    if (position < imgHeight) pdf.addPage();
-                }
-
-                pdf.save("Shift_A_Report.pdf");
-            }
-        </script>
 
 </body>
 
