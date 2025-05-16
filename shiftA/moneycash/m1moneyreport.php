@@ -135,7 +135,7 @@ function displayTable($conn, $tableName, $columns, $headers, $limit, $offset, $p
     }
     echo "</div>";
 }
-echo '<button type="button" class="btn btn-success mb-3" onclick="window.location.href=\'m1moneycash.php\'">Add New Liquid</button>';
+echo '<button type="button" class="btn btn-success mb-3" onclick="window.location.href=\'m1moneycash.php\'"> Add Cash </button>';
 echo '&nbsp;&nbsp;';
 echo '<button type="button" class="btn btn-success mb-3" onclick="window.location.href=\'../mainshiftA.php\'">Back</button>';
 
