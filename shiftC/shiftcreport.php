@@ -211,7 +211,7 @@ $advance = $dataadvancea['advancec'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-   <style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -376,7 +376,7 @@ $advance = $dataadvancea['advancec'];
             <td>XP - 95</td>
             <td>MS</td>
             <td>HSD</td>
-            <td>HD</td>
+            <td>HSD</td>
             <td>XG - 1</td>
             <td>XG - 2</td>
             <td>MS - 1</td>
@@ -508,7 +508,7 @@ $advance = $dataadvancea['advancec'];
                     <td>Ms</td>
                     <td>
                         <?php
-                        $ms_total = $data['ms_net_sale'] + $data2['ms_net_sale'] + $data3['ms_net_sale'] + $data4['ms1_net_sale'] + $data4['ms2_net_sale'];
+                        $ms_total = $data['ms_net_sale'] + $data2['ms_net_sale'] + $data4['ms1_net_sale'] + $data4['ms2_net_sale'];
                         echo $ms_total;
                         ?>
                     </td>
@@ -530,7 +530,7 @@ $advance = $dataadvancea['advancec'];
                 </tr>
                 <tr>
                     <td>HSD</td>
-                    <td><?php $hsd_total = $data3['xp_net_sale'] + $data3['xp_net_sale'];
+                    <td><?php $hsd_total = $data3['xp_net_sale'] + $data3['ms_net_sale'];
                     echo $hsd_total;
                     ?></td>
                     <td><?= $datarate['hsd_rate'] ?></td>

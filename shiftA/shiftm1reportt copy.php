@@ -405,7 +405,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
             <td>XP - 95</td>
             <td>MS</td>
             <td>HSD</td>
-            <td>HD</td>
+            <td>HSD</td>
             <td>XG - 1</td>
             <td>XG - 2</td>
             <td>MS - 1</td>
@@ -541,7 +541,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                     <td>Ms</td>
                     <td>
                         <?php
-                        $ms_total = $data['ms_net_sale'] + $data2['ms_net_sale'] + $data3['ms_net_sale'] + $data4['ms1_net_sale'] + $data4['ms2_net_sale'];
+                        $ms_total = $data['ms_net_sale'] + $data2['ms_net_sale'] + $data4['ms1_net_sale'] + $data4['ms2_net_sale'];
                         echo $ms_total;
                         ?>
                     </td>
@@ -563,7 +563,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                 </tr>
                 <tr>
                     <td>HSD</td>
-                    <td><?php $hsd_total = $data3['xp_net_sale'] + $data3['xp_net_sale'];
+                    <td><?php $hsd_total = $data3['xp_net_sale'] + $data3['ms_net_sale'];
                     echo $hsd_total;
                     ?></td>
                     <td><?= $datarate['hsd_rate'] ?></td>

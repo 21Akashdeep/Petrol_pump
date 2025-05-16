@@ -314,7 +314,7 @@ $total_pages = ceil($total_rows / $limit);
             </ul>
         </nav>
     </div>
-      <footer>
+    <footer>
         <p><strong>Copyright © 2025 <a href="https://pcats.co.in/" class="brand" target="_blank">P-Cats,
                     Jamshedpur</a>.</strong> All
             rights reserved.</p>

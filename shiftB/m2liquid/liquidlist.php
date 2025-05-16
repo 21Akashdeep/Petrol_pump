@@ -19,6 +19,10 @@ $offset = ($page - 1) * $limit;
 $sql = "SELECT * FROM liquidb2 LIMIT $limit OFFSET $offset";
 $result = $conn->query($sql);
 
+// Add this for Employee 2 Data
+$sql2 = "SELECT * FROM liquidb2 LIMIT $limit OFFSET $offset";
+$result2 = $conn->query($sql2);
+
 // Total Records Count
 $sql_count = "SELECT COUNT(*) AS total FROM liquidb2";
 $count_result = $conn->query($sql_count);
@@ -121,12 +125,12 @@ $total_pages = ceil($total_rows / $limit);
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>
                                     <th>$sno</th>
-                                    <td>{$row['Select_Employee1']}</td>
-                                    <td>{$row['Select_Liquid1']}</td>
-                                    <td>{$row['Opening_QTY1']}</td>
-                                    <td>{$row['Closing_QTY1']}</td>
-                                    <td>{$row['Sale1']}</td>
-                                    <td>{$row['Sale_AMT1']}</td>
+                                    <td>{$row['employee1']}</td>
+                                    <td>{$row['product1']}</td>
+                                    <td>{$row['xg1_start_reading']}</td>
+                                    <td>{$row['xg1_close_reading']}</td>
+                                    <td>{$row['xg1_net_sale']}</td>
+                                    <td>{$row['xg1_total_amount']}</td>
                                     
                                     <td>
                                 <a href='liquidedit.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a>
@@ -184,19 +188,16 @@ $total_pages = ceil($total_rows / $limit);
                         while ($row = $result2->fetch_assoc()) {
                             echo "<tr>
                                     <th>$sno</th>
-                                    <td>{$row['Select_Employee2']}</td>
-                                    <td>{$row['Select_Liquid2']}</td>
-                                    <td>{$row['Opening_QTY2']}</td>
-                                    <td>{$row['Closing_QTY2']}</td>
-                                    <td>{$row['Sale2']}</td>
-                                    <td>{$row['Sale_AMT2']}</td>
-                                    
-                                    
-                                    
+                                    <td>{$row['employee2']}</td>
+                                    <td>{$row['product2']}</td>
+                                    <td>{$row['xg2_start_reading']}</td>
+                                    <td>{$row['xg2_close_reading']}</td>
+                                    <td>{$row['xg2_net_sale']}</td>
+                                    <td>{$row['xg2_total_amount']}</td>
                                     <td>
-                                <a href='liquidedit.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='liquiddelete.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
-                            </td>
+                                        <a href='liquidedit.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a>
+                                        <a href='liquiddelete.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
+                                    </td>
                                   </tr>";
                             $sno++;
                         }
