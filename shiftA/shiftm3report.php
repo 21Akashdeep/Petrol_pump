@@ -48,6 +48,7 @@ $total_pages = ceil($total_rows / $limit);
         body {
             background-color: #f8f9fa;
             margin-right: 5px;
+            text-align: center;
 
         }
 
@@ -131,8 +132,6 @@ $total_pages = ceil($total_rows / $limit);
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>total Amount</th>
-                        <!-- <th>Total Amount</th> -->
-                        <th>Action</th>
 
                     </tr>
                 </thead>
@@ -154,11 +153,7 @@ $total_pages = ceil($total_rows / $limit);
                                     <td>{$row['xp_net_sale']}</td>
                                     <td>{$row['xp_total_amount']}</td>
                                     
-                                    
-                                    <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
-                            </td>
+                                 
                                   </tr>";
                             $sno++;
                         }
@@ -204,7 +199,7 @@ $total_pages = ceil($total_rows / $limit);
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>total Amount</th>
-                        <th>Action</th>
+
 
                     </tr>
                 </thead>
@@ -226,11 +221,7 @@ $total_pages = ceil($total_rows / $limit);
                                     <td>{$row['ms_net_sale']}</td>
                                     <td>{$row['ms_total_amount']}</td>
                                     
-                                    
-                                    <td>
-                                <a href='../edit/UOMedit.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='../delete/UOMdelete.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete?\")'>Delete</a>
-                            </td>
+                                  
                                   </tr>";
                             $sno++;
                         }
