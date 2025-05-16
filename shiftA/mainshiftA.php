@@ -134,6 +134,8 @@
         <div class="col-12 text-center">
             <button type="button" class="btn btn-danger me-2" onclick="resetForm()"
                 style="width:100%; font-size: 22px; font-weight: 700 ; height: 50px;">Reset</button>
+            <button type="button" class="btn btn-primary mt-2" onclick="window.location.href='attendance.php';"
+                style="width:100%; font-size: 22px; font-weight: 700; height: 50px; margin-bottom: 15px;">Attendance</button>
             <div>
                 <button type="button" class="btn btn-success mt-2" onclick="window.location.href='advancemoney.php';"
                     style="width:100%; font-size: 22px; font-weight: 700; height: 50px; margin-bottom: 45px;">Advance</button>
