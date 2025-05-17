@@ -37,7 +37,7 @@ if (isset($_POST['id'])) {
     }
 
     $sql = "UPDATE liquidb2 SET 
-        shifta1_datetime='$datetime',
+        datetime='$datetime',
         employee1='$employee1', employee2='$employee2', employee3='$employee3', employee4='$employee4',
         product1='$product1', product2='$product2', product3='$product3', product4='$product4',
         xg1_start_reading='$xg1_start_reading', xg2_start_reading='$xg2_start_reading',

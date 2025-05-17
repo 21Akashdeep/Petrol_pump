@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $xg2_total_amount = $_POST['xg2_total_amount'];
     $ms1_total_amount = $_POST['ms1_total_amount'];
     $ms2_total_amount = $_POST['ms2_total_amount'];
-    $shifta1_datetime = $_POST['datetime'];
+    $datetime = $_POST['datetime'];
 
     $sql = "UPDATE liquidb2 SET 
         employee1=?, employee2=?, employee3=?, employee4=?,
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         xg1_net_sale=?, xg2_net_sale=?, ms1_net_sale=?, ms2_net_sale=?,
         xg1_rate=?, xg2_rate=?, ms1_rate=?, ms2_rate=?,
         xg1_total_amount=?, xg2_total_amount=?, ms1_total_amount=?, ms2_total_amount=?,
-        shifta1_datetime=?
+        datetime=?
         WHERE id=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $xg2_total_amount,
         $ms1_total_amount,
         $ms2_total_amount,
-        $shifta1_datetime,
+        $datetime,
         $id
     );
     $stmt->execute();
@@ -151,7 +151,7 @@ $data = $result->fetch_assoc();
                 <div class="col-12 d-flex align-items-center">
                     <label class="me-2"><strong>Date & Time:</strong></label>
                     <input type="datetime-local" class="form-control" name="datetime"
-                        value="<?php echo isset($data['shifta1_datetime']) ? date('Y-m-d\TH:i', strtotime($data['shifta1_datetime'])) : date('Y-m-d\TH:i'); ?>">
+                        value="<?php echo isset($row['datetime']) && $row['datetime'] ? date('Y-m-d\TH:i', strtotime($row['datetime'])) : date('Y-m-d\TH:i'); ?>">
                 </div>
             </div>
             <div class="row mb-3">
