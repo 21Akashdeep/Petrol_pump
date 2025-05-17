@@ -63,7 +63,7 @@
                         <li><a class="dropdown-item" href="../list/customerlist.php">Customer</a></li>
                         <li><a class="dropdown-item" href="../list/itemlist.php">Add Item</a></li>
                         <li><a class="dropdown-item" href="../list/locationlist.php">Add Location</a></li>
-                        <li><a class="dropdown-item" href="../list/UOMlist.php">Add UOM</a></li>
+                        <li><a class="dropdown-item" href="../list/UOMlist.php">n UOM</a></li>
                         <li><a class="dropdown-item" href="../list/employeelist.php">Add Employee</a></li>
                         <li><a class="dropdown-item" href="../list/ratelist.php">Add petrol rate</a></li>
                         <li><a class="dropdown-item" href="../list/liquidratelist.php">Add liquid rate</a></li>

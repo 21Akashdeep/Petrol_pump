@@ -38,7 +38,14 @@ $total_pages = ceil($total_rows / $limit);
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-image: url('../images/car.jpg');
+            /* Use your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #222;
+            font-family: Arial, sans-serif;
         }
 
         .navbar {

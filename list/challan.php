@@ -1,5 +1,5 @@
 <?php
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $slip_no = trim($_POST["slip_no"]);
   $challan_date = trim($_POST["challan_date"]);
   $customer_name = trim($_POST["customer_name"]);
@@ -8,28 +8,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $shift_date = trim($_POST["shift_date"]);
   $employee_name = trim($_POST["employee_name"]);
   $item = trim($_POST["item"]);
-  $uom= trim($_POST["uom"]);
-  $rate= trim($_POST["rate"]);
-  $qty= trim($_POST["qty"]);
+  $uom = trim($_POST["uom"]);
+  $rate = trim($_POST["rate"]);
+  $qty = trim($_POST["qty"]);
   $total_Amt = trim($_POST["Total_Amt"]);
 
-  
-    $link = new mysqli('localhost','root','','vendors');
-    if(mysqli_connect_error()){
-        die("connection error");
-    }
-    $query = "insert into challanslip(slip_no,challan_date,customer_name,shift,vehicle_no,shift_date,employee_name,item,uom,rate,qty,Total_Amt)values('$slip_no' ,'$challan_date','$customer_name' ,'$shift', '$vehicle_no','$shift_date','$employee_name','$item','$uom','$rate','$qty','$Total Amt')";
-    if($link->query($query)===TRUE){
-        header("location:challan.php");
 
-  
-}
-else{
-    echo"error: ".$query."<br>".$link->error;
-}
+  $link = new mysqli('localhost', 'root', '', 'vendors');
+  if (mysqli_connect_error()) {
+    die("connection error");
+  }
+  $query = "insert into challanslip(slip_no,challan_date,customer_name,shift,vehicle_no,shift_date,employee_name,item,uom,rate,qty,Total_Amt)values('$slip_no' ,'$challan_date','$customer_name' ,'$shift', '$vehicle_no','$shift_date','$employee_name','$item','$uom','$rate','$qty','$Total Amt')";
+  if ($link->query($query) === TRUE) {
+    header("location:challan.php");
+
+
+  } else {
+    echo "error: " . $query . "<br>" . $link->error;
+  }
 }
 
-   
+
 
 ?>
 <!DOCTYPE html>
@@ -42,6 +41,17 @@ else{
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
+    body {
+      background-image: url('../images/car.jpg');
+      /* Use your image path */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #222;
+      font-family: Arial, sans-serif;
+    }
+
     .right {
       justify-items: right;
     }
@@ -187,7 +197,8 @@ else{
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="customer_name" class="form-label">Customer</label>
-          <input type="text" id="customer_name" class="form-control" placeholder="Enter Customer Name" name="customer_name">
+          <input type="text" id="customer_name" class="form-control" placeholder="Enter Customer Name"
+            name="customer_name">
         </div>
         <div class="col-md-6 right">
           <label for="shift" class="form-label">Shift</label>
@@ -212,7 +223,8 @@ else{
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="employee_name" class="form-label">Enter Employee</label>
-          <input type="text" id="employee_name" class="form-control" placeholder="Enter employee name" name="employee_name">
+          <input type="text" id="employee_name" class="form-control" placeholder="Enter employee name"
+            name="employee_name">
         </div>
       </div>
 
@@ -246,7 +258,7 @@ else{
         <label>Grand Total:
           <!-- Grand total is computed automatically -->
           <input type="text" id="grand-total" placeholder="Grand Total" readonly
-            style="display: inline-block; width: auto;" >
+            style="display: inline-block; width: auto;">
         </label>
       </div>
       <br>
@@ -256,7 +268,7 @@ else{
         <button onclick="saveData()" style="background-color: green; color: white;">
           Save
         </button>
-        
+
         <input type="Submit" value="submit" class="btn btn-primary"><br>
       </div>
     </div>

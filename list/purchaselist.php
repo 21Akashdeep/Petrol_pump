@@ -59,7 +59,14 @@ $total_pages = ceil($total_rows / $limit);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-image: url('../images/car.jpg');
+            /* Use your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #222;
+            font-family: Arial, sans-serif;
         }
 
         .navbar {

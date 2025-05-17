@@ -90,16 +90,17 @@ $conn->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Custom Navbar</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-3d/dist/chartjs-chart-3d.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     /* General body styling */
     body {
+      background-image: url('images/station.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #f5f6f8;
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f9fa;
-      overflow: hidden;
     }
 
     .navbar-nav {
@@ -207,6 +208,10 @@ $conn->close();
       display: flex;
       justify-content: center;
       align-items: center;
+      background: rgba(255, 255, 255, 0.35);
+      /* Semi-transparent white */
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+      border-radius: 18px;
     }
 
     .b {
@@ -222,46 +227,61 @@ $conn->close();
       left: 24.5%;
       bottom: 444px;
       display: flex;
-      /* Flexbox for centering */
       justify-content: center;
-      /* Center horizontally */
       align-items: center;
-      /* Center vertically */
+      background: rgba(255, 255, 255, 0.35);
+      /* Semi-transparent white */
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+      border-radius: 18px;
     }
 
     .c {
       width: 47.5%;
-      height: 80px;
-      border: 2px solid black;
-      margin: 20px auto;
+      height: 90px;
+      margin: 30px auto;
       position: relative;
       right: 24.5%;
       bottom: 445px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      background: rgb(0, 190, 162);
-      padding: 0 30px;
-      font-size: 1.2rem;
-      border-radius: 5px;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.25);
+      /* Glass effect */
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(7px);
+      overflow: hidden;
+      padding: 0 40px;
+      font-size: 1.3rem;
+      transition: box-shadow 0.3s;
+    }
+
+    .c::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 8px;
+      height: 100%;
+      background: linear-gradient(180deg, #00bfae 0%, #1a237e 100%);
+      border-radius: 18px 0 0 18px;
     }
 
     .c-title {
       font-weight: bold;
       color: #1a237e;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-    }
-
-    .digital-watch {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 1.5rem;
-      color: #0d6efd;
-      background: #222;
-      padding: 8px 18px;
-      border-radius: 8px;
-      letter-spacing: 2px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      font-size: 1.4rem;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      margin-left: 18px;
+      margin-bottom: 0;
+      flex: 1;
+      text-align: center;
+      background: linear-gradient(90deg, #00bfae 0%, #1a237e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .d {
@@ -332,6 +352,20 @@ $conn->close();
         font-size: 1.1rem;
         padding: 8px 8px;
       }
+
+      .c {
+        width: 100%;
+        right: 0;
+        padding: 0 10px;
+        font-size: 1rem;
+        height: auto;
+        min-height: 70px;
+      }
+
+      .c-title {
+        font-size: 1.1rem;
+        margin-left: 10px;
+      }
     }
 
     .c-title {
@@ -348,6 +382,33 @@ $conn->close();
       font-size: 1.2rem;
       color: rgb(244, 245, 247);
       background: rgb(53, 53, 53);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #212529;
+      color: #6c757d;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    footer a.brand {
+      font-weight: bold;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    footer a.brand:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -524,6 +585,11 @@ $conn->close();
   <div class="d">
     <span id="datetime" class="digital-watch"></span>
   </div>
+  <footer>
+    <p><strong>Copyright © 2025 <a href="https://pcats.co.in/" class="brand" target="_blank">P-Cats,
+          Jamshedpur</a>.</strong> All
+      rights reserved.</p>
+  </footer>
   <script>
     function updateDateTime() {
       const now = new Date();
