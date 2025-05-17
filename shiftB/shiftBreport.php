@@ -395,6 +395,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
     <table>
         <tr>
             <td colspan="10" class="header">BHARAT PETROLEUM TRADERS - DHATKIDIH</td>
+               <td rowspan="2" class="sub-header">REPORT</td>
         </tr>
         <tr>
             <td colspan="5" class="sub-header">SHIFT : B</td>
@@ -402,7 +403,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
 
         </tr>
         <tr>
-            <td rowspan="2" class="bpt">BPT</td>
+           <td rowspan="2" class="sub-header"><img src="../images/bpt.ico" alt="REPORT" style="width: 80px;"></td>
             <td colspan="2"><b>MACHINE NO. 01<br>PSN : 1299</b></td>
             <td colspan="2"><b>MACHINE NO. 02<br>PSN : 821V</b></td>
             <td colspan="2"><b>MACHINE NO. 03<br>PSN : 822V</b></td>

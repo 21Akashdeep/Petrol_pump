@@ -396,7 +396,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
 
         </tr>
         <tr>
-            <td rowspan="2" class="bpt">BPT</td>
+            <td rowspan="2" class="sub-header"><img src="../images/bpt.ico" alt="REPORT" style="width: 80px;"></td>
             <td colspan="2"><b>MACHINE NO. 01<br>PSN : 1299</b></td>
             <td colspan="2"><b>MACHINE NO. 02<br>PSN : 821V</b></td>
             <td colspan="2"><b>MACHINE NO. 03<br>PSN : 822V</b></td>
