@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 
 if (isset($_POST['id'])) {
     $id = intval($_POST['id']);
-    $datetime = $conn->real_escape_string($_POST['datetime']);
+    $datetime = $_POST['datetime'];
     $employee1 = $conn->real_escape_string($_POST['employee1']);
     $employee2 = $conn->real_escape_string($_POST['employee2']);
     $employee3 = $conn->real_escape_string($_POST['employee3']);
@@ -36,17 +36,22 @@ if (isset($_POST['id'])) {
         }
     }
 
-    $sql = "UPDATE liquidb4 SET 
-        shifta1_datetime='$datetime',
+    // Remove trailing comma from $set
+    $set = rtrim($set, ',');
+
+    $sql = "UPDATE liquidc1 SET 
+        datetime='$datetime',
         employee1='$employee1', employee2='$employee2', employee3='$employee3', employee4='$employee4',
         product1='$product1', product2='$product2', product3='$product3', product4='$product4',
         xg1_start_reading='$xg1_start_reading', xg2_start_reading='$xg2_start_reading',
-        ms1_start_reading='$ms1_start_reading', ms2_start_reading='$ms2_start_reading',
-        $set
-        updated_at=NOW()
-        WHERE id=$id";
+        ms1_start_reading='$ms1_start_reading', ms2_start_reading='$ms2_start_reading'";
 
-    // Remove trailing comma before updated_at
+    if ($set) {
+        $sql .= ',' . $set;
+    }
+
+    $sql .= " WHERE id=$id";
+
     $sql = str_replace(",updated_at", "updated_at", $sql);
 
     if ($conn->query($sql) === TRUE) {

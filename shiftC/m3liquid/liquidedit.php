@@ -69,8 +69,8 @@ if ($result_emp->num_rows > 0) {
             <div class="row mb-3 mt-2">
                 <div class="col-12 d-flex align-items-center">
                     <label class="me-2"><strong>Date & Time:</strong></label>
-                    <input type="datetime-local" class="form-control" name="shifta1_datetime"
-                        value="<?php echo isset($row['shifta1_datetime']) ? date('Y-m-d\TH:i', strtotime($row['shifta1_datetime'])) : date('Y-m-d\TH:i'); ?>">
+                    <input type="datetime-local" class="form-control" name="datetime"
+                        value="<?php echo isset($row['datetime']) ? date('Y-m-d\TH:i', strtotime($row['shifta1_datetime'])) : date('Y-m-d\TH:i'); ?>">
                 </div>
             </div>
             <div class="row mb-3">

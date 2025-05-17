@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 }
 
 $id = intval($_POST['id']);
-$shifta1_datetime = $_POST['shifta1_datetime'];
+$datetime = !empty($_POST['datetime']) ? $_POST['datetime'] : date('Y-m-d H:i:s');
 $product1 = $_POST['product1'];
 $product2 = $_POST['product2'];
 $product3 = $_POST['product3'];
@@ -27,7 +27,6 @@ $ms2_start_reading = $_POST['ms2_start_reading'];
 // Dynamic fields
 $fields = [
     "close_reading",
-    "testing_less",
     "rate",
     "net_sale",
     "total_amount"
@@ -43,7 +42,7 @@ foreach ($prefixes as $prefix) {
 
 // Build SQL
 $sql = "UPDATE liquidc3 SET 
-    shifta1_datetime=?, product1=?, product2=?, product3=?, product4=?,
+    datetime=?, product1=?, product2=?, product3=?, product4=?,
     employee1=?, employee2=?, employee3=?, employee4=?,
     xg1_start_reading=?, xg2_start_reading=?, ms1_start_reading=?, ms2_start_reading=?";
 
@@ -59,9 +58,19 @@ $stmt = $conn->prepare($sql);
 
 // Bind parameters
 $params = [
-    $shifta1_datetime, $product1, $product2, $product3, $product4,
-    $employee1, $employee2, $employee3, $employee4,
-    $xg1_start_reading, $xg2_start_reading, $ms1_start_reading, $ms2_start_reading
+    $datetime,
+    $product1,
+    $product2,
+    $product3,
+    $product4,
+    $employee1,
+    $employee2,
+    $employee3,
+    $employee4,
+    $xg1_start_reading,
+    $xg2_start_reading,
+    $ms1_start_reading,
+    $ms2_start_reading
 ];
 foreach ($prefixes as $prefix) {
     foreach ($fields as $field) {
@@ -81,5 +90,17 @@ if ($stmt->execute()) {
     exit;
 } else {
     echo "Update failed: " . $stmt->error;
+}
+?>
+
+ALTER TABLE liquidc3
+  ADD COLUMN xg1_testing_less VARCHAR(50) NULL,
+  ADD COLUMN xg2_testing_less VARCHAR(50) NULL,
+  ADD COLUMN ms1_testing_less VARCHAR(50) NULL,
+  ADD COLUMN ms2_testing_less VARCHAR(50) NULL;
+
+<?php
+if (empty($_POST['datetime'])) {
+    die("Error: Datetime field is required.");
 }
 ?>
