@@ -29,7 +29,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="../home.php">
-            <img src="../images/bpt.ico" alt="Logo" style="height:50px;">
+            <!-- <img src="./images/bptlogo.png" alt="Logo" style="height:50px;"> -->
+            <img src="../images/bptlogo.png" alt="Logo" style="height:50px;">
+
         </a>
         <!-- <a class="navbar-brand fw-bold" href="#">Item List</a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

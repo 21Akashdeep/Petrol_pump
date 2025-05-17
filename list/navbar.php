@@ -21,10 +21,10 @@
 <!-- navbar.php -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="../home.php">
-            <img src="../images/bpt.ico" alt="Logo" style="height:50px;">
+        <!-- Logo at the absolute left corner -->
+        <a class="navbar-brand" href="home.php">
+            <img src="images/bpt.ico" alt="Logo" style="height:50px;">
         </a>
-        <!-- <a class="navbar-brand fw-bold" href="#">Item List</a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
