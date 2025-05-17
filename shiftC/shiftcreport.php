@@ -462,7 +462,7 @@ $advance = $dataadvancea['advancec'];
             <td><?= $data4['ms2_net_sale'] ?></td>
         </tr>
         <tr>
-            <td><strong>Cash For B/D in A-shift</strong></td>
+            <td><strong>Cash For B/D in B-shift</strong></td>
             <td></td>
             <td>0</td>
 
