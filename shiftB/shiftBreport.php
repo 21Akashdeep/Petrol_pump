@@ -954,6 +954,11 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                             $shortage = $datacollection['shortage'];
                             $surplus = $datacollection['surplus'];
 
+                            // Skip if both shortage and surplus are 0 or empty
+                            if ((empty($shortage) || $shortage == 0) && (empty($surplus) || $surplus == 0)) {
+                                continue;
+                            }
+
                             if (!isset($total_shortage[$name])) {
                                 $total_shortage[$name] = 0;
                             }

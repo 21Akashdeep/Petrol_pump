@@ -171,8 +171,11 @@ $resultcollection = $conn->query($sqlcollection);
 // $sqlsort = "SELECT * FROM shift WHERE DATE(shifta1_datetime) = '$today'";
 // $resultsort = $conn->query($sqlsort);
 
-$sqlcollection = "SELECT * FROM attendance";
-$resultattendance = $conn->query($sqlcollection);
+date_default_timezone_set('Asia/Kolkata'); // Ensure correct timezone
+$today = date('Y-m-d');
+
+$sqlattendance = "SELECT * FROM attendance WHERE DATE(created_at) = '$today'";
+$resultattendance = $conn->query($sqlattendance);
 
 date_default_timezone_set('Asia/Kolkata'); // Ensure correct timezone
 $today = date('Y-m-d');
@@ -930,6 +933,11 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                             $name = $datacollection['emp'];
                             $shortage = $datacollection['shortage'];
                             $surplus = $datacollection['surplus'];
+
+                            // Skip if both shortage and surplus are 0 or empty
+                            if ((empty($shortage) || $shortage == 0) && (empty($surplus) || $surplus == 0)) {
+                                continue;
+                            }
 
                             if (!isset($total_shortage[$name])) {
                                 $total_shortage[$name] = 0;
