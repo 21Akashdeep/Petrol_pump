@@ -66,44 +66,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .login-container {
             background: rgba(255, 255, 255, 0.97);
             padding: 35px 30px 30px 30px;
-            width: 500px;
-            /* Increased from 350px */
+            width: 350px;
+            /* Reduced for better alignment */
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
             border-radius: 12px;
-            text-align: center;
+            text-align: left;
+            /* Left align content */
             position: relative;
             color: rgb(0, 0, 0);
             font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center the form horizontally */
         }
 
         .login-logo {
-            width: 120px;
+            width: 100px;
             margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         h2 {
             margin-bottom: 18px;
-            color: #222;
+            color: #007bff;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #007bff;
+            text-align: center;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
         }
 
         label {
             display: block;
-            text-align: left;
             margin-bottom: 4px;
             font-size: 15px;
             color: #444;
+            font-weight: 600;
+            margin-top: 10px;
         }
 
-        input {
-            width: 92%;
+        input[type="tel"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
             padding: 10px;
-            margin: 8px 0 16px 0;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 15px;
+            box-sizing: border-box;
         }
 
         .password-wrapper {
@@ -111,14 +130,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 100%;
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
         }
 
         .password-wrapper input[type="password"],
         .password-wrapper input[type="text"] {
             width: 100%;
             padding-right: 38px;
-            /* space for the eye icon */
             box-sizing: border-box;
+            margin-bottom: 0;
         }
 
         .toggle-password {
@@ -139,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             justify-content: center;
         }
 
-        button {
+        button[type="submit"] {
             width: 100%;
             padding: 11px;
             background: #007bff;
@@ -150,9 +170,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 16px;
             font-weight: 600;
             transition: background 0.2s;
+            margin-top: 10px;
         }
 
-        button:hover {
+        button[type="submit"]:hover {
             background: #0056b3;
         }
 
@@ -162,8 +183,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border: 1px solid #d8000c;
             border-radius: 4px;
             font-size: 15px;
-            margin: 10px 0 15px 0;
+            margin: 10px 0 0 0;
             padding: 7px 0;
+            text-align: center;
+            width: 100%;
         }
 
         footer {
