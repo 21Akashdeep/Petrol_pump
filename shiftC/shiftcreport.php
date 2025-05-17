@@ -798,12 +798,12 @@ $advance = $dataadvancea['advancec'];
                 $current_date = date("Y-m-d");
 
                 // List of all collection tables
-                $tables = ["collectionb1", "collectionb2", "collectionb3", "collectionb4"];
+                $tables = ["collection  c1", "collectionc2", "collectionc3", "collectionc4"];
 
                 $total_collection = [];
                 $grand_total = 0;
 
-                echo '<table border="1"> 
+                echo '<table border="1" > 
         <tr class="blue-row">
             <td> COLLECTION NAME</td>
             <td>AMOUNT</td>

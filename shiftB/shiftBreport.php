@@ -654,7 +654,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                     <td>Total Collections</td>
                     <td></td>
                     <td></td>
-                    <td><?php $total_coll_b = $grand_total + $totalb;
+                    <td><?php $total_coll_b = $grand_total;
                     echo $total_coll_b ?></td>
                 </tr>
                 <tr class="total-row">
@@ -847,7 +847,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                 $total_collection = [];
                 $grand_total = 0;
 
-                echo '<table border="1"> 
+                echo '<table border="1" > 
         <tr class="blue-row">
             <td> COLLECTION NAME</td>
             <td>AMOUNT</td>
@@ -857,7 +857,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                     $sql = "SELECT * FROM $table WHERE DATE(Date_And_Time) = '$current_date'";
                     $result = $conn->query($sql);
 
-                    if ($result->num_rows > 0) {
+                    if ($result && $result->num_rows > 0) {
                         while ($datacollection = $result->fetch_assoc()) {
                             $employees = [
                                 $datacollection['Employee_Name1'] => $datacollection['Amount1'],
@@ -872,9 +872,9 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                                 $grand_total += $amount;
 
                                 echo "<tr>
-                        <td>" . htmlspecialchars($name) . "</td>
-                        <td>" . number_format($amount) . "</td>
-                      </tr>";
+        <td>" . htmlspecialchars($name) . "</td>
+        <td>" . number_format($amount) . "</td>
+      </tr>";
                             }
                         }
                     }
@@ -883,24 +883,24 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                 // Total per employee
                 foreach ($total_collection as $name => $total) {
                     echo "<tr class='total-row'>
-            <td><strong>TOTAL (" . htmlspecialchars($name) . ")</strong></td>
-            <td><strong>" . number_format($total) . "</strong></td>
-          </tr>";
+        <td><strong>TOTAL (" . htmlspecialchars($name) . ")</strong></td>
+        <td><strong>" . number_format($total) . "</strong></td>
+      </tr>";
                 }
 
                 // Extra Hours
-                $closingc = isset($_SESSION['closingc']) ? $_SESSION['closingc'] : 0;
-                $grand_total += $closingc;
+                $closingb = isset($_SESSION['closingb']) ? $_SESSION['closingb'] : 0;
+                $grand_total += $closingb;
 
                 echo "<tr>
-        <td><strong>Extra Hours</strong></td>
-        <td><strong>" . number_format($totalb) . "</strong></td>
-      </tr>";
+<td><strong>Extra Hours</strong></td>
+<td><strong>" . number_format($closingb) . "</strong></td>
+</tr>";
 
                 echo "<tr class='grand-total-row'>
-        <td><strong>GRAND TOTAL</strong></td>
-        <td><strong>" . number_format($grand_total + $totalb) . "</strong></td>
-      </tr>";
+<td><strong>GRAND TOTAL</strong></td>
+<td><strong>" . number_format($grand_total) . "</strong></td>
+</tr>";
 
                 $_SESSION['grand_total'] = $grand_total;
 

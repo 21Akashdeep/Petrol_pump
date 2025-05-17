@@ -816,7 +816,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                 ?>
             </table>
         </div>
-        <div class="row">
+        <div class="row" style="margin-bottom: 30px;">
             <div class="col-4">
                 <?php
                 $current_date = date("Y-m-d");
@@ -827,7 +827,7 @@ $dataadvancea = $resultadvancea->fetch_assoc();
                 $total_collection = [];
                 $grand_total = 0;
 
-                echo '<table border="1"> 
+                echo '<table border="1" style="margin-bottom: 20px;"> 
         <tr class="blue-row">
             <td> COLLECTION NAME</td>
             <td>AMOUNT</td>
