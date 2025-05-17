@@ -60,12 +60,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
+
         }
 
         .login-container {
             background: rgba(255, 255, 255, 0.97);
             padding: 35px 30px 30px 30px;
-            width: 350px;
+            width: 500px;
+            /* Increased from 350px */
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
             border-radius: 12px;
             text-align: center;

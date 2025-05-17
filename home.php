@@ -250,7 +250,7 @@ $conn->close();
       border-radius: 18px;
       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
       border: 1.5px solid rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(7px);
+      backdrop-filter: blur(5px);
       overflow: hidden;
       padding: 0 40px;
       font-size: 1.3rem;
@@ -297,6 +297,7 @@ $conn->close();
       justify-content: center;
       background: #222;
       border-radius: 8px;
+      backdrop-filter: blur(5px);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
