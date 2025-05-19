@@ -135,16 +135,22 @@ $conn->close();
 
     .card {
       position: relative;
-      background-color: #eff1ef;
-      border: 1px solid #ddd;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      text-align: center;
-      transition: transform 0.3s ease;
+      background: linear-gradient(135deg, #f8fafc 60%, #e3e9f0 100%);
+      border-radius: 18px;
+      box-shadow: 0 6px 32px 0 rgba(31, 38, 135, 0.13);
+      border: none;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 36px 24px 24px 24px;
+      transition: box-shadow 0.2s, transform 0.2s;
+      overflow: visible;
     }
 
     .card:hover {
-      transform: scale(1.05);
+      box-shadow: 0 12px 36px 0 rgba(31, 38, 135, 0.18);
+      transform: translateY(-6px) scale(1.03);
     }
 
     .card img {
@@ -155,42 +161,43 @@ $conn->close();
       /* Keeps the card image with rounded corners */
     }
 
-    .card .circle-img {
-      position: absolute;
-      top: 50px;
-      /* Adjust as needed */
-      right: 10px;
-      /* Adjust as needed */
-      width: 70px;
-      /* Circle diameter */
-      height: 70px;
-      /* Circle diameter */
+    .circle-img {
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
-      /* Makes it a circle */
       overflow: hidden;
-      /* Ensures the image stays within the circle */
-      border: 2px solid #fff;
-      /* Optional: Adds a border around the circle */
+      border: 4px solid #fff;
+      margin-bottom: 18px;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(31, 38, 135, 0.10);
     }
 
-    .card .circle-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      /* Keeps the image contained within the circle */
+    .circle-img img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      margin: auto;
+      display: block;
     }
 
     .card h3 {
-      margin: 15px 0 10px;
-      color: #e2e6e9;
-      font-size: 1.25rem;
-      padding-top: 70px;
+      margin: 12px 0 8px 0;
+      color: rgb(255, 255, 255);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: center;
     }
 
     .card p {
-      color: #f5f6f8;
-      font-size: 0.9rem;
-      margin: 0 10px 15px;
+      color: white;
+      font-size: 1.08rem;
+      margin: 0;
+      font-weight: 500;
+      text-align: center;
     }
 
     .a {
@@ -458,59 +465,81 @@ $conn->close();
   <div class="a">
     <canvas id="dailyChart" width="400" height="200"></canvas>
     <script>
-      // Sample daily data
+      // Modern color palette
+      const chartColors = {
+        xp: "#009688",      // Teal
+        ms: "#1976d2",      // Blue
+        xg: "#ff9800",      // Orange
+        hsd: "#8e24aa",     // Purple
+        liquid: "#43a047"   // Green
+      };
+
+      // Line chart data
       const dailyData = {
         labels: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ], // Days of the week
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        ],
         datasets: [
           {
-            label: "  XP-95 (Rs)",
-            data: [104.57, 104.69, 102.96, 105.63, 104.98, 104.86, 104.36], // Example data
-            backgroundColor: "red",
-            borderColor: "red",
-            borderWidth: 2,
+            label: "XP-95 (Rs)",
+            data: [104.57, 104.69, 102.96, 105.63, 104.98, 104.86, 104.36],
+            backgroundColor: chartColors.xp,
+            borderColor: chartColors.xp,
+            borderWidth: 3,
+            tension: 0.4,
+            pointRadius: 5,
+            pointBackgroundColor: chartColors.xp,
+            fill: false
           },
           {
             label: "MS (Rs)",
-            data: [150, 120, 100, 160, 145, 136, 189], // Example data
-            backgroundColor: "blue",
-            borderColor: "blue",
-            borderWidth: 2,
+            data: [150, 120, 100, 160, 145, 136, 189],
+            backgroundColor: chartColors.ms,
+            borderColor: chartColors.ms,
+            borderWidth: 3,
+            tension: 0.4,
+            pointRadius: 5,
+            pointBackgroundColor: chartColors.ms,
+            fill: false
           },
           {
             label: "XG (Rs)",
-            data: [70, 130, 140, 150, 200, 220, 250], // Example data
-            backgroundColor: "brown",
-            borderColor: "brown",
-            borderWidth: 2,
+            data: [70, 130, 140, 150, 200, 220, 250],
+            backgroundColor: chartColors.xg,
+            borderColor: chartColors.xg,
+            borderWidth: 3,
+            tension: 0.4,
+            pointRadius: 5,
+            pointBackgroundColor: chartColors.xg,
+            fill: false
           },
           {
             label: "HSD (Rs)",
-            data: [90, 110, 130, 140, 160, 180, 200], // Example data
-            backgroundColor: "pink",
-            borderColor: "pink",
-            borderWidth: 2,
+            data: [90, 110, 130, 140, 160, 180, 200],
+            backgroundColor: chartColors.hsd,
+            borderColor: chartColors.hsd,
+            borderWidth: 3,
+            tension: 0.4,
+            pointRadius: 5,
+            pointBackgroundColor: chartColors.hsd,
+            fill: false
           },
           {
             label: "LIQUID (Rs)",
-            data: [80, 100, 120, 140, 160, 180, 200], // Example data
-            backgroundColor: "black",
-            borderColor: "black",
-           
-            borderWidth: 2,
+            data: [80, 100, 120, 140, 160, 180, 200],
+            backgroundColor: chartColors.liquid,
+            borderColor: chartColors.liquid,
+            borderWidth: 3,
+            tension: 0.4,
+            pointRadius: 5,
+            pointBackgroundColor: chartColors.liquid,
+            fill: false
           }
-        ],
+        ]
       };
 
       const config = {
-        type: "line", // Chart type
+        type: "line",
         data: dailyData,
         options: {
           responsive: true,
@@ -518,27 +547,42 @@ $conn->close();
             legend: {
               display: true,
               position: "top",
+              labels: {
+                color: "#222",
+                font: { size: 14, weight: "bold" }
+              }
             },
             tooltip: {
               enabled: true,
-            },
+              backgroundColor: "#fff",
+              titleColor: "#222",
+              bodyColor: "#222",
+              borderColor: "#1976d2",
+              borderWidth: 1
+            }
           },
           scales: {
             x: {
               title: {
                 display: true,
                 text: "Day of the Week",
+                color: "#222",
+                font: { size: 14, weight: "bold" }
               },
+              ticks: { color: "#222" }
             },
             y: {
               beginAtZero: true,
               title: {
                 display: true,
                 text: "Amount in Rs",
+                color: "#222",
+                font: { size: 14, weight: "bold" }
               },
-            },
-          },
-        },
+              ticks: { color: "#222" }
+            }
+          }
+        }
       };
 
       // Render the chart in the canvas
@@ -561,16 +605,24 @@ $conn->close();
   <div class="b">
     <canvas id="pieChart" width="400" height="200"></canvas>
     <script>
-      // Data for pie chart
+      // Pie chart with modern colors
       const pieData = {
-        labels: ["XP-95", "MS", "HSD", "XG", "LIQUID"], // Labels for each segment
+        labels: ["XP-95", "MS", "HSD", "XG", "LIQUID"],
         datasets: [
           {
-            data: [1500, 2000, 500, 700, 800], // Example data for total sales in Rs
-            backgroundColor: ["red", "blue", "brown", "pink","black"], // Colors for each segment
-            hoverOffset: 4, // Hover offset for better interactivity
-          },
-        ],
+            data: [1500, 2000, 500, 700, 800],
+            backgroundColor: [
+              "#009688", // Teal
+              "#1976d2", // Blue
+              "#8e24aa", // Purple
+              "#ff9800", // Orange
+              "#43a047"  // Green
+            ],
+            borderColor: "#fff",
+            borderWidth: 2,
+            hoverOffset: 8
+          }
+        ]
       };
 
       const pieConfig = {
@@ -582,12 +634,21 @@ $conn->close();
             legend: {
               display: true,
               position: "top",
+              labels: {
+                color: "#222",
+                font: { size: 14, weight: "bold" }
+              }
             },
             tooltip: {
               enabled: true,
-            },
-          },
-        },
+              backgroundColor: "#fff",
+              titleColor: "#222",
+              bodyColor: "#222",
+              borderColor: "#1976d2",
+              borderWidth: 1
+            }
+          }
+        }
       };
 
       // Render the pie chart in the canvas inside div.b

@@ -12,21 +12,21 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $advancea = $_POST['advancea'];
-    
+
 
     $sql = "INSERT INTO advancea (advancea) 
             VALUES ('$advancea')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "<script>
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>
             alert('Vendor added successfully!');
             window.location.href='mainshiftA.php'; // Redirect to dashboard or another page
           </script>";
-} else {
-    echo "<script>
+    } else {
+        echo "<script>
             alert('Error: " . $conn->error . "');
           </script>";
-}
+    }
 }
 
 $conn->close();
@@ -45,6 +45,7 @@ $conn->close();
         body {
             background-color: #f8f9fa;
         }
+
         .container {
             margin-top: 3%;
             max-width: 600px;
@@ -62,8 +63,8 @@ $conn->close();
         <!-- <h3 class="text-center mb-4"> Create Vender</h3> -->
         <form method="POST">
             <div class="mb-3">
-                <label class="form-label">Advance money</label>
-                <input type="text" class="form-control" placeholder="enter advance"name="advancea">
+                <label class="form-label">Advance Money</label>
+                <input type="text" class="form-control" placeholder="Enter Advance" name="advancea">
             </div>
             <button type="submit" class="btn btn-primary w-100">Submit</button>
         </form>

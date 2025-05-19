@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +10,24 @@
         body {
             background-color: #f8f9fa;
         }
+
         .container {
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             text-align: center;
             font-weight: bold;
         }
+
         .btn-add {
             background-color: #0d6efd;
             color: white;
         }
+
         .btn-delete {
             background-color: #dc3545;
             color: white;
@@ -30,27 +35,33 @@
             padding: 5px 10px;
             cursor: pointer;
         }
+
         .btn-delete:hover {
             background-color: #b02a37;
         }
     </style>
 </head>
+
 <body>
     <div class="container mt-4">
         <h1>Challan</h1>
-        <form id="challanForm" action="submit.php" method="POST">
-
+        <form id="challanForm" action="" method="POST">
+            <?php
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                echo "<script>window.print();</script>";
+            }
+            ?>
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="form-label">Challan No.</label>
-                    <input type="text" class="form-control" name="challan_no"  readonly>
+                    <input type="text" class="form-control" name="challan_no" readonly>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Challan Date</label>
                     <input type="date" class="form-control" name="challan_date" required>
                 </div>
             </div>
-            
+
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="form-label">Customer</label>
@@ -109,9 +120,10 @@
                                 <option>XG-2</option>
                                 <option>MS-1</option>
                                 <option>MS-2</option>
-                            </select>                      
+                            </select>
                         </td>
-                        <td><input type="number" class="form-control qty" name="quantity[]" placeholder="Qty" oninput="calculateTotal(this)" required></td>
+                        <td><input type="number" class="form-control qty" name="quantity[]" placeholder="Qty"
+                                oninput="calculateTotal(this)" required></td>
                         <td>
                             <select class="form-select" name="uom[]" required>
                                 <option value="" disabled selected>Select UOM</option>
@@ -120,13 +132,15 @@
                                 <option>Ltr</option>
                             </select>
                         </td>
-                        <td><input type="number" class="form-control rate" name="rate[]" placeholder="Rate" oninput="calculateTotal(this)" required></td>
-                        <td><input type="text" class="form-control total-amt" name="total_amount[]" placeholder="Total_Amt" readonly></td>
+                        <td><input type="number" class="form-control rate" name="rate[]" placeholder="Rate"
+                                oninput="calculateTotal(this)" required></td>
+                        <td><input type="text" class="form-control total-amt" name="total_amount[]"
+                                placeholder="Total_Amt" readonly></td>
                         <td><button type="button" class="btn-delete" onclick="removeRow(this)">❌</button></td>
                     </tr>
                 </tbody>
             </table>
-            
+
             <div class="d-flex justify-content-between">
                 <div>
                     <button type="button" class="btn btn-primary btn-add" onclick="addItem()">➕</button>
@@ -134,34 +148,35 @@
                 </div>
                 <div>
                     <label class="fw-bold me-2">Grand Total:</label>
-                    <input type="text" id="grandTotal" class="form-control d-inline-block w-auto" placeholder="0.00" name="grand_total" readonly>
+                    <input type="text" id="grandTotal" class="form-control d-inline-block w-auto" placeholder="0.00"
+                        name="grand_total" readonly>
                 </div>
             </div>
         </form>
     </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        generateChallanNo();
-    });
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            generateChallanNo();
+        });
 
-    function generateChallanNo() {
-        let currentDate = new Date();
-        let challanNo = "CH" + currentDate.getFullYear() + 
-                        ("0" + (currentDate.getMonth() + 1)).slice(-2) + 
-                        ("0" + currentDate.getDate()).slice(-2) + 
-                        currentDate.getHours() + 
-                        currentDate.getMinutes() + 
-                        currentDate.getSeconds();
-        
-        document.querySelector('input[name="challan_no"]').value = challanNo;
-    }
+        function generateChallanNo() {
+            let currentDate = new Date();
+            let challanNo = "CH" + currentDate.getFullYear() +
+                ("0" + (currentDate.getMonth() + 1)).slice(-2) +
+                ("0" + currentDate.getDate()).slice(-2) +
+                currentDate.getHours() +
+                currentDate.getMinutes() +
+                currentDate.getSeconds();
+
+            document.querySelector('input[name="challan_no"]').value = challanNo;
+        }
 
 
         function addItem() {
-    var table = document.getElementById("items-table").getElementsByTagName("tbody")[0];
-    var rowCount = table.rows.length;
-    var row = `<tr>
+            var table = document.getElementById("items-table").getElementsByTagName("tbody")[0];
+            var rowCount = table.rows.length;
+            var row = `<tr>
         <td>${rowCount + 1}</td>
         <td>
             <select class="form-select" name="product[]">
@@ -184,8 +199,8 @@
         <td><input type="text" class="form-control total-amt" name="total_amount[]" placeholder="Total_Amt" readonly></td>
         <td><button type="button" class="btn-delete" onclick="removeRow(this)">❌</button></td>
     </tr>`;
-    table.insertAdjacentHTML("beforeend", row);
-}
+            table.insertAdjacentHTML("beforeend", row);
+        }
 
         function removeRow(button) {
             button.closest("tr").remove();
@@ -206,7 +221,8 @@
                 .reduce((sum, field) => sum + (parseFloat(field.value) || 0), 0);
             document.getElementById("grandTotal").value = grandTotal.toFixed(2);
         }
-        </script>
-        
+    </script>
+
 </body>
+
 </html>
