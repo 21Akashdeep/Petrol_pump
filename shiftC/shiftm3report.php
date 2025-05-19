@@ -114,7 +114,7 @@ $total_pages = ceil($total_rows / $limit);
 <body style="margin-left: 0;">
 
     <!-- Navbar -->
-    <?php include '../navbar.php'; ?>
+    <?php include '../shiftnavbar.php'; ?>
     <!-- Main Content -->
     <div class="container d-flex flex-column align-items-center" style="margin-top: 3%;">
 
@@ -127,16 +127,16 @@ $total_pages = ceil($total_rows / $limit);
                         <th>SNo.</th>
                         <th>Report_Date_time</th>
                         <th>Employee Name</th>
-                        <th>product</th>
-                        <th>nozzle</th>
-                        <th>opening_Reading</th>
-                        <th>closing_Reading</th>
+                        <th>Product</th>
+                        <th>Nozzle</th>
+                        <th>Opening_Reading</th>
+                        <th>Closing_Reading</th>
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
-                        <th>Cash Amount</th>
+                        <th>Cash</th>
                         <th>Paytm Amount</th>
-                        <th>total Amount</th>
+                        <th>Total Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -148,7 +148,7 @@ $total_pages = ceil($total_rows / $limit);
                                     <th>$sno</th>
                                     <td>{$row['shifta1_datetime']}</td>
                                     <td>{$row['shifta1_emp1']}</td>
-                                    <td>{$row['shifta1_product1']}</td>
+                                    <td>HSD</td>
                                     <td>{$row['shifta1_nozzle1']}</td>
                                     <td>{$row['xp_start_reading']}</td>
                                     <td>{$row['xp_close_reading']}</td>
@@ -195,16 +195,16 @@ $total_pages = ceil($total_rows / $limit);
                         <th>SNo.</th>
                         <th>Report_Date_time</th>
                         <th>Employee Name</th>
-                        <th>product</th>
-                        <th>nozzle</th>
-                        <th>opening_Reading</th>
-                        <th>closing_Reading</th>
+                        <th>Product</th>
+                        <th>Nozzle</th>
+                        <th>Opening_Reading</th>
+                        <th>Closing_Reading</th>
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
-                        <th>Cash Amount</th>
+                        <th>Cash</th>
                         <th>Paytm Amount</th>
-                        <th>total Amount</th>
+                        <th>Total Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -216,7 +216,7 @@ $total_pages = ceil($total_rows / $limit);
                                     <th>$sno</th>
                                     <td>{$row['shifta1_datetime']}</td>
                                     <td>{$row['shifta1_emp2']}</td>
-                                    <td>{$row['shifta1_product2']}</td>
+                                    <td>HSD</td>
                                     <td>{$row['shifta1_nozzle2']}</td>
                                     <td>{$row['ms_start_reading']}</td>
                                     <td>{$row['ms_close_reading']}</td>

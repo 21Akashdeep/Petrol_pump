@@ -133,7 +133,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
 <body>
 
     <!-- Navbar -->
-    <?php include '../navbar.php'; ?>
+    <?php include '../shiftnavbar.php'; ?>
     <!-- Main Content -->
     <div class="container d-flex flex-column align-items-center" style="margin-top: 3%;">
 
@@ -142,8 +142,8 @@ $total_pages4 = ceil($total_rows4 / $limit);
             <h5>Nozzle 1 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
-                    ad class="table-dark">
-                    <tr>
+                  
+              <tr>
                         <th>SNo.</th>
                         <th>Report_Date_time</th>
                         <th>Employee Name</th>
@@ -154,7 +154,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
-                        <th>Cash Amount</th>
+                        <th>Cash</th>
                         <th>Paytm Amount</th>
                         <th>Total Amount</th>
                     </tr>
@@ -211,8 +211,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
             <h5>Nozzle 2 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
-                    ad class="table-dark">
-                    <tr>
+                     <tr>
                         <th>SNo.</th>
                         <th>Report_Date_time</th>
                         <th>Employee Name</th>
@@ -223,7 +222,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
-                        <th>Cash Amount</th>
+                        <th>Cash</th>
                         <th>Paytm Amount</th>
                         <th>Total Amount</th>
                     </tr>
@@ -280,7 +279,6 @@ $total_pages4 = ceil($total_rows4 / $limit);
             <h5>Nozzle 3 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
-                    ad class="table-dark">
                     <tr>
                         <th>SNo.</th>
                         <th>Report_Date_time</th>
@@ -292,7 +290,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
-                        <th>Cash Amount</th>
+                        <th>Cash</th>
                         <th>Paytm Amount</th>
                         <th>Total Amount</th>
                     </tr>
@@ -349,7 +347,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
             <h5>Nozzle 4 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
-                    <tr>
+                   <tr>
                         <th>SNo.</th>
                         <th>Report_Date_time</th>
                         <th>Employee Name</th>
@@ -360,7 +358,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
-                        <th>Cash Amount</th>
+                        <th>Cash</th>
                         <th>Paytm Amount</th>
                         <th>Total Amount</th>
                     </tr>

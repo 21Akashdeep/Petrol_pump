@@ -83,7 +83,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
             margin-top: 3%;
         }
 
-       .table th,
+        .table th,
         .table td {
             text-align: center;
             vertical-align: middle;
@@ -133,12 +133,12 @@ $total_pages4 = ceil($total_rows4 / $limit);
 <body style="margin-left: 0;">
 
     <!-- Navbar -->
-    <?php include '../navbar.php'; ?>
+    <?php include '../shiftnavbar.php'; ?>
     <!-- Main Content -->
     <div class="container d-flex flex-column align-items-center" style="margin-top: 3%;">
 
         <!-- Table Section 1 -->
-       <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1400px; width: 100%;">
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1400px; width: 100%;">
             <h5>Nozzle 1 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width:auto;">
                 <thead class="table-dark">
@@ -146,16 +146,16 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>SNo.</th>
                         <th>Report_Date_time</th>
                         <th>Employee Name</th>
-                        <th>product</th>
-                        <th>nozzle</th>
-                        <th>opening_Reading</th>
-                        <th>closing_Reading</th>
+                        <th>Product</th>
+                        <th>Nozzle</th>
+                        <th>Opening_Reading</th>
+                        <th>Closing_Reading</th>
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
                         <th>Cash</th>
                         <th>Paytm Amount</th>
-                        <th>total Amount</th>
+                        <th>Total Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -167,7 +167,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <th>$sno</th>
                                     <td>{$row['datetime']}</td>
                                     <td>{$row['employee1']}</td>
-                                    <td>{$row['product1']}</td>
+                                    <td>XG-1</td>
                                     <td>{$row['nozzle1']}</td>
                                     <td>{$row['xg1_start_reading']}</td>
                                     <td>{$row['xg1_close_reading']}</td>
@@ -208,21 +208,20 @@ $total_pages4 = ceil($total_rows4 / $limit);
             <h5>Nozzle 2 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width:auto;">
                 <thead class="table-dark">
-
                     <tr>
                         <th>SNo.</th>
                         <th>Report_Date_time</th>
                         <th>Employee Name</th>
-                        <th>product</th>
-                        <th>nozzle</th>
-                        <th>opening_Reading</th>
-                        <th>closing_Reading</th>
+                        <th>Product</th>
+                        <th>Nozzle</th>
+                        <th>Opening_Reading</th>
+                        <th>Closing_Reading</th>
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
-                        <th>Cash Amount</th>
+                        <th>Cash</th>
                         <th>Paytm Amount</th>
-                        <th>total Amount</th>
+                        <th>Total Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -234,7 +233,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <th>$sno</th>
                                     <td>{$row['datetime']}</td>
                                     <td>{$row['employee2']}</td>
-                                    <td>{$row['product2']}</td>
+                                    <td>XG-2</td>
                                     <td>{$row['nozzle2']}</td>
                                     <td>{$row['xg2_start_reading']}</td>
                                     <td>{$row['xg2_close_reading']}</td>
@@ -279,16 +278,16 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>SNo.</th>
                         <th>Report_Date_time</th>
                         <th>Employee Name</th>
-                        <th>product</th>
-                        <th>nozzle</th>
-                        <th>opening_Reading</th>
-                        <th>closing_Reading</th>
+                        <th>Product</th>
+                        <th>Nozzle</th>
+                        <th>Opening_Reading</th>
+                        <th>Closing_Reading</th>
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
-                        <th>Cash Amount</th>
+                        <th>Cash</th>
                         <th>Paytm Amount</th>
-                        <th>total Amount</th>
+                        <th>Total Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -300,7 +299,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <th>$sno</th>
                                     <td>{$row['datetime']}</td>
                                     <td>{$row['employee3']}</td>
-                                    <td>{$row['product3']}</td>
+                                    <td>MS-1</td>
                                     <td>{$row['nozzle3']}</td>
                                     <td>{$row['ms1_start_reading']}</td>
                                     <td>{$row['ms1_close_reading']}</td>
@@ -337,7 +336,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
         </div>
 
         <!-- Table Section 4 -->
-      <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1400px; width: 100%;">
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1400px; width: 100%;">
             <h5>Nozzle 4 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width:auto;">
                 <thead class="table-dark">
@@ -345,16 +344,16 @@ $total_pages4 = ceil($total_rows4 / $limit);
                         <th>SNo.</th>
                         <th>Report_Date_time</th>
                         <th>Employee Name</th>
-                        <th>product</th>
-                        <th>nozzle</th>
-                        <th>opening_Reading</th>
-                        <th>closing_Reading</th>
+                        <th>Product</th>
+                        <th>Nozzle</th>
+                        <th>Opening_Reading</th>
+                        <th>Closing_Reading</th>
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
-                        <th>Cash Amount</th>
+                        <th>Cash</th>
                         <th>Paytm Amount</th>
-                        <th>total Amount</th>
+                        <th>Total Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -366,7 +365,7 @@ $total_pages4 = ceil($total_rows4 / $limit);
                                     <th>$sno</th>
                                     <td>{$row['datetime']}</td>
                                     <td>{$row['employee4']}</td>
-                                    <td>{$row['product4']}</td>
+                                    <td>MS-2</td>
                                     <td>{$row['nozzle4']}</td>
                                     <td>{$row['ms2_start_reading']}</td>
                                     <td>{$row['ms2_close_reading']}</td>
