@@ -471,26 +471,41 @@ $conn->close();
         ], // Days of the week
         datasets: [
           {
-            label: "Petrol (Rs)",
-            data: [120, 150, 180, 200, 250, 300, 350], // Example data
+            label: "  XP-95 (Rs)",
+            data: [104.57, 104.69, 102.96, 105.63, 104.98, 104.86, 104.36], // Example data
             backgroundColor: "red",
             borderColor: "red",
             borderWidth: 2,
           },
           {
-            label: "Diesel (Rs)",
+            label: "MS (Rs)",
             data: [150, 120, 100, 160, 145, 136, 189], // Example data
             backgroundColor: "blue",
             borderColor: "blue",
             borderWidth: 2,
           },
           {
-            label: "Lubricants (Rs)",
+            label: "XG (Rs)",
             data: [70, 130, 140, 150, 200, 220, 250], // Example data
             backgroundColor: "brown",
             borderColor: "brown",
             borderWidth: 2,
           },
+          {
+            label: "HSD (Rs)",
+            data: [90, 110, 130, 140, 160, 180, 200], // Example data
+            backgroundColor: "pink",
+            borderColor: "pink",
+            borderWidth: 2,
+          },
+          {
+            label: "LIQUID (Rs)",
+            data: [80, 100, 120, 140, 160, 180, 200], // Example data
+            backgroundColor: "black",
+            borderColor: "black",
+           
+            borderWidth: 2,
+          }
         ],
       };
 
@@ -548,11 +563,11 @@ $conn->close();
     <script>
       // Data for pie chart
       const pieData = {
-        labels: ["Petrol", "Diesel", "Lubricants"],
+        labels: ["XP-95", "MS", "HSD", "XG", "LIQUID"], // Labels for each segment
         datasets: [
           {
-            data: [1500, 2000, 500], // Example data for total sales in Rs
-            backgroundColor: ["red", "blue", "brown"], // Colors for each segment
+            data: [1500, 2000, 500, 700, 800], // Example data for total sales in Rs
+            backgroundColor: ["red", "blue", "brown", "pink","black"], // Colors for each segment
             hoverOffset: 4, // Hover offset for better interactivity
           },
         ],

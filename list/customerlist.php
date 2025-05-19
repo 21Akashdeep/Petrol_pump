@@ -48,6 +48,21 @@ $total_pages = ceil($total_rows / $limit);
             font-family: Arial, sans-serif;
         }
 
+        .table th,
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .table {
+            border: 2px solid #212529;
+            width: 98%;
+        }
+
         .navbar {
             padding: 15px;
         }
@@ -124,7 +139,7 @@ $total_pages = ceil($total_rows / $limit);
 <body>
 
     <!-- Navbar -->
-    <?php include '../navbar.php'; ?>
+    <?php include '../create/navbar.php'; ?>
     <!-- Main Content -->
     <div class="container container-content">
 

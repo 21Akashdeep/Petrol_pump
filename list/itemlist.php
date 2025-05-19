@@ -55,10 +55,20 @@ $total_pages = ceil($total_rows / $limit);
             margin-top: 3%;
         }
 
-        .table th,
+       .table th,
         .table td {
             text-align: center;
             vertical-align: middle;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .table {
+            border: 2px solid #212529;
+            width: 98%;
+        }vertical-align: middle;
         }
 
         .btn-custom {
@@ -123,7 +133,7 @@ $total_pages = ceil($total_rows / $limit);
 <body>
 
     <!-- Navbar -->
-    <?php include '../navbar.php'; ?>
+  <?php include '../create/navbar.php'; ?>
     <!-- Main Content -->
     <div class="container container-content">
 

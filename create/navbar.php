@@ -20,6 +20,9 @@
 <!-- navbar.php -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
+        <a class="navbar-brand" href="../home.php">
+            <img src="../images/bptlogo.png" alt="Logo" style="height:40px;">
+        </a>
         <!-- <a class="navbar-brand fw-bold" href="#">Item List</a> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +53,7 @@
                         <li><a class="dropdown-item" href="../list/customerlist.php">Customer</a></li>
                         <li><a class="dropdown-item" href="../list/itemlist.php">Add Item</a></li>
                         <li><a class="dropdown-item" href="../list/locationlist.php">Add Location</a></li>
+                        <li><a class="dropdown-item" href="ratelist.php">Add petrol rate</a></li>
                         <li><a class="dropdown-item" href="../list/UOMlist.php">Add UOM</a></li>
                     </ul>
                 </li>
@@ -97,25 +101,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="accountingDropdown" role="button"
-                        data-bs-toggle="dropdown">
-                        Accounting Report
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Challan Report</a></li>
-                        <li><a class="dropdown-item" href="#">Bill Report</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="inventoryDropdown" role="button"
-                        data-bs-toggle="dropdown">
-                        Inventory Report
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Daily Summary Report</a></li>
-                    </ul>
-                </li>
+
             </ul>
         </div>
     </div>

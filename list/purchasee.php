@@ -87,7 +87,20 @@ $total_pages = ceil($total_rows / $limit);
         .text-danger {
             font-weight: bold;
         }
+.table th,
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
 
+        .table {
+            border: 2px solid #212529;
+            width: 98%;
+        }
         footer {
             position: fixed;
             bottom: 0;
