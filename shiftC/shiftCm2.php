@@ -288,6 +288,7 @@ foreach ($fields as $field) {
     </div>
 </div>
     <script>
+// filepath: c:\xampp\htdocs\Petrol_pump\shiftC\shiftCm2.php
 document.addEventListener("DOMContentLoaded", function() {
     function calculateValues(prefix) {
         let startReading = parseFloat(document.getElementById(prefix + "_start_reading")?.value) || 0;
@@ -314,15 +315,12 @@ document.addEventListener("DOMContentLoaded", function() {
             let input = document.getElementById(prefix + "_" + field);
             if (input) {
                 input.addEventListener("input", function() {
-        ["start_reading", "close_reading", "testing_less", "rate"].forEach(function(field) {
-            let input = document.getElementById(prefix + "_" + field);
-            if (input) {
-                input.addEventListener("input", function() {
                     calculateValues(prefix);
                 });
             }
-        });lues(prefix);
+        });
         // Initial calculation on page load
         calculateValues(prefix);
     });
-});</script></div>
+});
+</script></div>

@@ -153,19 +153,19 @@ if ($result_emp->num_rows > 0) {
                 <div class="col-2"><strong>Open Reading</strong></div>
                 <div class="col-3">
                     <input type="text" class="form-control" name="xg1_start_reading"
-                        value="<?php echo $row['xg1_start_reading']; ?>" readonly>
+                        value="<?php echo $row['xg1_start_reading']; ?>">
                 </div>
                 <div class="col-2">
                     <input type="text" class="form-control" name="xg2_start_reading"
-                        value="<?php echo $row['xg2_start_reading']; ?>" readonly>
+                        value="<?php echo $row['xg2_start_reading']; ?>">
                 </div>
                 <div class="col-2">
                     <input type="text" class="form-control" name="ms1_start_reading"
-                        value="<?php echo $row['ms1_start_reading']; ?>" readonly>
+                        value="<?php echo $row['ms1_start_reading']; ?>">
                 </div>
                 <div class="col-3">
                     <input type="text" class="form-control" name="ms2_start_reading"
-                        value="<?php echo $row['ms2_start_reading']; ?>" readonly>
+                        value="<?php echo $row['ms2_start_reading']; ?>">
                 </div>
             </div>
             <?php

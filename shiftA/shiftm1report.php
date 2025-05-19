@@ -70,8 +70,8 @@ $total_pages = ceil($total_rows / $limit);
             vertical-align: middle;
             padding-top: 5px;
             padding-bottom: 5px;
-            padding-left: 2px;
-            padding-right: 2px;
+            padding-left: 5px;
+            padding-right: 5px;
         }
 
         .table {
@@ -119,7 +119,7 @@ $total_pages = ceil($total_rows / $limit);
     <div class="container d-flex flex-column align-items-center" style="margin-top: 3%;">
 
         <!-- Table Section 1 -->
-        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1100px; width: 100%;">
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1400px; width: 100%;">
             <h5>Nozzle 1 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
@@ -190,7 +190,7 @@ $total_pages = ceil($total_rows / $limit);
         </div>
 
         <!-- Table Section 2 -->
-        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1100px; width: 100%;">
+      <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1400px; width: 100%;">
             <h5>Nozzle 2 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">

@@ -774,16 +774,13 @@ $advance = $dataadvancea['advancec'];
                 <tr class="total-row">
                     <td>Cash for Runing-shift</td>
                     <td></td>
-                    <?php
-                    $advance = $dataadvancea['advancec'];
-                    // $_SESSION['cashruning_sift_a'] = $advance; // Store value in session
-                    ?>
-                    <td>0</td>
+
+                    <td><?php echo $advance; ?></td>
                 </tr>
                 <tr class="total-row">
                     <td>Total</td>
                     <td></td>
-                    <td><strong><?php $total_pic = $subtotal + $totalc + $advance + $bank500result;
+                    <td><strong><?php $total_pic = $subtotal + $totalc + $advance;
                     echo $total_pic; ?></strong>
                     </td>
                 </tr>

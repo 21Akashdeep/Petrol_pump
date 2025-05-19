@@ -64,14 +64,14 @@ $total_pages = ceil($total_rows / $limit);
             margin-top: 3%;
         }
 
-        .table th,
+         .table th,
         .table td {
             text-align: center;
             vertical-align: middle;
             padding-top: 5px;
             padding-bottom: 5px;
-            padding-left: 2px;
-            padding-right: 2px;
+            padding-left: 5px;
+            padding-right: 5px;
         }
 
         .table {
@@ -146,7 +146,7 @@ $total_pages = ceil($total_rows / $limit);
     <div class="container d-flex flex-column align-items-center" style="margin-top: 3%;">
 
         <!-- Table Section 1 -->
-        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1100px; width: 100%;">
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1400px; width: 100%;">
             <h5>Nozzle 1 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
@@ -161,6 +161,8 @@ $total_pages = ceil($total_rows / $limit);
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
+                        <th>Cash Amount</th>
+                        <th>Paytm Amount</th>
                         <th>total Amount</th>
                     </tr>
                 </thead>
@@ -180,6 +182,8 @@ $total_pages = ceil($total_rows / $limit);
                                     <td>{$row['xp_reading_difference']}</td>
                                     <td>{$row['xp_testing_less']}</td>                                   
                                     <td>{$row['xp_net_sale']}</td>
+                                    <td>{$row['ms_cash']}</td>
+                                    <td>{$row['ms_paytm_amount']}</td>
                                     <td>{$row['xp_total_amount']}</td>
                                   </tr>";
                             $sno++;
@@ -210,7 +214,7 @@ $total_pages = ceil($total_rows / $limit);
         </div>
 
         <!-- Table Section 2 -->
-        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1100px; width: 100%;">
+        <div class="bg-white p-4 shadow-sm rounded mb-4" style="max-width: 1400px; width: 100%;">
             <h5>Nozzle 2 Data</h5>
             <table class="table table-bordered table-hover mx-auto" style="width: auto;">
                 <thead class="table-dark">
@@ -225,6 +229,8 @@ $total_pages = ceil($total_rows / $limit);
                         <th>Reading Difference</th>
                         <th>Testing Less</th>
                         <th>Net sale</th>
+                        <th>Cash Amount</th>
+                        <th>Paytm Amount</th>
                         <th>total Amount</th>
                     </tr>
                 </thead>
@@ -244,6 +250,8 @@ $total_pages = ceil($total_rows / $limit);
                                     <td>{$row['ms_reading_difference']}</td>
                                     <td>{$row['ms_testing_less']}</td>                                   
                                     <td>{$row['ms_net_sale']}</td>
+                                    <td>{$row['ms_cash']}</td>
+                                    <td>{$row['ms_paytm_amount']}</td>
                                     <td>{$row['ms_total_amount']}</td>
                                   </tr>";
                             $sno++;
