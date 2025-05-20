@@ -135,6 +135,18 @@
                                 <li><a class="dropdown-item" href="shiftC/shiftm4report.php">Machine 4 Report</a></li>
                             </ul>
                         </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="recordDropdown" role="button"
+                        data-bs-toggle="dropdown">
+                        Record
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="report/sale_report.html">Sale Record</a></li>
+                        <li><a class="dropdown-item" href="../record/purchaserecord.php">Purchase Record</a></li>
+                        <li><a class="dropdown-item" href="../record/stockrecord.php">Stock Record</a></li>
                     </ul>
                 </li>
                 <!-- <li class="nav-item dropdown">

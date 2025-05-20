@@ -239,9 +239,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php endif; ?>
 
             <button type="submit">Login</button>
-            <!-- <p style="margin-top: 10px;">
+            <p style="margin-top: 10px; text-align:center;">
                 <a href="update/adminf.php" style="text-decoration: none; color: #007bff;">Forgot Password?</a>
-            </p> -->
+            </p>
         </form>
     </div>
     <footer>
